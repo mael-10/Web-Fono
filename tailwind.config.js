@@ -10,6 +10,10 @@ module.exports = {
       colors: {
         'fundo': '#2d2d2d',
       },
+
+      boxShadow: {
+        'custom-shadow': '3px 0 0 rgb(22 163 74)',
+      },
     },
   },
   plugins: [

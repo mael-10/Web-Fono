@@ -554,12 +554,44 @@ video {
   --tw-contain-style:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
 .h-full {
   height: 100%;
 }
 
 .h-screen {
   height: 100vh;
+}
+
+.w-\[279px\] {
+  width: 279px;
 }
 
 .w-\[300px\] {
@@ -570,22 +602,77 @@ video {
   width: 100%;
 }
 
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-\[60px\] {
+  width: 60px;
+}
+
+.w-\[279\%\] {
+  width: 279%;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.w-\[95\%\] {
+  width: 95%;
+}
+
+.w-\[97\%\] {
+  width: 97%;
+}
+
+.w-\[89px\] {
+  width: 89px;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
+.w-\[75px\] {
+  width: 75px;
+}
+
+.w-\[73px\] {
+  width: 73px;
+}
+
+.w-\[71px\] {
+  width: 71px;
+}
+
+.w-\[70px\] {
+  width: 70px;
+}
+
+.w-\[68px\] {
+  width: 68px;
+}
+
+.w-\[65px\] {
+  width: 65px;
+}
+
+.w-\[62px\] {
+  width: 62px;
+}
+
+.list-none {
+  list-style-type: none;
+}
+
 .bg-fundo {
   --tw-bg-opacity: 1;
   background-color: rgb(45 45 45 / var(--tw-bg-opacity));
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
-.p-2\.5 {
-  padding: 0.625rem;
 }
 
 .pl-2 {
@@ -596,9 +683,24 @@ video {
   padding-left: 0.625rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.leading-5 {
+  line-height: 1.25rem;
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.shadow-custom-shadow {
+  --tw-shadow: 3px 0 0 rgb(22 163 74);
+  --tw-shadow-colored: 3px 0 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .padding-custom {
@@ -610,4 +712,29 @@ video {
   box-sizing: border-box;
   padding: 0px;
   font-family: "Reddit Sans", sans-serif;
+}
+
+.item-menu a {
+  margin-bottom: 1.25rem;
+  display: flex;
+  list-style-type: none;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.item-menu:hover {
+  border-radius: 0.75rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }
