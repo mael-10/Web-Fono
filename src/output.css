@@ -554,11 +554,60 @@ video {
   --tw-contain-style:  ;
 }
 
-.bg-red-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+.h-full {
+  height: 100%;
 }
 
-.text-center {
-  text-align: center;
+.h-screen {
+  height: 100vh;
+}
+
+.w-\[300px\] {
+  width: 300px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.bg-fundo {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 45 45 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-2\.5 {
+  padding: 0.625rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.pl-2\.5 {
+  padding-left: 0.625rem;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.padding-custom {
+  padding: 40px 0 40px 1%;
+}
+
+* {
+  margin: 0px;
+  box-sizing: border-box;
+  padding: 0px;
+  font-family: "Reddit Sans", sans-serif;
 }
