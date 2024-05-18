@@ -13,3 +13,19 @@
 .item-menu {
   @apply hover:bg-green-600 hover:rounded-xl hover:transition hover:duration-200;
 }
+
+ul li.ativo {
+  @apply bg-green-600 rounded-xl;
+}
+
+nav.expandir {
+  @apply w-[300px];
+}
+
+.txt-link{
+  @apply ml-[80px] duration-500;
+}
+
+nav.expandir .txt-link{
+  @apply ml-[60px];
+}
