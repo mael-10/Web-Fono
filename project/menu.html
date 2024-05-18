@@ -17,13 +17,13 @@
         nav.expandir + .content {
             margin-left: 300px;
         }
-        #a{
+        #a {
             height: 800vh;
         }
     </style>
 </head>
-<body class="h-screen flex" id="a">
-    <nav class="w-[65px] h-full bg-fundo p-4 shadow-custom-shadow fixed top-0 left-0 duration-300" id="nav-lte">
+<body class="h-screen flex bg-white dark:bg-fundo text-black dark:text-white" id="a">
+    <nav class="w-[65px] h-full bg-fundo p-4 shadow-custom-shadow fixed top-0 left-0 duration-300 dark:bg-gray-800" id="nav-lte">
         <div class="w-full pl-2.5 mb-5 cursor-pointer">
             <i class="fa-solid fa-list text-white text-2xl" id="btn-exp"></i>
         </div>
@@ -32,47 +32,65 @@
             <li class="item-menu w-full ativo">
                 <a href="#" class="flex items-center">
                     <span class="icon">
-                        <i class="fa-solid fa-house text-2xl leading-5"></i>
+                        <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
                     </span>
-                    <span class="txt-link ml-5 overflow-hidden">Home</span>
+                    <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
                 </a>
             </li>
             <li class="item-menu w-full">
                 <a href="#" class="flex items-center">
                     <span class="icon">
-                        <i class="fa-regular fa-address-book text-2xl"></i>
+                        <i class="fa-regular fa-address-book text-2xl text-white"></i>
                     </span>
-                    <span class="txt-link ml-5 overflow-hidden">Atendimento</span>
+                    <span class="txt-link ml-5 overflow-hidden text-white">Atendimento</span>
                 </a>
             </li>
             <li class="item-menu w-full">
                 <a href="#" class="flex items-center">
                     <span class="icon">
-                        <i class="fa-solid fa-person text-2xl leading-5 ml-1 mr-1"></i>
+                        <i class="fa-solid fa-person text-2xl leading-5 ml-1 mr-1 text-white"></i>
                     </span>
-                    <span class="txt-link">Paciente</span>
+                    <span class="txt-link text-white overflow-hidden">Paciente</span>
                 </a>
             </li>
             <li class="item-menu w-full">
                 <a href="#" class="flex items-center">
                     <span class="icon">
-                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                        <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
                     </span>
-                    <span class="txt-link ml-5 overflow-hidden">Estoque</span>
+                    <span class="txt-link ml-5 overflow-hidden text-white">Estoque</span>
                 </a>
             </li>
             <li class="item-menu w-full">
                 <a href="#" class="flex items-center">
                     <span class="icon">
-                        <i class="fa-solid fa-box-archive text-2xl"></i>
+                        <i class="fa-solid fa-box-archive text-2xl text-white"></i>
                     </span>
-                    <span class="txt-link ml-5 overflow-hidden">Cadastrar Produto</span>
+                    <span class="txt-link ml-5 overflow-hidden text-white">Cadastrar Produto</span>
+                </a>
+            </li>
+            <li class="item-menu w-full">
+                <a href="#" class="flex items-center cursor-pointer" id="dark-mode-toggle">
+                    <span class="icon">
+                        <i class="fa-solid fa-moon text-2xl text-white" id="icon-moon"></i>
+                        <i class="fa-solid fa-sun text-2xl text-white hidden" id="icon-sun"></i>
+                    </span>
+                    <span class="txt-link ml-5 overflow-hidden text-white" id="dark-mode-text">Escuro</span>
+                </a>
+            </li>
+            <li class="item-menu w-full">
+                <a href="#" class="flex items-center">
+                    <span class="icon">
+                        <i class="fa-solid fa-right-from-bracket text-white"></i>
+                    </span>
+                    <span class="txt-link ml-5 overflow-hidden text-white">Sair</span>
                 </a>
             </li>
         </ul>
     </nav>
     <main class="content flex-1">
-        <p class="text-black">Oiiiiiiiiooooooooooooooooooooooooooooooooljkasflkjsadhshhhhhhjakshdfjkhasjdfhjkashdjkf</p>
+        <p class="text-black dark:text-white">Oiiiiiiiiooooooooooooooooooooooooooooooooljkasflkjsadhshhhhhhjakshdfjkhasjdfhjkashdjkf</p>
+        <img src="../gatinho.avif" width="200px" alt="">
     </main>
 
     <script src="menu.js"></script>
