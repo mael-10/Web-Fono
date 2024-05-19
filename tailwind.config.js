@@ -2,7 +2,7 @@
 module.exports = {
   darkMode: 'class',  // ou 'media'
 
-  content: ["./project/**/*.{html,js}"],
+  content: ["./project/**/*.{js,jsx,ts,tsx,html}"],
   theme: {
     extend: {
       fontFamily: {
