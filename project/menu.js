@@ -1,33 +1,42 @@
-//Botão clicado
+// Botão clicado
 var menuItem = document.querySelectorAll('.item-menu');
 
-function link(){
-    menuItem.forEach((item)=>
+function link() {
+    menuItem.forEach((item) =>
         item.classList.remove('ativo')
     )
     this.classList.add('ativo')
 }
 
-menuItem.forEach((item)=>
+menuItem.forEach((item) =>
     item.addEventListener('click', link)
 )
 
-//Expandir menu
-
+// Expandir menu
 var btn = document.querySelector('#btn-exp');
 var menuSide = document.querySelector('#nav-lte');
 
-btn.addEventListener('click', function(){
+btn.addEventListener('click', function () {
     menuSide.classList.toggle('expandir')
 })
 
+// Função para aplicar o modo escuro
+function applyDarkMode() {
+    const darkModeEnabled = localStorage.getItem('dark-mode') === 'enabled';
+    document.documentElement.classList.toggle('dark', darkModeEnabled);
+    document.getElementById('icon-moon').classList.toggle('hidden', darkModeEnabled);
+    document.getElementById('icon-sun').classList.toggle('hidden', !darkModeEnabled);
+    document.getElementById('dark-mode-text').textContent = darkModeEnabled ? 'Claro' : 'Escuro';
+}
 
-//dark mode
+// Aplicar o modo escuro ao carregar a página
+document.addEventListener('DOMContentLoaded', applyDarkMode);
 
-document.getElementById('dark-mode-toggle').addEventListener('click', function() {
-    document.documentElement.classList.toggle('dark');
-    document.getElementById('icon-moon').classList.toggle('hidden');
-    document.getElementById('icon-sun').classList.toggle('hidden');
-    const darkModeText = document.getElementById('dark-mode-text');
-    darkModeText.textContent = document.documentElement.classList.contains('dark') ? 'Claro' : 'Escuro';
+// Alternar o modo escuro/claro ao clicar no botão
+document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+    const darkModeEnabled = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('dark-mode', darkModeEnabled ? 'enabled' : 'disabled');
+    document.getElementById('icon-moon').classList.toggle('hidden', darkModeEnabled);
+    document.getElementById('icon-sun').classList.toggle('hidden', !darkModeEnabled);
+    document.getElementById('dark-mode-text').textContent = darkModeEnabled ? 'Claro' : 'Escuro';
 });
