@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-  * {
-    @apply font-reddit-sans m-0 p-0 box-border; 
+* {
+  @apply font-reddit-sans box-border; 
 }
 
 .item-menu a{

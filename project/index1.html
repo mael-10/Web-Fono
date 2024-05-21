@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../src/output.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <main class="flex h-screen justify-center">
+      <div class="mt-16 h-[83%] w-[40%] rounded-xl bg-gray-200">
+        <div class="mb-8 mt-10 text-center">
+          <p class="text-3xl tracking-wider text-green-700">CLINICA</p>
+        </div>
+        <div class="mb-8 pt-4">
+          <p class="text-center text-xl tracking-wider text-green-700">Login</p>
+        </div>
+        <div class="flex w-[100%] justify-center pt-4">
+          <form action="" class="mx-auto max-w-sm">
+            <div class="mb-5">
+              <label
+                for="email"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                >Your email</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                placeholder="name@flowbite.com"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                >Your password</label
+              >
+              <input
+                type="password"
+                id="password"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div class="mb-5">
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                >Type YourPassword Again</label
+              >
+              <input
+                type="password"
+                id="password"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div class="mb-5 flex items-start">
+              <div class="flex h-5 items-center">
+                <input
+                  id="remember"
+                  type="checkbox"
+                  value=""
+                  class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+                  required
+                />
+              </div>
+              <label
+                for="remember"
+                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >Remember me</label
+              >
+            </div>
+            <button
+              type="submit"
+              class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
