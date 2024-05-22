@@ -26,9 +26,6 @@
       nav.expandir + .content {
         margin-left: 300px;
       }
-      #a {
-        height: 800vh;
-      }
 
       body {
     font-family: Arial, sans-serif;
@@ -86,11 +83,11 @@ button:hover {
     </style>
   </head>
   <body
-    class="flex h-screen bg-white text-black dark:bg-fundo dark:text-white"
-    id="a"
+    class="flex h-screen bg-white text-black dark:bg-fundo"
+    
   >
     <nav
-      class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 shadow-custom-shadow duration-300 dark:bg-gray-800"
+      class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 shadow-custom-shadow duration-300 dark:bg-gray-800  dark:text-white"
       id="nav-lte"
     >
       <div class="mb-5 w-full cursor-pointer pl-2.5">
@@ -98,7 +95,7 @@ button:hover {
       </div>
 
       <ul class="h-full list-none space-y-4">
-        <li class="item-menu ativo w-full">
+        <li class="item-menu w-full">
           <a href="menu.html" class="flex items-center">
             <span class="icon">
               <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
@@ -106,7 +103,7 @@ button:hover {
             <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
           </a>
         </li>
-        <li class="item-menu w-full">
+        <li class="item-menu ativo w-full">
           <a href="atendimento.html" class="flex items-center">
             <span class="icon">
               <i class="fa-regular fa-address-book text-2xl text-white"></i>
@@ -182,16 +179,16 @@ button:hover {
     <main class="content flex-1">
         <div class="container">
             <h1>Cadastro</h1>
-            <form action="#">
+            <form action="#" class="dark:text-black">
                 <div class="form-group">
-                    <label for="nome">Nome Completo:</label>
+                    <label class="dark:text-black" for="nome">Nome Completo:</label>
                     <input type="text" id="nome" name="nome" required>
                 </div>
                 <div class="form-group">
-                    <label for="celular">Celular:</label>
+                    <label  for="celular">Celular:</label>
                     <input type="tel" id="celular" name="celular" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group dark:text-black">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
