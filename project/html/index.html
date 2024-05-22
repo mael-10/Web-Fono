@@ -16,7 +16,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="../src/output.css" />
+    <link rel="stylesheet" href="../../src/output.css" />
     <title>Login</title>
   </head>
   <body>
@@ -29,7 +29,7 @@
           <p class="text-center text-xl tracking-wider text-green-700">Login</p>
         </div>
         <div class="flex w-[100%] justify-center pt-4">
-          <form action="" class="mx-auto max-w-sm">
+          <form action="../php/login.php" class="mx-auto max-w-sm" method="post">
             <div class="mb-5">
               <label
                 for="email"
@@ -54,7 +54,7 @@
               <input
                 type="password"
                 id="password"
-                name="password"
+                name="senha"
                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 required
               />
@@ -70,7 +70,7 @@
                 id="password"
                 name="password"
                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                required
+                
               />
             </div>
             <div class="mb-5 flex items-start">
@@ -80,7 +80,7 @@
                   type="checkbox"
                   value=""
                   class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                  required
+                  
                 />
               </div>
               <label
@@ -93,7 +93,7 @@
               type="submit"
               class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
               >
-              <a href="menu.html">Submit</a>
+              Submit
             </button>
           </form>
         </div>
