@@ -14,6 +14,10 @@ module.exports = {
       boxShadow: {
         'custom-shadow': '3px 0 0 rgb(22 163 74)',
       },
+      height: {
+        '93': '93vh',
+      },
+
     },
   },
   plugins: [
