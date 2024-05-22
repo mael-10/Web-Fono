@@ -4,7 +4,7 @@
 CREATE DATABASE Webfono
 
 CREATE TABLE Venda (
-id_venda int PRIMARY KEY,
+id_venda int PRIMARY KEY AUTO_INCREMENT,
 data timestamp,
 total_venda float,
 id_produto int,
@@ -12,7 +12,7 @@ id_paciente int
 )
 
 CREATE TABLE Produto (
-id_produto int PRIMARY KEY,
+id_produto int PRIMARY KEY AUTO_INCREMENT,
 nome_produto Varchar(60),
 descricao Varchar(150),
 quantidade int,
@@ -21,7 +21,7 @@ situacao Varchar(30)
 )
 
 CREATE TABLE Paciente (
-id_paciente int PRIMARY KEY,
+id_paciente int PRIMARY KEY AUTO_INCREMENT,
 nome_paciente Varchar(60),
 cpf Varchar(16),
 RG Varchar(16),
@@ -31,11 +31,13 @@ telefone char(14),
 endereco Varchar(80),
 bairro Varchar(30),
 cidade Varchar(40),
-cep Char(9)
+cep Char(9),
+UNIQUE (cpf),
+UNIQUE (RG)
 )
 
 CREATE TABLE Atendimento (
-id_atendimento int PRIMARY KEY,
+id_atendimento int PRIMARY KEY AUTO_INCREMENT,
 data date,
 descricao Varchar(150),
 hora time,
@@ -43,12 +45,12 @@ id_paciente int
 )
 
 CREATE TABLE login (
-id_login int PRIMARY KEY,
+id_login int PRIMARY KEY AUTO_INCREMENT,
 usuario Varchar(50),
 email varchar(90),
 senha Varchar(20)
 )
 
-ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Venda (id_venda)
-ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Venda (id_venda)
-ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Atendimento (id_atendimento)
+ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto)
+ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente)
+ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente)
