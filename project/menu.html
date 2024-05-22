@@ -26,8 +26,12 @@
       nav.expandir + .content {
         margin-left: 300px;
       }
-      #a {
-        height: 800vh;
+      .icon img {
+        max-width: 60px;
+        height: auto;
+      }
+      nav:not(.expandir) .icon img {
+        width: 40px;
       }
     </style>
   </head>
@@ -50,6 +54,14 @@
               <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
             </span>
             <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
+          </a>
+        </li>
+        <li class="item-menu w-full">
+          <a href="#" class="flex items-center">
+            <span class="icon">
+              <img class="leading-5" src="./images/dog.jpg" alt="">
+            </span>
+            <span class="txt-link overflow-hidden text-white">Perfil</span>
           </a>
         </li>
         <li class="item-menu w-full">
@@ -126,9 +138,14 @@
       </ul>
     </nav>
     <main class="content flex-1">
-      <p class="text-black dark:text-white">
-        Oiiiiiiiiooooooooooooooooooooooooooooooooljkasflkjsadhshhhhhhjakshdfjkhasjdfhjkashdjkf
-      </p>
+      <header class="h-93">
+        <div class="w-[100%] bg-gray-50 text-center h-20 flex items-center justify-center">
+          <h1 class="text-green-600 text-3xl">CLINICA</h1>
+        </div>
+        <div class="h-full bg-black">
+
+        </div>
+      </header>
     </main>
 
     <script src="./javascript/menu.js"></script>

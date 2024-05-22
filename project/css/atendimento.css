@@ -1,0 +1,14 @@
+h1 {
+    font-size: 39px; /* Tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+    color: #333; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte */
+    padding-top: 350px; /* Espaçamento na parte superior */
+}
+
+
+
+.fa-check {
+    font-size: 400px; /* Tamanho do ícone */
+    padding-top: 350px; /* Espaçamento na parte superior */
+}
