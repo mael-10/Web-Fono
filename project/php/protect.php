@@ -4,7 +4,7 @@
         session_start();
     }
 
-    if(!isset($_SESSION['id'])){
+    if(!isset($_SESSION['id_login'])){
         die("Você não pode acessar esta pagina <p><a href='../hmtl/index.html'>Entrar</a> </p>");
     }
 
