@@ -1,7 +1,7 @@
 -- Geração de Modelo físico
 -- Sql ANSI 2003 - brModelo.
 
-CREATE DATABASE Webfono
+    CREATE DATABASE Webfono
 
 CREATE TABLE Venda (
 id_venda int PRIMARY KEY AUTO_INCREMENT,

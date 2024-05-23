@@ -1,6 +1,6 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
@@ -19,14 +19,30 @@
     />
 
     <link rel="stylesheet" href="../../../src/output.css" />
-    <link rel="stylesheet" href="../../css/paciente.css" />
-    <title>Tela Lateral</title>
-
+    <link rel="stylesheet" href="../../css/estoque.css"/>
+    <title>Cadastrar Estoque</title>
+    <style>
+        .content {
+          margin-left: 65px;
+          transition: margin-left 0.2s;
+        }
+        nav.expandir + .content {
+          margin-left: 300px;
+        }
+        .icon img {
+          max-width: 32px;
+          height: auto;
+        }
+        nav:not(.expandir) .icon img {
+          width: 32px;
+        }
+        .hidden {
+          display: none;
+        }
+      </style>
   </head>
-  <body
-    class="flex h-screen bg-white text-black dark:bg-fundo"
-    
-  >
+</head>
+<body class="flex h-screen bg-white text-black dark:bg-fundo">
     <nav
       class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 shadow-custom-shadow duration-300 dark:bg-gray-800  dark:text-white"
       id="nav-lte"
@@ -117,35 +133,56 @@
         </li>
       </ul>
     </nav>
-    <main class="content flex-1">
-      <div class="options">
-          <a href="cadastro_paciente.html" class="options-link">
-              <div class="option-content">
-                  <img class="content-image" src="../../images/pacientes/1.svg" alt="">
-                  <h1 class="titulo-options">CADASTRAR PACIENTE</h1>
-              </div>
-          </a>
-      </div>
-  
-      <div class="options">
-          <a href="cadastro_paciente.html" class="options-link">
-              <div class="option-content">
-                  <img class="content-image" src="../../images/pacientes/2.svg" alt="">
-                  <h1 class="titulo-options">EDITAR PACIENTE</h1>
-              </div>
-          </a>
-      </div>
-  
-      <div class="options">
-          <a href="cadastro_paciente.html" class="options-link">
-              <div class="option-content">
-                  <img class="content-image" src="../../images/pacientes/3.svg" alt="">
-                  <h1 class="titulo-options">LISTAR PACIENTES</h1>
-              </div>
-          </a>
-      </div>
-  </main>
-
-    <script src="../../javascript/menu.js"></script>
-  </body>
+    <main class="content">
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/1.svg" alt="">
+                </div>
+              <h1 class="titulo-options">CADASTRAR PACIENTE</h1>
+            </div>
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/2.svg" alt="">
+                </div>
+              <h1 class="titulo-options">EDITAR PACIENTE</h1>
+            </div>
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/3.svg" alt="">
+                </div>
+              <h1 class="titulo-options">LISTAR PACIENTES</h1>
+            </div>
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/3.svg" alt="">
+                </div>
+              <h1 class="titulo-options">LISTAR PACIENTES</h1>
+            </div>
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/3.svg" alt="">
+                </div>
+              <h1 class="titulo-options">LISTAR PACIENTES</h1>
+            </div>
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/3.svg" alt="">
+                </div>
+              <h1 class="titulo-options">LISTAR PACIENTES</h1>
+            </div>
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/3.svg" alt="">
+                </div>
+              <h1 class="titulo-options">LISTAR PACIENTES</h1>
+            </div>
+            <div class="options">
+                <div class="content-image">
+                    <img src="../../images/pacientes/3.svg" alt="">
+                </div>
+              <h1 class="titulo-options">LISTAR PACIENTES</h1>
+            </div>
+        </main>
+        <script src="../../javascript/menu.js"></script>
+</body>
 </html>
