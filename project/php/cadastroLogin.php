@@ -1,14 +1,18 @@
 <?php
-    include_once('conexao.php');
+include_once('conexao.php');
 
-    if(isset($_POST['email'])){
+if(isset($_POST['email'])) {
+    $usuario = $conexao->real_escape_string($_POST['usuario']);
+    $email = $conexao->real_escape_string($_POST['email']);
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // senha hash
 
-        $usuario = $conexao->real_escape_string($_POST['usuario']);
-        $email = $conexao->real_escape_string($_POST['email']);
-        $senha = $conexao->real_escape_string(password_hash($_POST['senha'], PASSWORD_DEFAULT));
-
-        $conexao->query("INSERT INTO login (usuario, email, senha) VALUES('$usuario', '$email', '$senha')");
+    $sql = "INSERT INTO login (usuario, email, senha) VALUES('$usuario', '$email', '$senha')";
+    if($conexao->query($sql) === TRUE) {
+        echo "Cadastro realizado com sucesso!";
+    } else {
+        echo "Erro: " . $sql . "<br>" . $conexao->error;
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +27,11 @@
 
     <form action="" method="post">
         <label for="">Usuario</label>
-        <input type="text" name="usuario">
+        <input type="text" name="usuario" required>
         <label for="">Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
         <label for="">Senha</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" required>
         <input type="submit" value="Cadastrar Senha">
     </form>
 </body>
