@@ -7,15 +7,15 @@
 }
 
 .item-menu a{
-  @apply text-white list-none text-xl py-5 px-2 mb-5;
+  @apply text-white text-base list-none py-2 px-2;
 } 
 
 .item-menu {
-  @apply hover:bg-green-600 hover:rounded-xl hover:transition hover:duration-200 pr-10;
+  @apply hover:bg-green-600 hover:rounded-md hover:transition hover:duration-200 pr-10;
 }
 
 ul li.ativo {
-  @apply bg-green-600 rounded-xl;
+  @apply bg-green-600 rounded-md;
 }
 
 nav.expandir {

@@ -27,11 +27,14 @@
         margin-left: 300px;
       }
       .icon img {
-        max-width: 60px;
+        max-width: 32px;
         height: auto;
       }
       nav:not(.expandir) .icon img {
-        width: 40px;
+        width: 32px;
+      }
+      .hidden {
+        display: none;
       }
     </style>
   </head>
@@ -47,63 +50,74 @@
         <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
       </div>
 
+      <div id="esconder" class="h-14 pb-2 mb-4 w-[100%] flex items-center justify-center dark:text-white text-white hidden">
+        <h2>Web-fono</h2>
+      </div>
+
+
       <ul class="h-full list-none space-y-4">
-        <li class="item-menu ativo w-full">
-          <a href="#" class="flex items-center">
-            <span class="icon">
-              <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
-            </span>
-            <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
-          </a>
-        </li>
         <li class="item-menu w-full">
-          <a href="#" class="flex items-center">
+          <a href="#" class="flex items-center relative right-1">
             <span class="icon">
-              <img class="leading-5" src="./images/dog.jpg" alt="">
+              <img class="leading-5 rounded-full" src="./images/dog.jpg" alt="">
             </span>
             <span class="txt-link overflow-hidden text-white">Perfil</span>
           </a>
         </li>
+        <hr>
+        <li class="item-menu ativo w-full">
+          <a href="#" class="flex items-center">
+            <span class="icon">
+              <i class="fa-solid fa-house text-xl leading-5 text-white"></i>
+            </span>
+            <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
+          </a>
+        </li>
+        <hr>
         <li class="item-menu w-full">
           <a href="#" class="flex items-center">
             <span class="icon">
-              <i class="fa-regular fa-address-book text-2xl text-white"></i>
+              <i class="fa-regular fa-address-book text-xl text-white"></i>
             </span>
             <span class="txt-link ml-5 overflow-hidden text-white"
               >Atendimento</span
             >
           </a>
         </li>
+        <hr>
         <li class="item-menu w-full">
           <a href="#" class="flex items-center">
             <span class="icon">
               <i
-                class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"
+                class="fa-solid fa-person ml-1 mr-1 text-xl leading-5 text-white"
               ></i>
             </span>
             <span class="txt-link overflow-hidden text-white">Paciente</span>
           </a>
         </li>
+        <hr>
         <li class="item-menu w-full">
           <a href="#" class="flex items-center">
             <span class="icon">
-              <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
+              <i class="fa-solid fa-cart-shopping text-xl text-white"></i>
             </span>
             <span class="txt-link ml-5 overflow-hidden text-white"
               >Estoque</span
             >
           </a>
         </li>
+        <hr>
         <li class="item-menu w-full">
           <a href="#" class="flex items-center">
             <span class="icon">
-              <i class="fa-solid fa-box-archive text-2xl text-white"></i>
+              <i class="fa-solid fa-box-archive text-xl text-white"></i>
             </span>
             <span class="txt-link ml-5 overflow-hidden text-white"
               >Cadastrar Produto</span
             >
           </a>
         </li>
+        <hr>
         <li class="item-menu w-full">
           <a
             href="#"
@@ -112,11 +126,11 @@
           >
             <span class="icon">
               <i
-                class="fa-solid fa-moon text-2xl text-white"
+                class="fa-solid fa-moon text-xl text-white"
                 id="icon-moon"
               ></i>
               <i
-                class="fa-solid fa-sun hidden text-2xl text-white"
+                class="fa-solid fa-sun hidden text-xl text-white"
                 id="icon-sun"
               ></i>
             </span>
@@ -127,7 +141,8 @@
             >
           </a>
         </li>
-        <li class="item-menu w-full">
+        <hr>
+        <li id="icone-embaixo" class="item-menu w-full">
           <a href="#" class="flex items-center">
             <span class="icon">
               <i class="fa-solid fa-right-from-bracket text-white"></i>

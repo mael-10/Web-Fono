@@ -11,9 +11,11 @@ menuItem.forEach((item) => item.addEventListener("click", link));
 // Expandir menu
 var btn = document.querySelector("#btn-exp");
 var menuSide = document.querySelector("#nav-lte");
+var esconder = document.querySelector("#esconder");
 
 btn.addEventListener("click", function () {
   menuSide.classList.toggle("expandir");
+  esconder.classList.toggle("hidden", !menuSide.classList.contains("expandir"));
 });
 
 // Função para aplicar o modo escuro
