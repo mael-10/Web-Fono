@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+   /* estilização pagina home pacientes  */
+main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr;
+  padding-left: 13%;
+  gap: 10px;
+}
+.options {
+  background-color: #ccc;
+  color: rgb(19, 19, 19);
+  height: 350px;
+  width: 400px;
+  border-radius: 8px;
+  padding: 30px 30px 30px;
+  margin: 25px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.options:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
+  cursor: pointer;
+}
+
+.titulo-options{
+  color: #118E7F;
+  font-family:Arial, Helvetica, sans-serif;
+  font-style:bold;
+  font-size: 40px;
+}
+
+/* estilização padrão chat GPT FORMULARIO */
+#cd-paciente{
+  background-color: #0c5f55;
+}
