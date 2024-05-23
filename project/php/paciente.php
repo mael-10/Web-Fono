@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +13,21 @@
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
     $RG = $_POST['rg'];
-    $gmail = $_POST['email'];
+    $email = $_POST['email'];
+    $nascimento = $_POST['nascimento'];
+    $telefone = $_POST['telefone'];
+    $endereco = $_POST['endereco'];
+    $bairro = $_POST['bairro'];
+    $cep = $_POST['cep'];
+    $cidade = $_POST['cidade'];
 
 
+    $insere_paciente = mysqli_query($conexao, "INSERT INTO paciente (nome_paciente, cpf, RG, email, nascimento, telefone, endereco, bairro, cep, cidade) 
+    VALUES ('$nome','$cpf','$RG','$email', '$nascimento', '$telefone', '$endereco','$bairro','$cep', '$cidade')") or die(mysqli_error($conexao));
 
-    $insere_condutor = mysqli_query($conexao, "INSERT INTO condutor () 
-    VALUES ('$nome','$foto_perfil_destino', '$data_nascimento', '$cidade', '$cpf', '$endereco', '$telefone', '$email', '$carteira_motorista', '$data_cart_motorista', '$data_cart_vencimento', '$categoria_cart_motorista', NULL)") or die(mysqli_error($conexao));
-
-    if ($insere_condutor) {
+    if ($insere_paciente) { 
         echo "<div class='backg'>";
-        echo "<h2 class='msg'> Inserido com sucesso!!! </h2>";
+        echo "<h2 class='msg'> Os dados do paciente foram inseridos com sucesso  </h2>";
         echo "</div>";
     } else {
         echo "<div class='backg'>";

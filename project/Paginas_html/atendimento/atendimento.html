@@ -17,7 +17,9 @@
             href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap"
             rel="stylesheet"
     />
+   
     <link rel="stylesheet" href="../../../src/output.css" />
+    <link rel="stylesheet" href="../../css/atendimento.css">
     <title>Atendimento</title>
     <style>
         .content {
@@ -36,52 +38,7 @@
             background-color: #f0f0f0;
         }
 
-        .container {
-            width: 50%;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: black;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-        }
-
-        input[type="text"],
-        input[type="tel"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
 
     </style>
 </head>
@@ -180,8 +137,31 @@
     </ul>
 </nav>
 <main class="content flex-1">
-     <!-- Container do atendimento -->
     <div class="container">
+        <form method="post" action="php/paciente.php" class="dark:text-black">
+            <div class="form-group full-width">
+                <label class="dark:text-black" for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="celular">Data:</label>
+                    <input type="date" id="celular" name="celular" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Hora:</label>
+                    <input type="time" id="email" name="email" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="cpf">Descrição:</label>
+                    <textarea id="descricao" name="descricao" rows="0" required></textarea>
+                </div>
+            </div>
+            <button class="btn" type="submit"><h1>Enviar</h1></button>
+        </form>
+    </div>
+    
+    <!-- <div class="container">
         <h1>Atendimento</h1>
         <form method="post" action="#"  class="dark:text-black">
             <div class="form-group">
@@ -202,7 +182,7 @@
             </div>
             <button type="submit">Enviar</button>
         </form>
-    </div>
+    </div> -->
 </main>
 <script src="../../javascript/menu.js"></script>
 </body>

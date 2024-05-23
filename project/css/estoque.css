@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  /* Estilização da página home pacientes */
+  main {
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 13%;
+    gap: 15px;
+  }
+  
+  .options {
+    background-color: #ccc;
+    color: rgb(19, 19, 19);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .options:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
+    cursor: pointer;
+  }
+  
+  .titulo-options {
+    color: #118E7F;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
+  .content-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* ajuste conforme necessário */
+    width: 100%;
+  }
+  
+  .content-image img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+  }
+  
