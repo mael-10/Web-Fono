@@ -34,13 +34,15 @@ main{
   transform: translate(20px); 
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
   cursor: pointer;
-}
+ }
+
+ /*  
 .content-image{
-  
-  /* width: 440px;
+  width: 440px;
   height: 250px;
-  margin-bottom: 55px; */
-}
+  margin-bottom: 55px; 
+} 
+*/
 .content-image {
   width: 200px;
   height: 200px;
