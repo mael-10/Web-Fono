@@ -8,7 +8,7 @@
 <body>
 
 <?php
-    include_once("conexao.php");
+    include_once("../conexao.php");
 
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
