@@ -1,7 +1,7 @@
 -- Geração de Modelo físico
 -- Sql ANSI 2003 - brModelo.
 
-    CREATE DATABASE Webfono
+CREATE DATABASE Webfono
 
 CREATE TABLE Venda (
 id_venda int PRIMARY KEY AUTO_INCREMENT,
@@ -9,7 +9,7 @@ data timestamp,
 total_venda float,
 id_produto int,
 id_paciente int
-)
+);
 
 CREATE TABLE Produto (
 id_produto int PRIMARY KEY AUTO_INCREMENT,
@@ -18,7 +18,7 @@ descricao Varchar(150),
 quantidade int,
 preco float,
 situacao Varchar(30)
-)
+);
 
 CREATE TABLE Paciente (
 id_paciente int PRIMARY KEY AUTO_INCREMENT,
@@ -34,7 +34,7 @@ cidade Varchar(40),
 cep Char(9),
 UNIQUE (cpf),
 UNIQUE (RG)
-)
+);
 
 CREATE TABLE Atendimento (
 id_atendimento int PRIMARY KEY AUTO_INCREMENT,
@@ -42,15 +42,15 @@ data date,
 descricao Varchar(150),
 hora time,
 id_paciente int
-)
+);
 
 CREATE TABLE login (
 id_login int PRIMARY KEY AUTO_INCREMENT,
 usuario Varchar(50),
 email varchar(90),
 senha Varchar(20)
-)
+);
 
-ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto)
-ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente)
+ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto);
+ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente);
 ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente)
