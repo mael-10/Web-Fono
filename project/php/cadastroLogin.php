@@ -1,19 +1,26 @@
 <?php
 include_once('conexao.php');
 
-if(isset($_POST['email'])) {
+if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['usuario'])) {
     $usuario = $conexao->real_escape_string($_POST['usuario']);
     $email = $conexao->real_escape_string($_POST['email']);
-    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // senha hash
+    $senha = $_POST['senha'];
 
-    $sql = "INSERT INTO login (usuario, email, senha) VALUES('$usuario', '$email', '$senha')";
-    if($conexao->query($sql) === TRUE) {
-        echo "Cadastro realizado com sucesso!";
+    // Hash a senha antes de armazenar no banco de dados
+    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $sql_code = "INSERT INTO login (usuario, email, senha) VALUES ('$usuario', '$email', '$senha_hash')";
+    $sql_query = $conexao->query($sql_code) or die("Falha na execução do código SQL: " . $conexao->error);
+
+    if ($sql_query) {
+        echo "Usuário registrado com sucesso!";
     } else {
-        echo "Erro: " . $sql . "<br>" . $conexao->error;
+        echo "Erro ao registrar usuário.";
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,13 +31,12 @@ if(isset($_POST['email'])) {
 </head>
 <body>
     <h3>Cadastrar Senha</h3>
-
     <form action="" method="post">
-        <label for="">Usuario</label>
+        <label for="usuario">Usuário</label>
         <input type="text" name="usuario" required>
-        <label for="">Email</label>
+        <label for="email">Email</label>
         <input type="email" name="email" required>
-        <label for="">Senha</label>
+        <label for="senha">Senha</label>
         <input type="password" name="senha" required>
         <input type="submit" value="Cadastrar Senha">
     </form>
