@@ -6,8 +6,15 @@ if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['usuario'])
     $email = $conexao->real_escape_string($_POST['email']);
     $senha = $_POST['senha'];
 
+<<<<<<< Updated upstream
 
     $sql_code = "INSERT INTO login (usuario, email, senha) VALUES ('$usuario', '$email', '$senha')";
+=======
+    // Hash a senha antes de armazenar no banco de dados
+    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $sql_code = "INSERT INTO login (usuario, email, senha) VALUES ('$usuario', '$email', '$senha_hash')";
+>>>>>>> Stashed changes
     $sql_query = $conexao->query($sql_code) or die("Falha na execução do código SQL: " . $conexao->error);
 
     if ($sql_query) {
@@ -19,6 +26,10 @@ if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['usuario'])
 ?>
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
