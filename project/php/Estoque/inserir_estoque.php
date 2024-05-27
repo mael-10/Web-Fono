@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,8 +17,8 @@
     />
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
     <link rel="stylesheet" href="../../../src/output.css" />
-    <link rel="stylesheet" href="../../css/estoque.css"/>
-    <title>Estoque</title>
+    <link rel="stylesheet" href="../../css/cadastrar_estoque.css"/>
+    <title>Cadastrar Estoque</title>
     <style>
         .content {
           margin-left: 65px;
@@ -60,7 +58,7 @@
             <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
           </a>
         </li>
-        <li class="item-menu ativo w-full">
+        <li class="item-menu w-full">
           <a href="atendimento.html" class="flex items-center">
             <span class="icon">
               <i class="fa-regular fa-address-book text-2xl text-white"></i>
@@ -80,7 +78,7 @@
             <span class="txt-link overflow-hidden text-white">Paciente</span>
           </a>
         </li>
-        <li class="item-menu w-full">
+        <li class="item-menu ativo w-full">
           <a href="../estoque/estoque.html" class="flex items-center">
             <span class="icon">
               <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
@@ -133,79 +131,35 @@
         </li>
       </ul>
     </nav>
-    <main class="content">
-            <div class="options">
-                <div class="content-image img-classe">
-                    <img src="../../images/pacientes/2.svg" alt=""> 
-                </div>
-              <h1 class="titulo-options">CADASTRAR PACIENTE</h1>
-              <p>Preço: R$20</p>
-              <p>Quantidade: 1</p>
-            </div>
-            <div class="options">
-                <div class="content-image img-classe">
-                    <img src="../../images/funodiologia.jpg" alt="">
-                </div>
-              <h1 class="titulo-options">EDITAR PACIENTE</h1>
-              <p>Quantidade: 1</p>
-              <p>Preço: R$20</p>
-            </div>
-            <div class="options">
-                <div class="content-image">
-                    <img src="../../images/pacientes/3.svg" alt="">
-                </div>
-              <h1 class="titulo-options">LISTAR PACIENTES</h1>
-              <p>Quantiade: 1</p>
-            </div>
-            <div class="options">
-                <div class="content-image">
-                    <img src="../../images/pacientes/3.svg" alt="">
-                </div>
-              <h1 class="titulo-options">LISTAR PACIENTES</h1>
-              <p>Preço: R$20</p>
-              <p>Quantidade: 1</p>
-            </div>
-            <div class="options">
-                <div class="content-image">
-                    <img src="../../images/pacientes/3.svg" alt="">
-                </div>
-              <h1 class="titulo-options">LISTAR PACIENTES</h1>
-              <p>Preço: R$20</p>
-              <p>Quantidade: 1</p>
-            </div>
-            <div class="options">
-                <div class="content-image">
-                    <img src="../../images/pacientes/3.svg" alt="">
-                </div>
-              <h1 class="titulo-options">LISTAR PACIENTES</h1>
-              <p>Preço: R$20</p>
-              <p>Quantidade: 1</p>
-            </div>
-            <div class="options">
-                <div class="content-image">
-                    <img src="../../images/pacientes/3.svg" alt="">
-                </div>
-              <h1 class="titulo-options">LISTAR PACIENTES</h1>
-              <p>Preço: R$20</p>
-              <p>Quantidade: 1</p>
-            </div>
-            <div class="options">
-                <div class="content-image">
-                    <img src="../../images/pacientes/3.svg" alt="">
-                </div>
-              <h1 class="titulo-options">LISTAR PACIENTES</h1>
-              <p>Preço: R$20</p>
-              <p>Quantidade: 1</p>
-            </div>
-            <div class="options">
-              <div class="content-image">
-                  <img src="../../images/pacientes/3.svg" alt="">
-              </div>
-            <h1 class="titulo-options">LISTAR PACIENTES</h1>
-            <p>Preço: R$20</p>
-            <p>Quantidade: 1</p>
-          </div>
-        </main>
-        <script src="../../javascript/menu.js"></script>
+    <main class="content flex-1" id="cd-paciente">
+        <div class="container">
+            <?php
+
+              include_once('../conexao.php');
+
+              $produto = $_POST['nome'];
+              $descricao = $_POST['descricao'];
+              $quantidade = $_POST['quantidade'];
+              $preco = $_POST['preco'];
+
+              //imagem do produto
+              $foto_produto = $_FILES['foto_produto']['tmp_name'];
+              $foto_produto_destino = '../imagensDinamicas/' . $_FILES['foto_produto']['name'];
+
+              move_uploaded_file($foto_produto, $foto_produto_destino);
+
+              $insere_produto = mysqli_query($conexao, "INSERT INTO produto (nome_produto, descricao, quantidade, preco, situacao, foto_produto) VALUES ('$produto', '$descricao', $quantidade, $preco, 'Em estoque',  '$foto_produto_destino')");
+
+
+              if($insere_produto){
+                echo "Produto inserido com sucesso! ";
+              }else{
+                echo "Não foi possivel cadastrar este produto no banco! ";
+              }
+
+            ?>
+        </div>    
+    </main>
+    <script src="../../javascript/menu.js"></script>
 </body>
 </html>

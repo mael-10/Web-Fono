@@ -1,5 +1,5 @@
 <?php
-include_once('conexao.php');
+include_once('../conexao.php');
 
 if (isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['usuario'])) {
     $usuario = $conexao->real_escape_string($_POST['usuario']);
