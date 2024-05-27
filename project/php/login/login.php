@@ -1,5 +1,5 @@
 <?php
-include_once('conexao.php');
+include_once('../conexao.php');
 
 if (isset($_POST['email']) && isset($_POST['senha'])) {
     if (strlen($_POST['email']) == 0) {
@@ -26,7 +26,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 $_SESSION['usuario'] = $usuario['usuario'];
 
                 // Redirecionar para a página de teste
-                header("Location: teste.php");
+                header("Location: ../teste.php");
                 exit;
             } else {
                 echo "Falha!! E-mail ou senha incorretos";

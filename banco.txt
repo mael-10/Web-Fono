@@ -17,7 +17,8 @@ nome_produto Varchar(60),
 descricao Varchar(150),
 quantidade int,
 preco float,
-situacao Varchar(30)
+situacao Varchar(30),
+foto_produto Longblob
 );
 
 CREATE TABLE Paciente (
@@ -48,7 +49,7 @@ CREATE TABLE login (
 id_login int PRIMARY KEY AUTO_INCREMENT,
 usuario Varchar(50),
 email varchar(90),
-senha Varchar(20)
+senha Varchar(255)
 );
 
 ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto);
