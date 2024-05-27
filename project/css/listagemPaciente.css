@@ -1,3 +1,23 @@
+
+
 .conteudo{
   margin-left: 100px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: none;
+  padding: 15px;  /* Aumenta o espaçamento interno das células */
+  text-align: left;  /* Alinha o texto à esquerda */
+}
+th {
+  background-color: #a1a1a1;  /* Cor de fundo para o cabeçalho */
+}
+tr:nth-child(even) {
+  background-color: #808080;  /* Cor para linhas pares */
+}
+tr:nth-child(odd) {
+  background-color: #ffffff;  /* Cor para linhas ímpares */
 }
