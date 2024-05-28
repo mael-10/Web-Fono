@@ -42,18 +42,13 @@
 
     </style>
 </head>
-<body
-        class="flex h-screen bg-white text-black dark:bg-fundo"
+<body class="flex h-screen bg-white text-black dark:bg-fundo">
 
->
-<nav
-class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 shadow-custom-shadow duration-300 dark:bg-gray-800  dark:text-white"
-id="nav-lte"
->
-<div class="mb-5 w-full cursor-pointer pl-2.5">
-  <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
-</div>
-
+     <!-- Navbar -->
+  <nav class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 shadow-custom-shadow duration-300 dark:bg-gray-800  dark:text-white" id="nav-lte">
+          <div class="mb-5 w-full cursor-pointer pl-2.5">
+        <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
+    </div>
 <ul class="h-full list-none space-y-4">
   <li class="item-menu w-full">
     <a href="menu.html" class="flex items-center">
@@ -146,6 +141,8 @@ id="nav-lte"
   </li>
 </ul>
 </nav>
+
+                <!-- Main -->
 <main class="content flex-1">
     <div class="container">
         <form method="post" action="../../php/atendimento/inserir_atendimento.php" class="dark:text-black">
@@ -164,7 +161,7 @@ id="nav-lte"
                 </div>
                 <div class="form-group full-width">
                     <label for="cpf">Descrição:</label>
-                    <textarea id="descricao" name="descricao" rows="0" required></textarea>
+                    <input type="text" id="nome" name="nome" required>
                 </div>
             </div>
             <button class="btn" type="submit"><h1>Enviar</h1></button>

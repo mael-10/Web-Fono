@@ -1,7 +1,7 @@
 -- Geração de Modelo físico
 -- Sql ANSI 2003 - brModelo.
 
-CREATE DATABASE Webfono
+'CREATE DATABASE Webfono'
 
 CREATE TABLE Venda (
 id_venda int PRIMARY KEY AUTO_INCREMENT,
@@ -55,3 +55,6 @@ senha Varchar(255)
 ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto);
 ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente);
 ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente)
+
+INSERT INTO login (usuario,email,senha)
+VALUES ('Renzo', 'renzocleto1108@gmail.com', 'admin123');
