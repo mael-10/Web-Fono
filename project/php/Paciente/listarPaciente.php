@@ -15,6 +15,30 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
   <title>Document</title>
+
+  <script>
+        function fetchPacientes() {
+            const query = document.getElementById('search').value;
+
+            fetch('caminho_para_o_seu_php.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'query=' + encodeURIComponent(query)
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('result').innerHTML = data;
+            });
+        }
+
+        // Função para carregar todos os pacientes ao carregar a página
+        window.onload = function() {
+            fetchPacientes();
+        };
+    </script>
+
 </head>
 
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -86,15 +110,17 @@
     </ul>
   </nav>
   <main class="content flex-1 conteudo">
+    <div class="form-row full-width">
+      <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
+      <div id="results">
+
 
     <?php
-    include_once ("../conexao.php");
 
+    include_once ("../conexao.php");
 
     $sql = "SELECT *
     FROM paciente";
-
-    
 
     $resultado = mysqli_query($conexao, $sql);
     echo "<h2 class='card-title'>Lista de pacientes</h2>";
@@ -125,6 +151,7 @@
         echo "<td>" . $row['bairro'] . "</td>";
         echo "<td>" . $row['cidade'] . "</td>";
         echo "<td>" . $row['cep'] . "</td>";
+        echo "<td> <i class='fa-solid fa-trash'  style='color: #bdbdbd;'> </i>  </td>";
         echo "</tr>";
       }
       echo "</table>";
@@ -135,8 +162,29 @@
     // Fecha a conexão
     mysqli_close($conexao);
     ?>
+          </div>
+    </div>
   </main>
   <script src="../../javascript/menu.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#search").on("input", function () {
+        var searchTerm = $(this).val();
+        if (searchTerm !== "") {
+          $.ajax({
+            url: "searchPaciente.php",
+            method: "POST",
+            data: { query: searchTerm },
+            success: function (data) {
+              $("#results").html(data);
+            }
+          });
+        } else {
+          $("#results").html("");
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
