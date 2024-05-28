@@ -148,28 +148,32 @@ id="nav-lte"
 </nav>
 <main class="content flex-1">
     <div class="container">
-        <form method="post" action="../../php/atendimento/inserir_atendimento.php" class="dark:text-black">
-            <div class="form-group full-width">
-                <label class="dark:text-black" for="nome">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="celular">Data:</label>
-                    <input type="date" id="data" name="data" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Hora:</label>
-                    <input type="time" id="hora" name="hora" required>
-                </div>
-                <div class="form-group full-width">
-                    <label for="cpf">Descrição:</label>
-                    <textarea id="descricao" name="descricao" rows="0" required></textarea>
-                </div>
-            </div>
-            <button class="btn" type="submit"><h1>Enviar</h1></button>
-        </form>
+        <?php
+            
+            include_once('../conexao.php');
+
+            $nome = $_POST['nome'];
+            $dataAtendimento = $_POST['data'];
+            $hora = $_POST['hora'];
+            $descricao = $_POST['descricao'];
+
+            $sql = "SELECT id_paciente FROM paciente WHERE nome_paciente = '$nome'";
+            $resultado = mysqli_query($conexao, $sql);
+
+            if (mysqli_num_rows($resultado) > 0) {
+            while ($row = mysqli_fetch_assoc($resultado)) {
+                    
+                    $id_paciente = $row['id_paciente'];
+
+                }
+            }
+
+            $insere_atendimento = mysqli_query($conexao, "INSERT INTO atendimento (data, hora, descricao, id_paciente) VALUES('$dataAtendimento', '$hora', '$descricao', '$id_paciente')")
+
+
+        ?>
     </div>
+</main>
 <script src="../../javascript/menu.js"></script>
 </body>
 </html>
