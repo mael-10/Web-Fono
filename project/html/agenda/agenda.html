@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico"/>
     <link rel="stylesheet" href="../../../src/output.css"/>
+    <link rel="stylesheet" href="../../css/agenda.css">
     <title>Agenda</title>
     <style>
         .card-body-scrollable {
@@ -22,9 +22,36 @@
             margin-left: 300px;
         }
     </style>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+        ]);
+
+        var options = {
+        title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
-
+        <!-- Navbar -->
+        
     <nav class="fixed left-0 top-0 h-full w-16 bg-fundo p-4 shadow-custom-shadow duration-300 dark:bg-gray-800 dark:text-white" id="nav-lte">
         <div class="mb-5 w-full cursor-pointer pl-2.5">
             <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
@@ -89,7 +116,6 @@
             </li>
         </ul>
     </nav>
-
     <main class="content flex-1" id="cd-paciente">
         <div class="container mx-auto mt-6">
             <div class="flex flex-wrap">
@@ -131,6 +157,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Message Section -->
                 <div class="md:w-1/2 p-2">
                     <div class="bg-white shadow-lg rounded-lg pb-2">
@@ -162,6 +189,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Linha de codigo do gráfico -->
+        <div class="text-center">
+            <div id="piechart" class="mx-auto" style="width: 1000px; height: 750px;"></div>
         </div>
     </main>
 
