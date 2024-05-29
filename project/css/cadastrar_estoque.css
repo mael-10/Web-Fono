@@ -2,6 +2,50 @@ main{
     display: flex;
     justify-content: center;
   }
+  /* preview image */
+  #picture__input {
+    display: none;
+  }
+  
+  .picture {
+    width: 400px;
+    aspect-ratio: 16/9;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+  }
+  
+  .picture:hover {
+    color: #777;
+    background: #ccc;
+  }
+  
+  .picture:active {
+    border-color: #0c5f55;
+    color: #0c5f55;
+    background: #eee;
+  }
+  
+  .picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .picture__img {
+    max-width: 100%;
+  }
+  
+
+
   .options {
     background-color: #ccc;
     color: rgb(19, 19, 19);
@@ -64,6 +108,7 @@ main{
   .form-row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
   }
   
@@ -90,7 +135,11 @@ main{
     justify-content: center; /* Centraliza o botão */
     width: 100%; /* Garante que o contêiner ocupe toda a largura do formulário */
   }
-  
+  .btn{
+    margin: 15px auto ;
+    justify-content: center;
+    text-align: center;
+  }
   button {
     background-color: #118E7F;
     color: #fff;
