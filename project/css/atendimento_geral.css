@@ -75,9 +75,16 @@ form {
 }
 
 select{
-  padding: 8px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border: none;
   border-radius: 100px;
+
+} 
+select option {
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 5px; /* This may not work in some browsers */
+  padding: 5px; /* Additional padding for options */
 }
 
 

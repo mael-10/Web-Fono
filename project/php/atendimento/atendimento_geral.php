@@ -160,7 +160,7 @@ id="nav-lte"
             <div class="form-group full-width">
                 <label for="tipo">Selecione o tipo:</label>
                 <select id="tipo" name="tipo">
-                <option value="teste">Teste</option>
+                <option value="teste">Periodo de teste</option>
                 <option value="compra">Compra</option>
                 </select>
             </div>
