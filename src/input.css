@@ -11,11 +11,11 @@
 } 
 
 .item-menu {
-  @apply hover:bg-green-600 hover:rounded-md hover:transition hover:duration-200 pr-10;
+  @apply hover:bg-green-800 hover:rounded-md hover:transition hover:duration-200 pr-10;
 }
 
 ul li.ativo {
-  @apply bg-green-600 rounded-md;
+  @apply bg-green-800 rounded-md;
 }
 
 nav.expandir {
