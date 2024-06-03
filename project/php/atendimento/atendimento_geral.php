@@ -148,10 +148,10 @@ id="nav-lte"
 </nav>
 <main class="content flex-1">
     <div class="container">
-        <form method="post" action="../../php/atendimento/inserir_atendimento.php" class="dark:text-black">
+        <form method="post" action="processa.php" class="dark:text-black">
             <div class="form-group full-width">
                 <label class="dark:text-black" for="nome">Nome Paciente:</label>
-                <input type="text" id="nome" name="nome" required>
+                <input type="text" id="nome" name="nome" placeholder="Pesquisar cliente" onkeyup="carregarProdutos(this.value)" autocomplete="" required>
             </div>
             <div class="form-group full-width">
                 <label class="dark:text-black" for="produto">Produto:</label>
@@ -171,5 +171,6 @@ id="nav-lte"
     </div>
 </main>
 <script src="../../javascript/menu.js"></script>
+<script src="../../js/carregarProdutos.js"></script>
 </body>
 </html>

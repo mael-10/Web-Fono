@@ -58,3 +58,4 @@ ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_pac
 
 INSERT INTO login (usuario,email,senha)
 VALUES ('Renzo', 'renzocleto1108@gmail.com', 'admin123');
+  
