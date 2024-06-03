@@ -39,6 +39,150 @@
         };
     </script>
 
+    <style>
+      /* Estilos para a página toda */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.form-row {
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Estilos para a tabela */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* Bordas arredondadas */
+.rounded {
+  border-radius: 5px;
+}
+
+/* Estilos para a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid ;
+  text-align: left;
+}
+
+th {
+  background-color: #D9D9D9;
+}
+td{
+  background-color:#0c5f55;
+}
+nav {
+    /* Estilo existente do nav */
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 65px;
+    background-color: #333; /* Exemplo de cor */
+    z-index: 1000; /* Para garantir que o nav fique sobre outros elementos */
+  }
+  
+  nav.expandir {
+    width: 300px;
+  }
+  nav.expandir + .content {
+    margin-left: 300px;
+  }
+  .container {
+  justify-content: center;
+  max-width: 80%;
+  height: 80%;
+  margin-top: 100px;
+  padding: 90px 200px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #D9D9D9;
+}
+.content {
+    margin-left: 65px;
+    transition: margin-left 0.2s;
+  }
+  nav.expandir + .content {
+    margin-left: 300px;
+  }
+  main{
+  display: flex;
+  justify-content: center;
+}
+/* Estilos para o título */
+.card-title {
+  font-size: 44px;
+  text-align: center;
+  margin-top: -45px;
+}
+#search {
+  display: inline-block; /* Mantém o campo de pesquisa em linha */
+  margin-right: 10px; /* Adiciona um espaço entre o campo de pesquisa e o botão */
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 70px;
+}
+
+#searchButton {
+  
+  display: inline-block; /* Mantém o botão de pesquisa em linha */
+  padding: 10px 20px;
+  background-color: #0c5f55;
+  color: #fff;
+  border: none;
+  border-radius: 70px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+
+
+    </style>
 </head>
 
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -110,10 +254,12 @@
     </ul>
   </nav>
   <main class="content flex-1 conteudo">
+  <div class="container">
+  <h1 class='card-title'>Lista de pacientes</h1> 
     <div class="form-row full-width">
       <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
-      <div id="results">
-
+      <button type="submit" id="searchButton">Pesquisar</button>
+         <div id="results">
 
     <?php
 
@@ -123,7 +269,7 @@
     FROM paciente";
 
     $resultado = mysqli_query($conexao, $sql);
-    echo "<h2 class='card-title'>Lista de pacientes</h2>";
+    
 
     if (mysqli_num_rows($resultado) > 0) {
       echo "<table border='1'>";
@@ -164,6 +310,7 @@
     ?>
           </div>
     </div>
+  </div>
   </main>
   <script src="../../javascript/menu.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
