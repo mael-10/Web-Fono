@@ -110,11 +110,20 @@ th, td {
   text-align: left;
 }
 
-th {
+/* th {
   background-color: #D9D9D9;
 }
 td{
-  background-color:#0c5f55;
+  background-color: 	#808080;
+} */
+
+/* linhas pares (even) */
+tr:nth-child(even) {
+    background-color: #CCC;
+}
+/* linhas ímpares (odd) */
+tr:nth-child(odd) {
+    background-color: #FFF;
 }
 nav {
     /* Estilo existente do nav */
@@ -135,7 +144,7 @@ nav {
   }
   .container {
   justify-content: center;
-  max-width: 80%;
+  max-width: 85%;
   height: 80%;
   margin-top: 100px;
   padding: 90px 200px 20px;
@@ -178,6 +187,10 @@ nav {
   border-radius: 70px;
   margin-top: 5px;
   cursor: pointer;
+}
+
+.form-row > div {
+  margin-bottom: 15px; 
 }
 
 
@@ -257,9 +270,11 @@ nav {
   <div class="container">
   <h1 class='card-title'>Lista de pacientes</h1> 
     <div class="form-row full-width">
-      <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
-      <button type="submit" id="searchButton">Pesquisar</button>
-         <div id="results">
+      <div>
+        <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
+        <button type="submit" id="searchButton">Pesquisar</button>
+      </div>
+      <div id="results">
 
     <?php
 
