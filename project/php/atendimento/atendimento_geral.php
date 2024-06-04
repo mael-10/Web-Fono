@@ -151,12 +151,31 @@ id="nav-lte"
         <form method="post" action="processa.php" class="dark:text-black">
             <div class="form-group full-width">
                 <label class="dark:text-black" for="nome">Nome Paciente:</label>
-                <input type="text" id="nome" name="nome" placeholder="Pesquisar cliente" onkeyup="carregarProdutos(this.value)" autocomplete="" required>
+                <input type="text" id="nome" name="nome" placeholder="Pesquisar cliente"  required>
+                <div id="resultados"></div>
             </div>
             <div class="form-group full-width">
-                <label class="dark:text-black" for="produto">Produto:</label>
-                <input type="text" id="produto" name="produto" required>
-            </div>
+            <label class="dark:text-black" for="produto">Selecione o produto:</label>
+              <select name="produto" id="produto">
+                
+              <?php
+                // Conexão com o banco de dados
+                include_once("../conexao.php");
+
+                // Consulta SQL para buscar os produtos
+                $sql = "SELECT id_produto, nome_produto FROM Produto";
+                $result = $conexao->query($sql);
+
+                // Verifica se a consulta retornou resultados
+                if ($result->num_rows > 0) {
+                    // Loop através dos resultados e cria as opções do select
+                    while($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row["id_produto"] . '">' . $row["nome_produto"] . '</option>';
+                    }
+                }
+              ?>
+              </select>
+                </div>
             <div class="form-group full-width">
                 <label for="tipo">Selecione o tipo:</label>
                 <select id="tipo" name="tipo">
@@ -171,6 +190,55 @@ id="nav-lte"
     </div>
 </main>
 <script src="../../javascript/menu.js"></script>
-<script src="../../js/carregarProdutos.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Seleciona o campo de pesquisa de cliente
+    var nomeInput = document.getElementById("nome");
+    // Seleciona o elemento onde os resultados da pesquisa serão exibidos
+    var resultadosDiv = document.getElementById("resultados");
+
+    // Evento de entrada no campo de pesquisa
+    nomeInput.addEventListener("input", function() {
+        // Obtém o valor digitado pelo usuário
+        var searchQuery = nomeInput.value.trim();
+
+        // Se o valor da pesquisa não estiver vazio
+        if (searchQuery !== "") {
+            // Faz uma solicitação AJAX para processa.php para buscar os clientes correspondentes
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "processa.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Limpa os resultados anteriores
+                    resultadosDiv.innerHTML = "";
+
+                    // Processa a resposta JSON
+                    var clientes = JSON.parse(xhr.responseText);
+
+                    // Exibe os resultados da pesquisa
+                    clientes.forEach(function(cliente) {
+                        var clienteLink = document.createElement("a");
+                        clienteLink.href = "#"; // Você pode definir o link adequado aqui
+                        clienteLink.textContent = cliente.nome_paciente;
+                        clienteLink.addEventListener("click", function(event) {
+                            event.preventDefault();
+                            // Define o valor do campo de pesquisa como o nome do cliente clicado
+                            nomeInput.value = cliente.nome_paciente;
+                            // Limpa os resultados da pesquisa
+                            resultadosDiv.innerHTML = "";
+                        });
+                        resultadosDiv.appendChild(clienteLink);
+                    });
+                }
+            };
+            xhr.send("search_query=" + encodeURIComponent(searchQuery));
+        } else {
+            // Se o campo de pesquisa estiver vazio, limpa os resultados da pesquisa
+            resultadosDiv.innerHTML = "";
+        }
+    });
+});
+</script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 
 'CREATE DATABASE Webfono'
 
+
 CREATE TABLE Venda (
 id_venda int PRIMARY KEY AUTO_INCREMENT,
 data timestamp,
