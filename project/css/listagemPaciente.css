@@ -21,7 +21,7 @@ body {
 }
 
 .full-width {
-  width: 100px;
+  width: 100%;
 }
 
 /* Estilos para a tabela */
@@ -89,7 +89,7 @@ nav {
     left: 0;
     top: 0;
     height: 100%;
-    width: 75px;
+    width: 65px;
     background-color: #333; /* Exemplo de cor */
     z-index: 1000; /* Para garantir que o nav fique sobre outros elementos */
   }
@@ -102,7 +102,7 @@ nav {
   }
   .container {
   justify-content: center;
-  max-width: 92%;
+  max-width: 85%;
   height: 80%;
   margin-top: 100px;
   padding: 90px 200px 20px;
@@ -149,4 +149,4 @@ nav {
 
 .form-row > div {
   margin-bottom: 15px; 
-} 
+}
