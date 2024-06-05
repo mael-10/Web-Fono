@@ -19,6 +19,7 @@ body {
 main{
   display: flex;
   justify-content: center;
+  background-color: #0c5f55 ;
 }
 .options {
   background-color: #ccc;
@@ -91,7 +92,12 @@ form {
   flex-direction: column;
   margin-bottom: 20px;
 }
-
+.titulo{
+  text-align: center;
+  color: #0c5f55;
+  font-size: 45px;
+  padding: 0px 20px 30px;
+}
 label {
   margin-bottom: 5px;
   font-weight: bold;
@@ -113,15 +119,17 @@ button {
   background-color: #118E7F;
   color: #fff;
   width: 15%;
-  padding: 10px 8px;
+  padding: 3px 8px;
   border: none;
-  border-radius: 35px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 30px;
   margin: 0 auto; /* Centraliza o botão */
   margin-top: 10%;
 }
-
+button h1 {
+  font-size: 25px;  
+}
 
 button:hover {
   background-color: #0c5f55;
