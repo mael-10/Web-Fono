@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-  <title>Vamos testar</title>
+  <title>Listar Paciente</title>
 
   <script>
         function fetchPacientes() {
@@ -187,8 +187,14 @@
         echo "<td>" . $row['bairro'] . "</td>";
         echo "<td>" . $row['cidade'] . "</td>";
         echo "<td>" . $row['cep'] . "</td>";
-        echo "<td> <i class='fa-solid fa-trash'  style='color: #d33131;'> </i>  </td>";
-        echo "<td> <i class='fa-regular fa-pen-to-square' style='color: #38a9ff;'> </i> </td>";
+        echo "<form action='atualizarPaciente.php' method='post'>";
+        echo "<input type='hidden' name='id' value='" . $row['id_paciente'] . "'>";
+        echo "<td> <button type='submit' class='fa-regular fa-pen-to-square' style='color: #38a9ff;'</button> </td>";
+        echo "</form>";
+        echo "<form action='excluirPaciente.php' method='post'>";
+        echo "<input type='hidden' name='id' value='" . $row['id_paciente'] . "'>";
+        echo "<td> <button type='submit' class='fa-solid fa-trash'  style='color: #d33131';</button> </td>";
+        echo "</form>";
         echo "</tr>";
       }
       echo "</table>";

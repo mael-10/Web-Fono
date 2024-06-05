@@ -26,7 +26,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 $_SESSION['usuario'] = $usuario['usuario'];
 
                 // Redirecionar para a página de teste
-                header("Location: ../teste.php");
+                header("Location: ../../html/agenda/pagina.php");
                 exit;
             } else {
                 echo "Falha!! E-mail ou senha incorretos";
