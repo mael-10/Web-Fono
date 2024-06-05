@@ -19,7 +19,7 @@
     />
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
     <link rel="stylesheet" href="../../../src/output.css" />
-    <link rel="stylesheet" href="../../css/atendimento_geral.css">
+    <link rel="stylesheet" href="../../css/atendimento.css">
     <title>Atendimento</title>
     <style>
         .content {
@@ -37,20 +37,6 @@
             padding: 0;
             background-color: #f0f0f0;
         }
-        .resultados a {
-    display: block;
-    padding: 5px;
-    border: 1px solid #ccc;
-    background: #fff;
-    text-decoration: none;
-    color: #333;
-    border-radius: 25px;
-}
-
-.resultados a:hover {
-    background: #f0f0f0;
-}
-
 
 
 
@@ -162,89 +148,114 @@ id="nav-lte"
 </nav>
 <main class="content flex-1">
     <div class="container">
-        <form method="post" action="inserir_retorno_atendimento.php" class="dark:text-black">
-            <div class="form-group full-width">
-                <label class="dark:text-black" for="nome">Nome Paciente:</label>
-                <input type="text" id="nome" name="nome" placeholder="Pesquisar cliente"  required>
-                <div id="resultados" class="resultados"></div>
-            </div>
-            <div class="form-group full-width">
-            <label class="dark:text-black" for="produto">Selecione o produto:</label>
-              <select name="produto" id="produto">
-                
-              <?php
-                // Conexão com o banco de dados
-                include_once("../conexao.php");
 
-                // Consulta SQL para buscar os produtos
-                $sql = "SELECT id_produto, nome_produto FROM Produto";
-                $result = $conexao->query($sql);
+    <?php
+include_once('../conexao.php');
 
-                // Verifica se a consulta retornou resultados
-                if ($result->num_rows > 0) {
-                    // Loop através dos resultados e cria as opções do select
-                    while($row = $result->fetch_assoc()) {
-                        echo '<option value="' . $row["id_produto"] . '">' . $row["nome_produto"] . '</option>';
+// Capturando dados do formulário
+$paciente = $_POST['nome'];  
+$produto = $_POST['produto'];
+$tipo = $_POST['tipo'];
+$total_venda = isset($_POST['total_venda']) ? $_POST['total_venda'] : 0; // Caso não exista, define como 0
+
+
+$sql = "SELECT id_paciente FROM paciente WHERE nome_paciente = '$paciente'";
+$resultado = mysqli_query($conexao, $sql);
+
+if (mysqli_num_rows($resultado) > 0) {
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $id_paciente = $row['id_paciente'];
+    }
+}
+
+
+$sql = "SELECT paciente.id_paciente, produtoestoque.data_inicio FROM produtoestoque inner join paciente ON paciente.id_paciente = produtoestoque.id_paciente WHERE id_paciente = '$id_paciente'";
+$resultado = mysqli_query($conexao, $sql);
+
+if (mysqli_num_rows($resultado) > 0) {
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $data_inicio = $row['data_inicio'];
+    }
+}
+
+
+// Captura a data atual para data_inicio e data de venda
+$data_fim = date('Y-m-d');
+$data_venda = date('Y-m-d H:i:s');
+
+// Verificando se o id_paciente existe na tabela Paciente (opcional, dependendo de como você está lidando com isso)
+
+// Construindo a query de inserção para a tabela ProdutoPaciente
+$query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_fim')";
+
+// Executando a query
+$result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
+
+if ($result_produto_paciente) {
+    if (mysqli_affected_rows($conexao) > 0) {
+        echo "Registro inserido com sucesso na tabela ProdutoPaciente!<br>";
+
+        // Se o tipo for "compra", atualize a quantidade em estoque
+        if ($tipo == "compra") {
+            // Atualizando a quantidade em estoque
+            $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
+            $result_estoque = mysqli_query($conexao, $query_estoque);
+
+            if ($result_estoque) {
+                if (mysqli_affected_rows($conexao) > 0) {
+                    echo "Estoque atualizado com sucesso!<br>";
+
+                    // Insira também na tabela Venda
+                    // Construindo a query de inserção para a tabela Venda
+                    $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
+
+                    // Executando a query
+                    $result_venda = mysqli_query($conexao, $query_venda);
+
+                    if ($result_venda) {
+                        if (mysqli_affected_rows($conexao) > 0) {
+                            echo "Registro inserido com sucesso na tabela Venda!";
+                        } else {
+                            echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
+                        }
+                    } else {
+                        echo "Erro ao executar a query para a tabela Venda: " . mysqli_error($conexao);
                     }
+                } else {
+                    echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
                 }
-              ?>
-              </select>
-                </div>
-            <div class="form-group full-width">
-                <label for="tipo">Selecione o tipo:</label>
-                <select id="tipo" name="tipo">
-                <option value="devolvido">Devolvido</option>
-                <option value="compra">Compra</option>
-                </select>
-            </div>
-            <div class="form-row">
-            </div>
-            <button class="btn" type="submit"><h1>Enviar</h1></button>
-        </form>
+            } else {
+                echo "Erro ao executar a query para a tabela Estoque: " . mysqli_error($conexao);
+            }
+        }
+        elseif ($tipo == "devolvido"){
+            $query_estoque = "UPDATE produto SET quantidade = quantidade + 1 WHERE id_produto = '$produto'";
+            $result_estoque = mysqli_query($conexao, $query_estoque);
+
+            if ($result_estoque) {
+                if (mysqli_affected_rows($conexao) > 0) {
+                    echo "Devolvido com sucesso";
+                } else {
+                    echo "Erro ao devolver " . mysqli_error($conexao);
+                }
+            } else {
+                echo "Erro ao executar a query para a tabela Atendimento: " . mysqli_error($conexao);
+            }
+        }
+    } else {
+        echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
+    }
+} else {
+    echo "Erro ao executar a query para a tabela ProdutoPaciente: " . mysqli_error($conexao);
+}
+
+// Fechando a conexão
+mysqli_close($conexao);
+?>
+
+
     </div>
 </main>
 <script src="../../javascript/menu.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var nomeInput = document.getElementById("nome");
-    var resultadosDiv = document.getElementById("resultados");
-
-    nomeInput.addEventListener("input", function() {
-        var searchQuery = nomeInput.value.trim();
-
-        if (searchQuery !== "") {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "processaretorno.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    resultadosDiv.innerHTML = "";
-
-                    try {
-                        var clientes = JSON.parse(xhr.responseText);
-
-                        clientes.forEach(function(cliente) {
-                            var clienteLink = document.createElement("a");
-                            clienteLink.href = "#";
-                            clienteLink.textContent = cliente.nome_paciente;
-                            clienteLink.addEventListener("click", function(event) {
-                                event.preventDefault();
-                                nomeInput.value = cliente.nome_paciente;
-                                resultadosDiv.innerHTML = "";
-                            });
-                            resultadosDiv.appendChild(clienteLink);
-                        });
-                    } catch (e) {
-                        console.error("Erro ao processar resposta JSON:", e);
-                    }
-                }
-            };
-            xhr.send("search_query=" + encodeURIComponent(searchQuery));
-        } else {
-            resultadosDiv.innerHTML = "";
-        }
-    });
-});
-</script>
 </body>
 </html>

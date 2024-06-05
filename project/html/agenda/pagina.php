@@ -1,3 +1,6 @@
+<?php
+    include('../../php/login/protect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,6 +107,14 @@
                         <i class="fa-solid fa-sun hidden text-2xl text-white" id="icon-sun"></i>
                     </span>
                     <span class="txt-link ml-5 overflow-hidden text-white" id="dark-mode-text">Escuro</span>
+                </a>
+            </li>
+            <li class="item-menu w-full">
+                <a href="#" class="flex items-center">
+                    <span class="icon">
+                        <i class="fa-solid fa-right-from-bracket text-white"></i>
+                    </span>
+                    <span class="txt-link ml-5 overflow-hidden text-white"> <?php echo $_SESSION['usuario']; ?>.</span>
                 </a>
             </li>
             <li class="item-menu w-full">
