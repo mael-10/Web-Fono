@@ -86,7 +86,7 @@ main{
   .container {
     justify-content: center;
     max-width: 80%;
-    height: 80%;
+    height: 88%;
     margin-top: 100px;
     padding: 90px 200px 20px;
     border: 1px solid #ccc;
@@ -97,7 +97,7 @@ main{
     text-align: center;
     color: #0c5f55;
     font-size: 45px;
-    padding: 0px 20px 30px;
+    padding: 0px 0px 0px;
   }
   form {
     display: flex;
