@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-  <title>Listar Paciente</title>
+  <title>Editar Paciente</title>
 
   <script>
         function fetchPacientes() {
@@ -38,21 +38,6 @@
             fetchPacientes();
         };
     </script>
-    <style>
-
-        main{
-  display: flex;
-  justify-content: center;
-  background-color: #0c5f55;
-  .titulo{
-  text-align: center;
-  color: #0c5f55;
-  font-size: 45px;
-  padding: 0px 20px 0px;
-}
-}
-    </style>
-
 </head>
 
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -73,7 +58,7 @@
         </a>
       </li>
       <li class="item-menu ativo w-full">
-        <a href="../../html/atendimento/home_atendimento.html" class="flex items-center">
+        <a href="atendimento.html" class="flex items-center">
           <span class="icon">
             <i class="fa-regular fa-address-book text-2xl text-white"></i>
           </span>
@@ -81,7 +66,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="../../html/paciente/home_paciente.html" class="flex items-center">
+        <a href="../Paciente/home_paciente.html" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
           </span>
@@ -89,7 +74,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="../../html/estoque/cadastrar_estoque.html" class="flex items-center">
+        <a href="#" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
           </span>
@@ -123,94 +108,97 @@
       </li>
     </ul>
   </nav>
-  <main class="content flex-1 conteudo">
-  <div class="container">
-  <h1 class='titulo'>Lista de pacientes</h1> 
-    <div class="form-row full-width">
-      <div>
-        <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
-        <button type="submit" id="searchButton">Pesquisar</button>
-      </div>
-      <div id="results">
-
-    <?php
-
-    include_once ("../conexao.php");
-
-    $sql = "SELECT *
-    FROM paciente";
-
-    $resultado = mysqli_query($conexao, $sql);
-    
-
-    if (mysqli_num_rows($resultado) > 0) {
-      echo "<table border='1'>";
-      echo "<tr>
-            <th>Nome Completo</th>
-            <th>CPF</th>
-            <th>RG</th>
-            <th>Email</th>
-            <th>Data de nascimento</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>Bairro</th>
-            <th>Cidade</th>
-            <th>Cep</th>
-          </tr>";
-      while ($row = mysqli_fetch_assoc($resultado)) {
-        echo "<tr>";
-        echo "<td>" . $row['nome_paciente'] . "</td>";
-        echo "<td>" . $row['cpf'] . "</td>";
-        echo "<td>" . $row['RG'] . "</td>";
-        echo "<td>" . $row['email'] . "</td>";
-        echo "<td>" . $row['nascimento'] . "</td>";
-        echo "<td>" . $row['telefone'] . "</td>";
-        echo "<td>" . $row['endereco'] . "</td>";
-        echo "<td>" . $row['bairro'] . "</td>";
-        echo "<td>" . $row['cidade'] . "</td>";
-        echo "<td>" . $row['cep'] . "</td>";
-        echo "<form action='atualizarPaciente.php' method='post'>";
-        echo "<input type='hidden' name='id' value='" . $row['id_paciente'] . "'>";
-        echo "<td> <button type='submit' class='fa-regular fa-pen-to-square' style='color: #38a9ff;'</button> </td>";
-        echo "</form>";
-        echo "<form action='excluirPaciente.php' method='post'>";
-        echo "<input type='hidden' name='id' value='" . $row['id_paciente'] . "'>";
-        echo "<td> <button type='submit' class='fa-solid fa-trash'  style='color: #d33131';</button> </td>";
-        echo "</form>";
-        echo "</tr>";
-      }
-      echo "</table>";
-    } else {
-      echo "Não há registros na tabela.";
-    }
-
-    // Fecha a conexão
-    mysqli_close($conexao);
-    ?>
-          </div>
-    </div>
-  </div>
-  </main>
-  <script src="../../javascript/menu.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("#search").on("input", function () {
-        var searchTerm = $(this).val();
-        if (searchTerm !== "") {
-          $.ajax({
-            url: "searchPaciente.php",
-            method: "POST",
-            data: { query: searchTerm },
-            success: function (data) {
-              $("#results").html(data);
-            }
-          });
-        } else {
-          $("#results").html("");
-        }
-      });
-    });
-  </script>
-</body>
 </html>
+
+  <?php
+  
+  include_once ("../conexao.php");  
+
+  $id_paciente = $_POST['id'];
+
+                
+  $sql = "SELECT *
+          FROM Paciente
+          WHERE id_paciente = '$id_paciente'";
+
+  $resultado = mysqli_query($conexao, $sql);
+  echo "<div class='paciente-detalhes'>";
+
+  if (mysqli_num_rows($resultado) > 0) {
+      while ($row = mysqli_fetch_assoc($resultado)) {
+          
+          echo "<table>";
+          // Aqui você imprime as informações do paciente
+          echo"<form action='pacienteAtualizado.php' method='post' class='form-atualizar'>";
+
+          echo"<div class='edit-form'>";
+          echo "<label> ID: </label>";
+          echo "<input name='id_paciente' type='text' class='form-control form-atualizar' id='id_paciente'  autocomplete='off' value='" . htmlspecialchars($row['id_paciente']) . "'>";
+          echo"</div>";
+
+          echo"<div class='edit-form'>";
+          echo "<label> Nome Paciente </label>";
+          echo "<input name='nome' type='text' class='form-control form-atualizar' id='nome'  autocomplete='off' value='" . htmlspecialchars($row['nome_paciente']) . "'>";
+          echo "<label> Modelo: </label>";
+
+          echo "<input name='cpf' type='text' class='form-control form-atualizar' id='cpf'  autocomplete='off' value='" . htmlspecialchars($row['cpf']) . "'>";
+          echo"</div>";
+
+          echo"<div class='edit-form ano_fabri'>";
+          echo "<label > RG: </label>";
+          echo "<input name='rg' type='text' class='form-control form-atualizar ' id='rg'  autocomplete='off' value='" . htmlspecialchars($row['RG']) . "'>";
+          echo"</div>";
+
+          echo"<div class='edit-form'>";
+          echo "<label> Email: </label>";
+          echo "<input name='email' type='email' class='form-control form-atualizar' id='email'  autocomplete='off' value='" . htmlspecialchars($row['email']) . "'>";
+          echo "<label> Nascimento: </label>";
+          echo "<input name='nascimento' type='date' class='form-control form-atualizar' id='nascimento'  autocomplete='off' value='" . htmlspecialchars($row['nascimento']) . "'>";
+          echo"</div>";
+
+          echo"<div class='edit-form'>";
+          echo "<label> Telefone: </label>";
+          echo "<input name='telefone' type='tel' class='form-control form-atualizar' id='telefone'  autocomplete='off' value='" . htmlspecialchars($row['telefone']) . "'>";
+
+          echo "<label> Endereco: </label>";
+          echo "<input name='endereco' type='text' class='form-control form-atualizar' id='endereco'  autocomplete='off' value='" . htmlspecialchars($row['endereco']) . "'>";
+          echo"</div>";
+          echo "</table>";
+
+          echo "<label> Bairro: </label>";
+          echo "<input name='bairro' type='text' class='form-control form-atualizar' id='bairro'  autocomplete='off' value='" . htmlspecialchars($row['bairro']) . "'>";
+          echo"</div>";
+          echo "</table>";
+
+          echo "<label> Cidade: </label>";
+          echo "<input name='cidade' type='text' class='form-control form-atualizar' id='cidade'  autocomplete='off' value='" . htmlspecialchars($row['cidade']) . "'>";
+          echo"</div>";
+          echo "</table>";
+
+          echo "<label> CEP: </label>";
+          echo "<input name='cep' type='text' class='form-control form-atualizar' id='cep'  autocomplete='off' value='" . htmlspecialchars($row['cep']) . "'>";
+          echo"</div>";
+          echo "</table>";
+
+          echo "<input type='submit' value='Salvar alteração' class='botões'>";
+          echo "</form>";
+          echo"<form action='excluirPaciente.php' method='post'>";
+          echo"<select class='selectDentro' name='id'>";
+          echo "<option value='" . $row['id_paciente'] . "'>" . $row['Modelo'] . "</option>"; 
+          echo"</select>";
+          echo"<input type='submit' value='Excluir Paciente' class='botões'>";
+          echo "</form>";
+
+          echo "</div>"; // Fecha a div carro-detalhes
+          echo "</div>"; // Fecha a div lista_de_carros
+      }
+  } else {
+      echo "Não há registros na tabela.";
+  }
+
+  
+  // Fecha a conexão
+  mysqli_close($conexao);
+  ?>
+
+  ?>

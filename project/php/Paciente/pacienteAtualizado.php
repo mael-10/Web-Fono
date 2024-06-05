@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-  <title>Listar Paciente</title>
+  <title>Editar Paciente</title>
 
   <script>
         function fetchPacientes() {
@@ -38,21 +38,6 @@
             fetchPacientes();
         };
     </script>
-    <style>
-
-        main{
-  display: flex;
-  justify-content: center;
-  background-color: #0c5f55;
-  .titulo{
-  text-align: center;
-  color: #0c5f55;
-  font-size: 45px;
-  padding: 0px 20px 0px;
-}
-}
-    </style>
-
 </head>
 
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -73,7 +58,7 @@
         </a>
       </li>
       <li class="item-menu ativo w-full">
-        <a href="../../html/atendimento/home_atendimento.html" class="flex items-center">
+        <a href="atendimento.html" class="flex items-center">
           <span class="icon">
             <i class="fa-regular fa-address-book text-2xl text-white"></i>
           </span>
@@ -81,7 +66,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="../../html/paciente/home_paciente.html" class="flex items-center">
+        <a href="../Paciente/home_paciente.html" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
           </span>
@@ -89,7 +74,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="../../html/estoque/cadastrar_estoque.html" class="flex items-center">
+        <a href="#" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
           </span>
@@ -123,94 +108,50 @@
       </li>
     </ul>
   </nav>
-  <main class="content flex-1 conteudo">
-  <div class="container">
-  <h1 class='titulo'>Lista de pacientes</h1> 
-    <div class="form-row full-width">
-      <div>
-        <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
-        <button type="submit" id="searchButton">Pesquisar</button>
-      </div>
-      <div id="results">
+</html>
 
-    <?php
+<?php
+                
+    include_once("../conexao.php");
+                
+    $id_paciente = mysqli_real_escape_string($conexao, $_POST['id_paciente']);
+    $nome_paciente = mysqli_real_escape_string($conexao, $_POST['nome_paciente']);
+    $cpf = mysqli_real_escape_string($conexao, $_POST['cpf']);
+    $RG = mysqli_real_escape_string($conexao, $_POST['RG']);
+    $email = mysqli_real_escape_string($conexao, $_POST['email']);
+    $nascimento = mysqli_real_escape_string($conexao, $_POST['nascimento']);
+    $telefone = mysqli_real_escape_string($conexao, $_POST['telefone']);
+    $endereco = mysqli_real_escape_string($conexao, $_POST['endereco']);
+    $bairro = mysqli_real_escape_string($conexao, $_POST['bairro']);
+    $cidade = mysqli_real_escape_string($conexao, $_POST['cidade']);
+    $cep = mysqli_real_escape_string($conexao, $_POST['cep']);
+ 
 
-    include_once ("../conexao.php");
-
-    $sql = "SELECT *
-    FROM paciente";
-
-    $resultado = mysqli_query($conexao, $sql);
-    
-
-    if (mysqli_num_rows($resultado) > 0) {
-      echo "<table border='1'>";
-      echo "<tr>
-            <th>Nome Completo</th>
-            <th>CPF</th>
-            <th>RG</th>
-            <th>Email</th>
-            <th>Data de nascimento</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>Bairro</th>
-            <th>Cidade</th>
-            <th>Cep</th>
-          </tr>";
-      while ($row = mysqli_fetch_assoc($resultado)) {
-        echo "<tr>";
-        echo "<td>" . $row['nome_paciente'] . "</td>";
-        echo "<td>" . $row['cpf'] . "</td>";
-        echo "<td>" . $row['RG'] . "</td>";
-        echo "<td>" . $row['email'] . "</td>";
-        echo "<td>" . $row['nascimento'] . "</td>";
-        echo "<td>" . $row['telefone'] . "</td>";
-        echo "<td>" . $row['endereco'] . "</td>";
-        echo "<td>" . $row['bairro'] . "</td>";
-        echo "<td>" . $row['cidade'] . "</td>";
-        echo "<td>" . $row['cep'] . "</td>";
-        echo "<form action='atualizarPaciente.php' method='post'>";
-        echo "<input type='hidden' name='id' value='" . $row['id_paciente'] . "'>";
-        echo "<td> <button type='submit' class='fa-regular fa-pen-to-square' style='color: #38a9ff;'</button> </td>";
-        echo "</form>";
-        echo "<form action='excluirPaciente.php' method='post'>";
-        echo "<input type='hidden' name='id' value='" . $row['id_paciente'] . "'>";
-        echo "<td> <button type='submit' class='fa-solid fa-trash'  style='color: #d33131';</button> </td>";
-        echo "</form>";
-        echo "</tr>";
-      }
-      echo "</table>";
+    // Verifica se os valores não estão vazios
+    if (!empty($nome_paciente) && !empty($cpf) && !empty($RG) && !empty($email) && !empty($nascimento) && !empty($telefone) && !empty($endereco) && !empty($bairro) && !empty($cidade) && !empty($cep)){
+        $consulta = mysqli_query($conexao, "UPDATE paciente SET 
+            nome_paciente = '$nome_paciente',
+            cpf = '$cpf',
+            RG = '$RG',
+            email = '$email',
+            nascimento = '$nascimento',
+            telefone = '$telefone'
+            endereco = '$endereco'
+            bairro = '$bairro'
+            cidade = '$cidade'
+            cep = '$cep'
+        WHERE id_paciente = '$id_paciente'");
+                    
+        if ($consulta) {
+            echo "Atualização feita com sucesso!!!";
+        } else {
+            echo "Erro ao atualizar os dados: " . mysqli_error($conexao);
+        }
     } else {
-      echo "Não há registros na tabela.";
+        echo "Todos os campos são obrigatórios.";
     }
 
-    // Fecha a conexão
-    mysqli_close($conexao);
+
+                
+        mysqli_close($conexao);
     ?>
-          </div>
-    </div>
-  </div>
-  </main>
-  <script src="../../javascript/menu.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("#search").on("input", function () {
-        var searchTerm = $(this).val();
-        if (searchTerm !== "") {
-          $.ajax({
-            url: "searchPaciente.php",
-            method: "POST",
-            data: { query: searchTerm },
-            success: function (data) {
-              $("#results").html(data);
-            }
-          });
-        } else {
-          $("#results").html("");
-        }
-      });
-    });
-  </script>
-</body>
-</html>
