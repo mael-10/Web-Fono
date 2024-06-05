@@ -214,7 +214,7 @@ if ($result_produto_paciente) {
                 }
                 if($tipo == "teste"){
 
-                  $query_teste = "INSERT INTO atendimento () VALUES ()"
+                  $query_teste = "INSERT INTO atendimento () VALUES ()";
                 }
             } else {
                 echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
