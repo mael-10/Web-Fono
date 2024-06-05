@@ -38,6 +38,21 @@
             fetchPacientes();
         };
     </script>
+    <style>
+
+        main{
+  display: flex;
+  justify-content: center;
+  background-color: #0c5f55;
+  .titulo{
+  text-align: center;
+  color: #0c5f55;
+  font-size: 45px;
+  padding: 0px 20px 0px;
+}
+}
+    </style>
+
 </head>
 
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -58,7 +73,7 @@
         </a>
       </li>
       <li class="item-menu ativo w-full">
-        <a href="atendimento.html" class="flex items-center">
+        <a href="../../html/atendimento/home_atendimento.html" class="flex items-center">
           <span class="icon">
             <i class="fa-regular fa-address-book text-2xl text-white"></i>
           </span>
@@ -66,7 +81,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="../Paciente/home_paciente.html" class="flex items-center">
+        <a href="../../html/paciente/home_paciente.html" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
           </span>
@@ -74,7 +89,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="#" class="flex items-center">
+        <a href="../../html/estoque/cadastrar_estoque.html" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
           </span>
@@ -110,7 +125,7 @@
   </nav>
   <main class="content flex-1 conteudo">
   <div class="container">
-  <h1 class='card-title'>Lista de pacientes</h1> 
+  <h1 class='titulo'>Lista de pacientes</h1> 
     <div class="form-row full-width">
       <div>
         <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
