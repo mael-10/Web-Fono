@@ -13,31 +13,31 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="../../../src/output.css" />
-  <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
+  <link rel="stylesheet" href="../../css/listagemPaciente.css" />
   <title>Vamos testar</title>
 
   <script>
-        function fetchPacientes() {
-            const query = document.getElementById('search').value;
+    function fetchPacientes() {
+      const query = document.getElementById('search').value;
 
-            fetch('caminho_para_o_seu_php.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'query=' + encodeURIComponent(query)
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('result').innerHTML = data;
-            });
-        }
+      fetch('caminho_para_o_seu_php.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'query=' + encodeURIComponent(query)
+      })
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('result').innerHTML = data;
+        });
+    }
 
-        // Função para carregar todos os pacientes ao carregar a página
-        window.onload = function() {
-            fetchPacientes();
-        };
-    </script>
+    // Função para carregar todos os pacientes ao carregar a página
+    window.onload = function () {
+      fetchPacientes();
+    };
+  </script>
 </head>
 
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -109,28 +109,41 @@
     </ul>
   </nav>
   <main class="content flex-1 conteudo">
-  <div class="container">
-  <h1 class='card-title'>Lista de pacientes</h1> 
-    <div class="form-row full-width">
-      <div>
-        <input type="text" id="search" onkeyup="fetchPacientes()" placeholder="Pesquisar...">
-        <button type="submit" id="searchButton">Pesquisar</button>
-      </div>
-      <div id="results">
+    <div class="container">
+      <h1 class='card-title'>Lista de pacientes</h1>
 
-    <?php
+      <?php
+      include_once ("../conexao.php");
 
-    include_once ("../conexao.php");
+      // Verifica se há um termo de pesquisa
+      if (isset($_GET['pesquisa']) && !empty($_GET['pesquisa'])) {
+        $pesquisa_term = $_GET['pesquisa'];
+        $sql = "SELECT * FROM paciente
+              WHERE nome_paciente LIKE '%$pesquisa_term%' ";
+      } else {
+        $sql = "SELECT * FROM paciente";
+      }
 
-    $sql = "SELECT *
-    FROM paciente";
+      $resultado = mysqli_query($conexao, $sql);
 
-    $resultado = mysqli_query($conexao, $sql);
-    
+      if ($resultado) {
+        ?>
+        <form method='GET' action=''>
+          <div class="form-row full-width">
+            <div>
+              <input type='text' id='search' name='pesquisa' placeholder='Pesquisar...'
+                value='<?php echo isset($_GET["pesquisa"]) ? $_GET["pesquisa"] : ""; ?>'>
+              <button type='submit' id='btnBusca'><i class='fa-solid fa-magnifying-glass'></i></button>
+            </div>
+          </div>
+          <div id="results">
 
-    if (mysqli_num_rows($resultado) > 0) {
-      echo "<table border='1'>";
-      echo "<tr>
+        </form>
+        <?php
+
+        if (mysqli_num_rows($resultado) > 0) {
+          echo "<table border='1'>";
+          echo "<tr>
             <th>Nome Completo</th>
             <th>CPF</th>
             <th>RG</th>
@@ -142,54 +155,33 @@
             <th>Cidade</th>
             <th>Cep</th>
           </tr>";
-      while ($row = mysqli_fetch_assoc($resultado)) {
-        echo "<tr>";
-        echo "<td>" . $row['nome_paciente'] . "</td>";
-        echo "<td>" . $row['cpf'] . "</td>";
-        echo "<td>" . $row['RG'] . "</td>";
-        echo "<td>" . $row['email'] . "</td>";
-        echo "<td>" . $row['nascimento'] . "</td>";
-        echo "<td>" . $row['telefone'] . "</td>";
-        echo "<td>" . $row['endereco'] . "</td>";
-        echo "<td>" . $row['bairro'] . "</td>";
-        echo "<td>" . $row['cidade'] . "</td>";
-        echo "<td>" . $row['cep'] . "</td>";
-        echo "<td> <i class='fa-solid fa-trash'  style='color: #d33131;'> </i>  </td>";
-        echo "<td> <i class='fa-regular fa-pen-to-square' style='color: #38a9ff;'> </i> </td>";
-        echo "</tr>";
-      }
-      echo "</table>";
-    } else {
-      echo "Não há registros na tabela.";
-    }
-
-    // Fecha a conexão
-    mysqli_close($conexao);
-    ?>
-          </div>
-    </div>
-  </div>
-  </main>
-  <script src="../../javascript/menu.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("#search").on("input", function () {
-        var searchTerm = $(this).val();
-        if (searchTerm !== "") {
-          $.ajax({
-            url: "searchPaciente.php",
-            method: "POST",
-            data: { query: searchTerm },
-            success: function (data) {
-              $("#results").html(data);
-            }
-          });
+          while ($row = mysqli_fetch_assoc($resultado)) {
+            echo "<tr>";
+            echo "<td>" . $row['nome_paciente'] . "</td>";
+            echo "<td>" . $row['cpf'] . "</td>";
+            echo "<td>" . $row['RG'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['nascimento'] . "</td>";
+            echo "<td>" . $row['telefone'] . "</td>";
+            echo "<td>" . $row['endereco'] . "</td>";
+            echo "<td>" . $row['bairro'] . "</td>";
+            echo "<td>" . $row['cidade'] . "</td>";
+            echo "<td>" . $row['cep'] . "</td>";
+            echo "<td> <i class='fa-solid fa-trash'  style='color: #d33131;'> </i>  </td>";
+            echo "<td> <i class='fa-regular fa-pen-to-square' style='color: #38a9ff;'> </i> </td>";
+            echo "</tr>";
+          }
+          echo "</table>";
         } else {
-          $("#results").html("");
+          echo "Não há registros na tabela.";
         }
-      });
-    });
-  </script>
+      } else {
+        echo "Erro ao executar a consulta: " . mysqli_error($conexao);
+      }
+      ?>
+    </div>
+    </div>
+  </main>
 </body>
+
 </html>
