@@ -154,7 +154,8 @@
         echo "<td>" . $row['bairro'] . "</td>";
         echo "<td>" . $row['cidade'] . "</td>";
         echo "<td>" . $row['cep'] . "</td>";
-        echo "<td> <i class='fa-solid fa-trash'  style='color: #bdbdbd;'> </i>  </td>";
+        echo "<td> <i class='fa-solid fa-trash'  style='color: #d33131;'> </i>  </td>";
+        echo "<td> <i class='fa-regular fa-pen-to-square' style='color: #38a9ff;'> </i> </td>";
         echo "</tr>";
       }
       echo "</table>";
