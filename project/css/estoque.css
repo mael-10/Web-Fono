@@ -32,6 +32,12 @@ body {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
     cursor: pointer;
   }
+  .titulo{
+    text-align: center;
+    color: #0c5f55;
+    font-size: 45px;
+    padding: 0px 20px 30px;
+  }
   
   .titulo-options {
     color: #118E7F;
