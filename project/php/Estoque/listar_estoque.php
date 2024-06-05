@@ -112,7 +112,7 @@
       <div class="form-row full-width">
         <input type="text" id="search" placeholder="Pesquisar...">
         <div id="results">
-        <!-- Seu conteúdo principal -->
+        <!-- Conteúdo principal dos produtos -->
         <?php
         include_once('../conexao.php');
 
@@ -159,6 +159,5 @@
             });
         });
     </script>
-
 </body>
 </html>

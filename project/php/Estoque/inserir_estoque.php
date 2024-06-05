@@ -148,7 +148,7 @@
 
               move_uploaded_file($foto_produto, $foto_produto_destino);
 
-              $insere_produto = mysqli_query($conexao, "INSERT INTO produto (nome_produto, descricao, quantidade, preco, situacao, foto_produto) VALUES ('$produto', '$descricao', $quantidade, $preco, 'Em estoque',  '$foto_produto_destino')");
+              $insere_produto = mysqli_query($conexao, "INSERT INTO produto (nome_produto, descricao, quantidade, preco,  foto_produto) VALUES ('$produto', '$descricao', $quantidade, $preco,  '$foto_produto_destino')");
 
 
               if($insere_produto){
