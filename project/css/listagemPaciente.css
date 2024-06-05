@@ -60,12 +60,51 @@ table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  border-radius: 10px; /* Adiciona bordas arredondadas */
+  overflow: hidden; /* Garante que as bordas arredondadas funcionem */
 }
 
 th, td {
   padding: 10px;
-  border: 1px solid ;
   text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tr:first-child th:first-child {
+  border-top-left-radius: 10px; /* Canto superior esquerdo arredondado */
+}
+
+tr:first-child th:last-child {
+  border-top-right-radius: 10px; /* Canto superior direito arredondado */
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 10px; /* Canto inferior esquerdo arredondado */
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px; /* Canto inferior direito arredondado */
+}
+
+.fa-trash {
+  color: #d33131;
+  cursor: pointer;
+}
+
+.fa-pen-to-square {
+  color: #38a9ff;
+  cursor: pointer;
 }
 
 /* th {
