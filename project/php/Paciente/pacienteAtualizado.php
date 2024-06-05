@@ -111,47 +111,44 @@
 </html>
 
 <?php
-                
-    include_once("../conexao.php");
-                
-    $id_paciente = mysqli_real_escape_string($conexao, $_POST['id_paciente']);
-    $nome_paciente = mysqli_real_escape_string($conexao, $_POST['nome_paciente']);
-    $cpf = mysqli_real_escape_string($conexao, $_POST['cpf']);
-    $RG = mysqli_real_escape_string($conexao, $_POST['RG']);
-    $email = mysqli_real_escape_string($conexao, $_POST['email']);
-    $nascimento = mysqli_real_escape_string($conexao, $_POST['nascimento']);
-    $telefone = mysqli_real_escape_string($conexao, $_POST['telefone']);
-    $endereco = mysqli_real_escape_string($conexao, $_POST['endereco']);
-    $bairro = mysqli_real_escape_string($conexao, $_POST['bairro']);
-    $cidade = mysqli_real_escape_string($conexao, $_POST['cidade']);
-    $cep = mysqli_real_escape_string($conexao, $_POST['cep']);
- 
 
-    // Verifica se os valores não estão vazios
-    if (!empty($nome_paciente) && !empty($cpf) && !empty($RG) && !empty($email) && !empty($nascimento) && !empty($telefone) && !empty($endereco) && !empty($bairro) && !empty($cidade) && !empty($cep)){
-        $consulta = mysqli_query($conexao, "UPDATE paciente SET 
-            nome_paciente = '$nome_paciente',
-            cpf = '$cpf',
-            RG = '$RG',
-            email = '$email',
-            nascimento = '$nascimento',
-            telefone = '$telefone'
-            endereco = '$endereco'
-            bairro = '$bairro'
-            cidade = '$cidade'
-            cep = '$cep'
-        WHERE id_paciente = '$id_paciente'");
-                    
-        if ($consulta) {
-            echo "Atualização feita com sucesso!!!";
-        } else {
-            echo "Erro ao atualizar os dados: " . mysqli_error($conexao);
-        }
+include_once("../conexao.php");
+
+$id_paciente = mysqli_real_escape_string($conexao, $_POST['id_paciente']);
+$nome_paciente = mysqli_real_escape_string($conexao, $_POST['nome_paciente']);
+$cpf = mysqli_real_escape_string($conexao, $_POST['cpf']);
+$RG = mysqli_real_escape_string($conexao, $_POST['RG']);
+$email = mysqli_real_escape_string($conexao, $_POST['email']);
+$nascimento = mysqli_real_escape_string($conexao, $_POST['nascimento']);
+$telefone = mysqli_real_escape_string($conexao, $_POST['telefone']);
+$endereco = mysqli_real_escape_string($conexao, $_POST['endereco']);
+$bairro = mysqli_real_escape_string($conexao, $_POST['bairro']);
+$cidade = mysqli_real_escape_string($conexao, $_POST['cidade']);
+$cep = mysqli_real_escape_string($conexao, $_POST['cep']);
+
+// Verifica se os valores não estão vazios
+if (!empty($nome_paciente) && !empty($cpf) && !empty($RG) && !empty($email) && !empty($nascimento) && !empty($telefone) && !empty($endereco) && !empty($bairro) && !empty($cidade) && !empty($cep)) {
+    $consulta = mysqli_query($conexao, "UPDATE paciente SET 
+        nome_paciente = '$nome_paciente',
+        cpf = '$cpf',
+        RG = '$RG',
+        email = '$email',
+        nascimento = '$nascimento',
+        telefone = '$telefone',
+        endereco = '$endereco',
+        bairro = '$bairro',
+        cidade = '$cidade',
+        cep = '$cep'
+    WHERE id_paciente = '$id_paciente'");
+                
+    if ($consulta) {
+        echo "Atualização feita com sucesso!!!";
     } else {
-        echo "Todos os campos são obrigatórios.";
+        echo "Erro ao atualizar os dados: " . mysqli_error($conexao);
     }
+} else {
+    echo "Todos os campos são obrigatórios.";
+}
 
-
-                
-        mysqli_close($conexao);
-    ?>
+mysqli_close($conexao);
+?>
