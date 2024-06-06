@@ -155,18 +155,6 @@ $produto = $_POST['produto'];
 $tipo = $_POST['tipo'];
 
 
-$sql_preco = "SELECT preco FROM produto WHERE nome_produto = '$produto'";
-$resultado_preco = mysqli_query($conexao, $sql_preco);
-
-if (mysqli_num_rows($resultado_preco) > 0) {
-    while ($row = mysqli_fetch_assoc($resultado_preco)) {
-                    
-      $total_venda  = $row['preco'];
-
-    }
-}
-
-
 $sql = "SELECT id_paciente FROM paciente WHERE nome_paciente = '$paciente'";
 $resultado = mysqli_query($conexao, $sql);
 
@@ -232,11 +220,22 @@ if ($tipo == "teste") {
             $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
             $result_estoque = mysqli_query($conexao, $query_estoque);
 
+          
+
             if ($result_estoque) {
                 if (mysqli_affected_rows($conexao) > 0) {
+                  $sql_preco = "SELECT id_produto,preco FROM produto WHERE id_produto = '$produto' LIMIT 1";
+                  $resultado_preco = mysqli_query($conexao, $sql_preco);
 
+                  if (mysqli_num_rows($resultado_preco) > 0) {
+                      while ($row = mysqli_fetch_assoc($resultado_preco)) {
+                                      
+                        $total_venda  = $row['preco'];
+
+                      }
+                  }
                     // Construindo a query de inserção para a tabela Venda
-                    $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
+                    $query_venda = "INSERT INTO venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
 
                     // Executando a query
                     $result_venda = mysqli_query($conexao, $query_venda);
@@ -248,6 +247,48 @@ if ($tipo == "teste") {
                           echo '      <div class="mt-20 text-center">';
                           echo '       <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
                           echo '      </div>';
+                          $query = "
+                          SELECT 
+                              v.id_venda,
+                              v.data AS data_venda,
+                              v.total_venda,
+                              p.nome_produto,
+                              p.descricao AS descricao_produto,
+                              p.preco,
+                              pa.nome_paciente,
+                              pa.cpf,
+                              pa.RG,
+                              pa.email,
+                              pa.nascimento,
+                              pa.telefone,
+                              pa.endereco,
+                              pa.bairro,
+                              pa.cidade,
+                              pa.cep
+                          FROM  
+                              Venda v
+                          JOIN 
+                              Produto p ON v.id_produto = p.id_produto
+                          JOIN 
+                              Paciente pa ON v.id_paciente = pa.id_paciente
+                          ORDER BY 
+                              v.id_venda DESC
+                          LIMIT 1;
+                      ";
+
+                      $result = mysqli_query($conexao, $query);
+
+                      if ($result && mysqli_num_rows($result) > 0) {
+                          $row = mysqli_fetch_assoc($result);
+                          echo "<form action='TCPDF/gerarpdf.php' method='post'>";
+                          foreach ($row as $key => $value) {
+                              echo "<input type='hidden' name='$key' value='$value'>";
+                          }
+                          echo "<button type='submit' style='color: #FFFFFF;'> Gerar nota fiscal </button>";
+                          echo "</form>";
+                      } else {
+                          echo "Erro ao recuperar informações da venda.";
+                      }
                           echo '    </div>';                        } else {
                             echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
                         }
@@ -267,6 +308,7 @@ if ($tipo == "teste") {
         echo "Erro ao executar a query para a tabela ProdutoPaciente: " . mysqli_error($conexao);
     }
 }
+
 
 // Fechando a conexão
 mysqli_close($conexao);

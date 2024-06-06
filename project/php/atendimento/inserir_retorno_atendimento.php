@@ -133,13 +133,15 @@
         $tipo = $_POST['tipo'];
 
         // Buscando o preço do produto
-        $sql_preco = "SELECT * FROM Produto WHERE nome_produto = '$produto'";
+        $sql_preco = "SELECT id_produto,preco FROM produto WHERE id_produto = '$produto' LIMIT 1";
         $resultado_preco = mysqli_query($conexao, $sql_preco);
-        $total_venda = 0; // Inicializar $total_venda
 
-        if ($resultado_preco->num_rows > 0) {
-            $row_preco = $resultado_preco->fetch_assoc();
-            $total_venda = $row_preco['preco'];
+        if (mysqli_num_rows($resultado_preco) > 0) {
+            while ($row = mysqli_fetch_assoc($resultado_preco)) {
+                            
+              $total_venda  = $row['preco'];
+
+            }
         }
 
         date_default_timezone_set('America/Sao_Paulo');
@@ -233,7 +235,7 @@
                             echo "Erro ao recuperar informações da venda.";
                         }
                     } else {
-                        echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
+                        echo "Erro ao inserir o registro na tabela Venda." . mysqli_error($conexao);
                     }
                 } elseif ($tipo == "devolvido") {
                     $query_estoque = "UPDATE Produto SET quantidade = quantidade + 1 WHERE id_produto = '$produto'";
