@@ -20,8 +20,7 @@
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
     <link rel="stylesheet" href="../../../src/output.css" />
     <link rel="stylesheet" href="../../css/estoque.css"/>
-
-    <title>Estoque</title>
+    <title>Listar Estoque</title>
     <style>
       main{
         background-color: #118E7F;

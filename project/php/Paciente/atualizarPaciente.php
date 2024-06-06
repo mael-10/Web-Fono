@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../src/output.css" />
 
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-  <title>Listar Paciente</title>
+  <title>Atualizar Paciente</title>
 
   <script>
     function fetchPacientes() {
