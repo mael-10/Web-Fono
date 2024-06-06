@@ -15,11 +15,7 @@
   <link rel="stylesheet" href="../../../src/output.css" />
 
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-<<<<<<< Updated upstream
-  <title>Atualizar Paciente</title>
-=======
-  <title>Editar Paciente</title>
->>>>>>> Stashed changes
+  <title>Editar Atendimento</title>
 
   <script>
     function fetchPacientes() {
@@ -70,7 +66,7 @@
 
   <ul class="h-full list-none space-y-4">
     <li class="item-menu w-full">
-      <a href="../../html/agenda/pagina.php" class="flex items-center">
+      <a href="menu.html" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
         </span>
@@ -137,7 +133,7 @@
       </a>
     </li>
     <li class="item-menu w-full">
-      <a href="../login/logout.php" class="flex items-center">
+      <a href="#" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-right-from-bracket text-white"></i>
         </span>
@@ -148,17 +144,18 @@
 </nav>
 <main class="content flex-1 conteudo">
     <div class="container">
-      <h1 class='card-title'>Editar Paciente</h1>
+      <h1 class='card-title'>Editar Atendimento</h1>
 
 <?php
 
 include_once ("../conexao.php");  
 
-$id_paciente = $_POST['id'];
+$id_atendimento = $_POST['id'];
 
 $sql = "SELECT *
-        FROM Paciente
-        WHERE id_paciente = '$id_paciente'";
+        FROM atendimento
+        WHERE id_atendimento = '$id_atendimento'";
+
 
 $resultado = mysqli_query($conexao, $sql);
 echo "<div class='paciente-detalhes'>";
@@ -167,11 +164,11 @@ if (mysqli_num_rows($resultado) > 0) {
     while ($row = mysqli_fetch_assoc($resultado)) {
         
         echo "<table>";
-        echo"<form action='pacienteAtualizado.php' method='post' class='form-atualizar'>";
+        echo"<form action='atendimento_atualizado.php' method='post' class='form-atualizar'>";
 
         echo"<div class='edit-form'>";
         echo "<label> ID: </label>";
-        echo "<input name='id_paciente' type='text' class='form-control form-atualizar' id='id_paciente'  autocomplete='off' value='" . htmlspecialchars($row['id_paciente']) . "'>";
+        echo "<input name='id_atendimento' type='text' class='form-control form-atualizar' id='id_atendimento'  autocomplete='off' value='" . htmlspecialchars($row['id_atendimento']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
@@ -180,48 +177,18 @@ if (mysqli_num_rows($resultado) > 0) {
         echo"</div>";
 
         echo"<div class='edit-form'>";
-        echo "<label> CPF: </label>";
-        echo "<input name='cpf' type='text' class='form-control form-atualizar' id='cpf'  autocomplete='off' value='" . htmlspecialchars($row['cpf']) . "'>";
+        echo "<label> Data: </label>";
+        echo "<input name='data' type='text' class='form-control form-atualizar' id='data'  autocomplete='off' value='" . htmlspecialchars($row['data']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
-        echo "<label> RG: </label>";
-        echo "<input name='RG' type='text' class='form-control form-atualizar' id='RG'  autocomplete='off' value='" . htmlspecialchars($row['RG']) . "'>";
+        echo "<label> Hora: </label>";
+        echo "<input name='hora' type='text' class='form-control form-atualizar' id='hora'  autocomplete='off' value='" . htmlspecialchars($row['hora']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
-        echo "<label> Email: </label>";
-        echo "<input name='email' type='email' class='form-control form-atualizar' id='email'  autocomplete='off' value='" . htmlspecialchars($row['email']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Nascimento: </label>";
-        echo "<input name='nascimento' type='date' class='form-control form-atualizar' id='nascimento'  autocomplete='off' value='" . htmlspecialchars($row['nascimento']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Telefone: </label>";
-        echo "<input name='telefone' type='tel' class='form-control form-atualizar' id='telefone'  autocomplete='off' value='" . htmlspecialchars($row['telefone']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Endereco: </label>";
-        echo "<input name='endereco' type='text' class='form-control form-atualizar' id='endereco'  autocomplete='off' value='" . htmlspecialchars($row['endereco']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Bairro: </label>";
-        echo "<input name='bairro' type='text' class='form-control form-atualizar' id='bairro'  autocomplete='off' value='" . htmlspecialchars($row['bairro']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Cidade: </label>";
-        echo "<input name='cidade' type='text' class='form-control form-atualizar' id='cidade'  autocomplete='off' value='" . htmlspecialchars($row['cidade']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> CEP: </label>";
-        echo "<input name='cep' type='text' class='form-control form-atualizar' id='cep'  autocomplete='off' value='" . htmlspecialchars($row['cep']) . "'>";
+        echo "<label> Descrição: </label>";
+        echo "<input name='descricao' type='text' class='form-control form-atualizar' id='descricao'  autocomplete='off' value='" . htmlspecialchars($row['descricao']) . "'>";
         echo"</div>";
 
         echo "<input type='submit' value='Salvar alteração' class='botões'>";
@@ -236,3 +203,14 @@ if (mysqli_num_rows($resultado) > 0) {
 // Fecha a conexão
 mysqli_close($conexao);
 ?>
+
+</div>
+    </div>
+  </div>
+  </main>
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>

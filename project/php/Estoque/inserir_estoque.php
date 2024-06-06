@@ -12,7 +12,7 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="css/paciente.css">
+    <link rel="stylesheet" href="css/sucesso.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
     <link rel="stylesheet" href="../../../src/output.css" />
     <link rel="stylesheet" href="../../css/cadastrar_estoque.css"/>
-    <title>Cadastrar Estoque</title>
+    <title>Inserir Estoque</title>
     <style>
         .content {
           margin-left: 65px;
@@ -45,13 +45,12 @@
       </style>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
-    <nav
-      class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 shadow-custom-shadow duration-300 dark:bg-gray-800  dark:text-white"
-      id="nav-lte"
-    >
-      <div class="mb-5 w-full cursor-pointer pl-2.5">
-        <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
-      </div>
+<nav
+  class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 duration-300 dark:bg-gray-800  dark:text-white"
+  id="nav-lte">
+  <div class="mb-5 w-full cursor-pointer pl-2.5">
+    <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
+  </div>
 
       <ul class="h-full list-none space-y-4">
         <li class="item-menu w-full">
