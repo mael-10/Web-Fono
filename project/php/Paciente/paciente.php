@@ -10,9 +10,9 @@
 <?php
     include_once("../conexao.php");
 
-    $nome = $_POST['nome'];
+    $nome = $_POST['nome_paciente'];
     $cpf = $_POST['cpf'];
-    $RG = $_POST['rg'];
+    $RG = $_POST['RG'];
     $email = $_POST['email'];
     $nascimento = $_POST['nascimento'];
     $telefone = $_POST['telefone'];

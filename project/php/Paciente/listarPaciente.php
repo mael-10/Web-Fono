@@ -161,7 +161,7 @@
       $resultado = mysqli_query($conexao, $sql);
 
       if ($resultado) {
-        ?>
+      ?>
         <form method='GET' action=''>
           <div class="form-row full-width">
             <div>
@@ -171,8 +171,8 @@
             </div>
           </div>
           <div id="results">
-
-        </form>
+            </form>
+          
         <?php
 
         if (mysqli_num_rows($resultado) > 0) {
@@ -215,7 +215,9 @@
     } else {
       echo "Não há registros na tabela.";
     }
-
+  } else {
+    mysqli_close($conexao);
+  }
     // Fecha a conexão
     mysqli_close($conexao);
     ?>
@@ -223,27 +225,6 @@
     </div>
   </div>
   </main>
-  <script src="../../javascript/menu.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("#search").on("input", function () {
-        var searchTerm = $(this).val();
-        if (searchTerm !== "") {
-          $.ajax({
-            url: "searchPaciente.php",
-            method: "POST",
-            data: { query: searchTerm },
-            success: function (data) {
-              $("#results").html(data);
-            }
-          });
-        } else {
-          echo "Não há registros na tabela.";
-        }
-      } else {
-        echo "Erro ao executar a consulta: " . mysqli_error($conexao);
-      }
       // ?>
     </div>
     </div>
