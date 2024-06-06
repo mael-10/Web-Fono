@@ -172,25 +172,57 @@ $data_inicio = date('Y-m-d');
 $data_retorno = date('Y-m-d', strtotime($data_inicio . '+2 days'));
 $data_venda = date('Y-m-d H:i:s');
 
+if ($tipo == "teste") {
+    $hora = rand(0, 23); // Gera um número aleatório para as horas (de 0 a 23)
+    $minuto = rand(0, 59); // Gera um número aleatório para os minutos (de 0 a 59)
+    $horario_aleatorio = sprintf("%02d:%02d", $hora, $minuto);
 
-  $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio')";
-  
-  // Executando a query
-  $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
+    $query_teste = "INSERT INTO atendimento (data, hora, descricao, id_paciente) VALUES('$data_retorno', '$horario_aleatorio', 'Retorno', '$id_paciente')";
 
+    $result_test = mysqli_query($conexao, $query_teste);
+    if ($result_test) {
+        if (mysqli_affected_rows($conexao) > 0) {
 
-if ($result_produto_paciente) {
-    if (mysqli_affected_rows($conexao) > 0) {
+            // Inserindo na tabela ProdutoPaciente
+            $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio, data_fim) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_retorno')";
+            $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
 
-        // Atualizando a quantidade em estoque
-        $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
-        $result_estoque = mysqli_query($conexao, $query_estoque);
+            if ($result_produto_paciente) {
+                if (mysqli_affected_rows($conexao) > 0) {
+                    echo '    <div class="mb-32">';
+                    echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
+                    echo '      <div class="mt-20 text-center">';
+                    echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                    echo '      </div>';
+                    echo '    </div>';
+                } else {
+                    echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
+                }
+            } else {
+                echo "Erro ao executar a query para a tabela ProdutoPaciente: " . mysqli_error($conexao);
+            }
 
-        if ($result_estoque) {
-            if (mysqli_affected_rows($conexao) > 0) {
+        } else {
+            echo "Erro ao inserir o registro na tabela Atendimento: " . mysqli_error($conexao);
+        }
+    } else {
+        echo "Erro ao executar a query para a tabela Atendimento: " . mysqli_error($conexao);
+    }
+} elseif ($tipo == "compra") {
+    // Inserindo na tabela ProdutoPaciente
+    $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio, data_fim) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_inicio')";
+    $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
 
-                // Se o tipo for "compra", insira também na tabela Venda
-                if ($tipo == "compra") {
+    if ($result_produto_paciente) {
+        if (mysqli_affected_rows($conexao) > 0) {
+
+            // Atualizando a quantidade em estoque
+            $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
+            $result_estoque = mysqli_query($conexao, $query_estoque);
+
+            if ($result_estoque) {
+                if (mysqli_affected_rows($conexao) > 0) {
+
                     // Construindo a query de inserção para a tabela Venda
                     $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
 
@@ -199,53 +231,30 @@ if ($result_produto_paciente) {
 
                     if ($result_venda) {
                         if (mysqli_affected_rows($conexao) > 0) {
-                          echo '    <div class="mb-32">';
-                          echo '      <h1 class="text-5xl text-greenF">REGISTRO INSERIDO COM SUCESSO!</h1>';
-                          echo '      <div class="mt-20 text-center">';
-                          echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
-                          echo '      </div>';
-                          echo '    </div>';                        } else {
+                            echo '    <div class="mb-32">';
+                            echo '      <h1 class="text-5xl text-greenF">REGISTRO INSERIDO COM SUCESSO!</h1>';
+                            echo '      <div class="mt-20 text-center">';
+                            echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                            echo '      </div>';
+                            echo '    </div>';
+                        } else {
                             echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
                         }
                     } else {
                         echo "Erro ao executar a query para a tabela Venda: " . mysqli_error($conexao);
                     }
-                }
-                if($tipo == "teste"){
-
-                  $hora = rand(0, 23); // Gera um número aleatório para as horas (de 0 a 23)
-                  $minuto = rand(0, 59); // Gera um número aleatório para os minutos (de 0 a 59)
-                  $horario_aleatorio = sprintf("%02d:%02d", $hora, $minuto);
-
-                  $query_teste = "INSERT INTO atendimento (data, hora, descricao, id_paciente) VALUES('$data_retorno', '$horario_aleatorio', 'Retorno', '$id_paciente')";
-
-                  $result_test = mysqli_query($conexao, $query_teste);
-                  if ($result_test) {
-                    if (mysqli_affected_rows($conexao) > 0) {
-                      echo '    <div class="mb-32">';
-                      echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
-                      echo '      <div class="mt-20 text-center">';
-                      echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
-                      echo '      </div>';
-                      echo '    </div>';
-                    } else {
-                        echo "Erro ao inserir o registro na tabela Atendimento: " . mysqli_error($conexao);
-                    }
                 } else {
-                    echo "Erro ao executar a query para a tabela Atendimento: " . mysqli_error($conexao);
+                    echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
                 }
-                }   
             } else {
-                echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
+                echo "Erro ao executar a query para a tabela Estoque: " . mysqli_error($conexao);
             }
         } else {
-            echo "Erro ao executar a query para a tabela Estoque: " . mysqli_error($conexao);
+            echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
         }
     } else {
-        echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
+        echo "Erro ao executar a query para a tabela ProdutoPaciente: " . mysqli_error($conexao);
     }
-} else {
-    echo "Erro ao executar a query para a tabela ProdutoPaciente: " . mysqli_error($conexao);
 }
 
 // Fechando a conexão

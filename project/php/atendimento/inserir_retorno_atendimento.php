@@ -196,7 +196,7 @@
                                 pa.bairro,
                                 pa.cidade,
                                 pa.cep
-                            FROM 
+                            FROM  
                                 Venda v
                             JOIN 
                                 Produto p ON v.id_produto = p.id_produto
