@@ -152,9 +152,7 @@ include_once ("../conexao.php");
 
 $id_atendimento = $_POST['id'];
 
-$sql = "SELECT *
-        FROM atendimento
-        WHERE id_atendimento = '$id_atendimento'";
+$sql = "SELECT atendimento.id_atendimento, atendimento.data, atendimento.descricao, atendimento.hora, paciente.nome_paciente FROM atendimento INNER JOIN paciente ON atendimento.id_paciente = paciente.id_paciente";
 
 
 $resultado = mysqli_query($conexao, $sql);
@@ -169,11 +167,6 @@ if (mysqli_num_rows($resultado) > 0) {
         echo"<div class='edit-form'>";
         echo "<label> ID: </label>";
         echo "<input name='id_atendimento' type='text' class='form-control form-atualizar' id='id_atendimento'  autocomplete='off' value='" . htmlspecialchars($row['id_atendimento']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Nome Paciente: </label>";
-        echo "<input name='nome_paciente' type='text' class='form-control form-atualizar' id='nome_paciente'  autocomplete='off' value='" . htmlspecialchars($row['nome_paciente']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
