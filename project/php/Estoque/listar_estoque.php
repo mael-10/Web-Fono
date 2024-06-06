@@ -195,8 +195,8 @@
 </nav>
 
 <main class="content">
-<input type="text" id="search" placeholder="Pesquisar...">
     <div class="form-row full-width">
+      <input type="text" id="search" placeholder="Pesquisar...">
     </div>
     <div id="results" class="flex flex-wrap justify-center">
         <!-- Conteúdo principal dos produtos -->
