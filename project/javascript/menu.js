@@ -22,3 +22,6 @@ document.getElementById("dark-mode-toggle").addEventListener("click", function (
   document.getElementById("icon-sun").classList.toggle("hidden", !darkModeEnabled);
   document.getElementById("dark-mode-text").textContent = darkModeEnabled ? "Claro" : "Escuro";
 });
+
+
+
