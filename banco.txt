@@ -59,11 +59,11 @@ CREATE TABLE ProdutoPaciente (
     status Varchar(30),
     data_inicio date,
     data_fim date, -- Pode ser NULL se o produto foi comprado
-    FOREIGN KEY (id_produto) REFERENCES Produto (id_produto),
-    FOREIGN KEY (id_paciente) REFERENCES Paciente (id_paciente)
+    FOREIGN KEY (id_produto) REFERENCES Produto (id_produto) ON DELETE CASCADE,
+    FOREIGN KEY (id_paciente) REFERENCES Paciente (id_paciente) ON DELETE CASCADE
 );
 
-ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto);
-ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente);
-ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente)
+ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto) ON DELETE CASCADE;
+ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente) ON DELETE CASCADE;
+ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente) ON DELETE CASCADE
 

@@ -23,24 +23,26 @@
     <title>Inserir Atendimento</title>
     <style>
         .content {
-            margin-left: 65px;
-            transition: margin-left 0.2s;
+          margin-left: 65px;
+          transition: margin-left 0.2s;
         }
-
         nav.expandir + .content {
-            margin-left: 300px;
+          margin-left: 300px;
         }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+        .icon img {
+          max-width: 32px;
+          height: auto;
         }
-
-
-
-    </style>
+        nav:not(.expandir) .icon img {
+          width: 32px;
+        }
+        .hidden {
+          display: none;
+        }
+        button{
+          width: 40%;
+        }
+      </style>
 </head>
 <body
         class="flex h-screen bg-white text-black dark:bg-fundo"
@@ -131,8 +133,8 @@
     </li>
   </ul>
 </nav>
-<main class="content flex-1">
-    <div class="container">
+<main class="flex justify-center items-center h-full w-full" id="cd-paciente">
+<div class="container flex items-center flex-col">
         <?php
             
             include_once('../conexao.php');
@@ -153,7 +155,20 @@
                 }
             }
 
-            $insere_atendimento = mysqli_query($conexao, "INSERT INTO atendimento (data, hora, descricao, id_paciente) VALUES('$dataAtendimento', '$hora', '$descricao', '$id_paciente')")
+            $insere_atendimento = mysqli_query($conexao, "INSERT INTO atendimento (data, hora, descricao, id_paciente) VALUES('$dataAtendimento', '$hora', '$descricao', '$id_paciente')");
+
+            if($insere_atendimento){
+              echo '    <div class="mb-32">';
+              echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
+              echo '      <div class="mt-20 text-center">';
+              echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+              echo '      </div>';
+              echo '    </div>';
+            }else{
+              echo "<div class='retornos'>";
+              echo "<h2> Ocorreu um erro ao inserir os dados. Por favor, tente novamente. </h2>";
+              echo "</div>";
+            }
 
 
         ?>

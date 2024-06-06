@@ -15,11 +15,7 @@
   <link rel="stylesheet" href="../../../src/output.css" />
 
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-<<<<<<< Updated upstream
   <title>Atualizar Paciente</title>
-=======
-  <title>Editar Paciente</title>
->>>>>>> Stashed changes
 
   <script>
     function fetchPacientes() {
@@ -196,7 +192,7 @@ if (mysqli_num_rows($resultado) > 0) {
 
         echo"<div class='edit-form'>";
         echo "<label> Nascimento: </label>";
-        echo "<input name='nascimento' type='date' class='form-control form-atualizar' id='nascimento'  autocomplete='off' value='" . htmlspecialchars($row['nascimento']) . "'>";
+        echo "<input name='nascimento' type='text' class='form-control form-atualizar' id='nascimento'  autocomplete='off' value='" . htmlspecialchars($row['nascimento']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
