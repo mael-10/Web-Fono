@@ -130,6 +130,7 @@
             $total_venda = $row_preco['preco'];
         }
 
+        date_default_timezone_set('America/Sao_Paulo');
         // Captura a data atual para data_inicio e data de venda
         $data_fim = date('Y-m-d');
         $data_venda = date('Y-m-d H:i:s');
@@ -210,7 +211,7 @@
 
                         if ($result && mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
-                            echo "<form action='notafiscal.php' method='post'>";
+                            echo "<form action='TCPDF/gerarpdf.php' method='post'>";
                             foreach ($row as $key => $value) {
                                 echo "<input type='hidden' name='$key' value='$value'>";
                             }

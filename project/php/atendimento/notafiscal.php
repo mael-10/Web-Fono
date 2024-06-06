@@ -1,4 +1,12 @@
 <?php
+
+require_once('TCPDF/tcpdf.php');
+
+include_once('../conexao.php');
+
+$codigo = $_POST['id'];
+
+
 $id_venda = $_POST['id_venda'];
 $data_venda = $_POST['data_venda'];
 $total_venda = $_POST['total_venda'];
@@ -15,9 +23,19 @@ $endereco = $_POST['endereco'];
 $bairro = $_POST['bairro'];
 $cidade = $_POST['cidade'];
 $cep = $_POST['cep'];
+
+
+$resultado = mysqli_query($conexao, $sql);
+
 ?>
 
-<!doctype html>
+
+
+
+
+
+
+<!-- <!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8" />
@@ -121,4 +139,4 @@ $cep = $_POST['cep'];
     </table>
 
 </body>
-</html>
+</html> -->
