@@ -264,19 +264,12 @@ mysqli_close($conexao);
           <span class="txt-link overflow-hidden text-white">Vendas</span>
         </a>
       </li>
-      <li class="item-menu w-full">
-    <a href="../../php/vendas/relatorioVendas.php" class="flex items-center">
-      <span class="icon">
-        <i class="fa-solid fa-dollar-sign  text-2xl text-white"></i>
-      </span>
-      <span class="txt-link overflow-hidden text-white">Vendas</span>
-    </a>
-  </li>
+
 
       <li class="item-menu w-full">
         <a href="../../php/login/logout.php" class="flex items-center">
           <span class="icon">
-            <i class="fa-solid fa-right-from-bracket text-white"></i>
+          <i class="fa-solid fa-user"></i>
           </span>
           <span class="txt-link ml-5 overflow-hidden text-white"><?php echo $_SESSION['usuario']; ?></span>
         </a>
@@ -355,13 +348,13 @@ mysqli_close($conexao);
         </div>
       </div>
       <!-- Restante do conteúdo -->
+      <div class="w-full md:w-1/2 p-2 center-content">
+          <div class=" shadow-lg pb-2 rounded-lg">
+              <div id="piechart" class="mx-auto" style="width: 100%; height: 409px;"></div>
+            </div>
+          </div>
     </div>
     <!-- Gráfico -->
-    <div class="w-full md:w-1/2 p-2 center-content">
-        <div class=" shadow-lg pb-2 rounded-lg">
-            <div id="piechart" class="mx-auto" style="width: 100%; height: 409px;"></div>
-        </div>
-      </div>
     </div>
     <script src="../../javascript/menu.js"></script>
 </body>
