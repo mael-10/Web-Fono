@@ -254,6 +254,16 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
       >
     </a>
   </li>
+
+  <li class="item-menu w-full">
+    <a href="../../php/login/logout.php" class="flex items-center">
+      <span class="icon">
+        <i class="fa-solid fa-right-from-bracket text-white"></i>
+      </span>
+      <span class="txt-link ml-5 overflow-hidden text-white"><?php echo $_SESSION['usuario']; ?></span>
+    </a>
+  </li>
+
   <li class="item-menu w-full">
     <a href="../../php/login/logout.php" class="flex items-center">
       <span class="icon">
