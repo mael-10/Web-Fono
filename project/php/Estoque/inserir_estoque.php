@@ -1,7 +1,9 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -37,8 +39,10 @@
         .hidden {
           display: none;
         }
+        button{
+          width: 40%;
+        }
       </style>
-  </head>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
 <nav
@@ -48,121 +52,121 @@
     <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
   </div>
 
-  <ul class="h-full list-none space-y-4">
-    <li class="item-menu w-full">
-      <a href="menu.html" class="flex items-center">
-        <span class="icon">
-          <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
-      </a>
-    </li>
+      <ul class="h-full list-none space-y-4">
+        <li class="item-menu w-full">
+          <a href="menu.html" class="flex items-center">
+            <span class="icon">
+              <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
+            </span>
+            <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
+          </a>
+        </li>
+        <li class="item-menu w-full">
+          <a href="atendimento.html" class="flex items-center">
+            <span class="icon">
+              <i class="fa-regular fa-address-book text-2xl text-white"></i>
+            </span>
+            <span class="txt-link ml-5 overflow-hidden text-white"
+              >Atendimento</span
+            >
+          </a>
+        </li>
+        <li class="item-menu w-full">
+          <a href="../Paciente/home_paciente.html" class="flex items-center">
+            <span class="icon">
+              <i
+                class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"
+              ></i>
+            </span>
+            <span class="txt-link overflow-hidden text-white">Paciente</span>
+          </a>
+        </li>
+        <li class="item-menu ativo w-full">
+          <a href="../estoque/estoque.html" class="flex items-center">
+            <span class="icon">
+              <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
+            </span>
+            <span class="txt-link ml-5 overflow-hidden text-white"
+              >Estoque</span
+            >
+          </a>
+        </li>
+        <li class="item-menu w-full">
+          <a href="../estoque/cadastrar_estoque.html" class="flex items-center">
+            <span class="icon">
+              <i class="fa-solid fa-box-archive text-2xl text-white"></i>
+            </span>
+            <span class="txt-link ml-5 overflow-hidden text-white"
+              >Cadastrar Produto</span
+            >
+          </a>
+        </li>
+        <li class="item-menu w-full">
+          <a
+            href="#"
+            class="flex cursor-pointer items-center"
+            id="dark-mode-toggle"
+          >
+            <span class="icon">
+              <i
+                class="fa-solid fa-moon text-2xl text-white"
+                id="icon-moon"
+              ></i>
+              <i
+                class="fa-solid fa-sun hidden text-2xl text-white"
+                id="icon-sun"
+              ></i>
+            </span>
+            <span
+              class="txt-link ml-5 overflow-hidden text-white"
+              id="dark-mode-text"
+              >Escuro</span
+            >
+          </a>
+        </li>
+        <li class="item-menu w-full">
+          <a href="#" class="flex items-center">
+            <span class="icon">
+              <i class="fa-solid fa-right-from-bracket text-white"></i>
+            </span>
+            <span class="txt-link ml-5 overflow-hidden text-white">Sair</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main class="flex justify-center items-center h-full w-full" id="cd-paciente">
+      <div class="container flex items-center flex-col">
 
-    <li class="item-menu w-full">
-      <a href="../../html/atendimento/home_atendimento.html" class="flex items-center">
-        <span class="icon">
-          <i class="fa-regular fa-address-book text-2xl text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Atendimento</span
-        >
-      </a>
-    </li>
-    <li class="item-menu ativo w-full">
-      <a href="../../html/paciente/home_paciente.html" class="flex items-center">
-        <span class="icon">
-          <i
-            class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"
-          ></i>
-        </span>
-        <span class="txt-link overflow-hidden text-white">Paciente</span>
-      </a>
-    </li>
-    <li class="item-menu w-full">
-      <a href="../estoque/listar_estoque.php" class="flex items-center">
-        <span class="icon">
-          <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Estoque</span>
-      </a>
-    </li>
-    <li class="item-menu w-full">
-      <a href="../../html/Estoque/cadastrar_estoque.html" class="flex items-center">
-        <span class="icon">
-          <i class="fa-solid fa-box-archive text-2xl text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Cadastrar Produto</span>
-      </a>
-    </li>
-    <li class="item-menu w-full">
-      <a
-        href="#"
-        class="flex cursor-pointer items-center"
-        id="dark-mode-toggle"
-      >
-        <span class="icon">
-          <i
-            class="fa-solid fa-moon text-2xl text-white"
-            id="icon-moon"
-          ></i>
-          <i
-            class="fa-solid fa-sun hidden text-2xl text-white"
-            id="icon-sun"
-          ></i>
-        </span>
-        <span
-          class="txt-link ml-5 overflow-hidden text-white"
-          id="dark-mode-text"
-          >Escuro</span
-        >
-      </a>
-    </li>
-    <li class="item-menu w-full">
-      <a href="../login/logout.php" class="flex items-center">
-        <span class="icon">
-          <i class="fa-solid fa-right-from-bracket text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Sair</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-    <main class="content flex-1" id="cd-paciente">
-        <div class="container">
-            <?php
+        <?php
+          include_once('../conexao.php');
 
-              include_once('../conexao.php');
+          $produto = $_POST['nome'];
+          $descricao = $_POST['descricao'];
+          $quantidade = $_POST['quantidade'];
+          $preco = $_POST['preco'];
 
-              $produto = $_POST['nome'];
-              $descricao = $_POST['descricao'];
-              $quantidade = $_POST['quantidade'];
-              $preco = $_POST['preco'];
+          $foto_produto = $_FILES['foto_produto']['tmp_name'];
+          $foto_produto_destino = '../imagensDinamicas/' . $_FILES['foto_produto']['name'];
 
-              //imagem do produto
-              $foto_produto = $_FILES['foto_produto']['tmp_name'];
-              $foto_produto_destino = '../imagensDinamicas/' . $_FILES['foto_produto']['name'];
+          move_uploaded_file($foto_produto, $foto_produto_destino);
 
-              move_uploaded_file($foto_produto, $foto_produto_destino);
+          $insere_produto = mysqli_query($conexao, "INSERT INTO produto (nome_produto, descricao, quantidade, preco,  foto_produto) 
+          VALUES ('$produto', '$descricao', $quantidade, $preco,  '$foto_produto_destino')");
 
-              $insere_produto = mysqli_query($conexao, "INSERT INTO produto (nome_produto, descricao, quantidade, preco,  foto_produto) VALUES ('$produto', '$descricao', $quantidade, $preco,  '$foto_produto_destino')");
-
-
-              if($insere_produto){
-              
-                echo "";
-                echo "";  
-                echo "<h1 class=''>PRODUTO CADASTRADO COM SUCESSO!</h1>";
-                echo "<a href='../../html/estoque/cadastrar_estoque.html'><button class='bt'>voltar ao ínicio </button></a>";
-                echo "";
-                echo "";
-              }else{
-                echo "<div class='sucesso'>";
-                echo "<p>Não foi possivel cadastrar este produto no banco! </p>";
-                echo "</div>";
-                echo "<a href=''></a><button class='text-white bg-buttonGree hover:bg-buttonHover'>Voltar ao Início</button>";
-                
-              }
-            ?>
-        </div>    
+        if($insere_produto) {
+          echo '    <div class="mb-32">';
+          echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
+          echo '      <div class="mt-20 text-center">';
+          echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+          echo '      </div>';
+          echo '    </div>';
+        } else {
+            echo "<div class='retornos'>";
+            echo "<h2> Ocorreu um erro ao inserir os dados. Por favor, tente novamente. </h2>";
+            echo "</div>";
+        }
+        ?>
+      </div>    
     </main>
     <script src="../../javascript/menu.js"></script>
 </body>

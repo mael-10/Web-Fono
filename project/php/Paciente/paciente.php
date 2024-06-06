@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/retornos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Paciente</title>
 </head>
@@ -25,12 +26,12 @@
     $insere_paciente = mysqli_query($conexao, "INSERT INTO paciente (nome_paciente, cpf, RG, email, nascimento, telefone, endereco, bairro, cep, cidade) 
     VALUES ('$nome','$cpf','$RG','$email', '$nascimento', '$telefone', '$endereco','$bairro','$cep', '$cidade')") or die(mysqli_error($conexao));
 
-    if ($insere_paciente) { 
-        echo "<div class='backg'>";
-        echo "<h2 class='msg'> Os dados do paciente foram inseridos com sucesso  </h2>";
-        echo "</div>";
+
+    if ($insere_paciente) {
+        header("location: ../../html/sucesso/retornocadastro.html");
+        exit();
     } else {
-        echo "<div class='backg'>";
+        echo "<div class='retornos'>";
         echo "<h2> Ocorreu um erro ao inserir os dados. Por favor, tente novamente. </h2>";
         echo "</div>";
     }

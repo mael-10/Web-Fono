@@ -23,24 +23,26 @@
     <title>Inserir Retorno Atendimento</title>
     <style>
         .content {
-            margin-left: 65px;
-            transition: margin-left 0.2s;
+          margin-left: 65px;
+          transition: margin-left 0.2s;
         }
-
         nav.expandir + .content {
-            margin-left: 300px;
+          margin-left: 300px;
         }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+        .icon img {
+          max-width: 32px;
+          height: auto;
         }
-
-
-
-    </style>
+        nav:not(.expandir) .icon img {
+          width: 32px;
+        }
+        .hidden {
+          display: none;
+        }
+        button{
+          width: 40%;
+        }
+      </style>
 </head>
 <body
         class="flex h-screen bg-white text-black dark:bg-fundo"
@@ -131,8 +133,8 @@
     </li>
   </ul>
 </nav>
-<main class="content flex-1">
-    <div class="container">
+<main class="flex justify-center items-center h-full w-full" id="cd-paciente">
+      <div class="container flex items-center flex-col">
 
     <?php
         include_once('../conexao.php');
@@ -168,7 +170,6 @@
                     $data_inicio = $row['data_inicio'];
                 }
             } else {
-                echo "Tabela produtoestoque não existe.";
                 exit;
             }
 
@@ -177,7 +178,6 @@
             $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
 
             if ($result_produto_paciente && mysqli_affected_rows($conexao) > 0) {
-                echo "Registro inserido com sucesso na tabela ProdutoPaciente!<br>";
 
                 // Atualizando a quantidade em estoque
                 if ($tipo == "compra") {
@@ -185,14 +185,17 @@
                     $result_estoque = mysqli_query($conexao, $query_estoque);
 
                     if ($result_estoque && mysqli_affected_rows($conexao) > 0) {
-                        echo "Estoque atualizado com sucesso!<br>";
-
                         // Inserção na tabela Venda
                         $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
                         $result_venda = mysqli_query($conexao, $query_venda);
 
                         if ($result_venda && mysqli_affected_rows($conexao) > 0) {
-                            echo "Registro inserido com sucesso na tabela Venda!";
+                        echo '    <div class="mb-32">';
+                        echo '      <h1 class="text-5xl text-greenF">PRODUTO COMPRADO COM SUCESSO!</h1>';
+                        echo '      <div class="mt-20 text-center">';
+                        echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                        echo '      </div>';
+                        echo '    </div>';
                         } else {
                             echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
                         }
@@ -204,7 +207,12 @@
                     $result_estoque = mysqli_query($conexao, $query_estoque);
 
                     if ($result_estoque && mysqli_affected_rows($conexao) > 0) {
-                        echo "Devolvido com sucesso";
+                    echo '    <div class="mb-32">';
+                    echo '      <h1 class="text-5xl text-greenF">PRODUTO DEVOLVIDO COM SUCESSO!</h1>';
+                    echo '      <div class="mt-20 text-center">';
+                    echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                    echo '      </div>';
+                    echo '    </div>';
                     } else {
                         echo "Erro ao devolver " . mysqli_error($conexao);
                     }

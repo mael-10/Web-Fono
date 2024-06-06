@@ -256,14 +256,14 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
     <!-- Tarefas do dia -->
     <div class="w-full md:w-1/2 p-2 center-content">
         <div class="bg-white shadow-lg pb-2 rounded-lg">
-            <div class="bg-blue-600 text-white p-4 rounded-md">
+            <div class="bg-green-400 text-white p-4 rounded-md">
                 <h2 class="text-lg font-bold"><?php echo date('d F, Y'); ?></h2>
             </div>
             <div class="card-body-scrollable p-4">
                 <p class="font-semibold mb-4">Consultas do dia</p>
                 <?php if (!empty($tasks)): ?>
                     <?php foreach ($tasks as $task): ?>
-                        <div class="task-item mb-4 pl-4 border-l-4 border-blue-600">
+                        <div class="task-item mb-4 pl-4 border-l-4 border-green-400">
                             <p class="font-bold"><?php echo date('h:i A', strtotime($task['hora'])); ?></p>
                             <p class="font-bold"><?php echo htmlspecialchars($task['nome_paciente']); ?></p>
                             <p><?php echo htmlspecialchars($task['descricao']); ?></p>
@@ -274,7 +274,7 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
                 <?php endif; ?>
             </div>
             <div class="flex justify-center">
-                <button class="w-[90%] bg-blue-600 text-white py-1 mt-4 rounded-none">CARREGUE MAIS</button>
+                <button class="w-[90%] bg-green-400 text-white py-1 mt-4 rounded-none">CARREGUE MAIS</button>
             </div>
         </div>
     </div>
