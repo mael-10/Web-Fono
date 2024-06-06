@@ -42,6 +42,18 @@
         button{
           width: 40%;
         }
+        .botao{
+          background-color: #118E7F;
+          color: #fff;
+          width: 15%;
+          padding: 3px 8px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 30px;
+          margin: 0 auto;
+          margin-top: 10%;
+        }
       </style>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -157,7 +169,7 @@
           echo '    <div class="mb-32">';
           echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
           echo '      <div class="mt-20 text-center">';
-          echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+          echo '        <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
           echo '      </div>';
           echo '    </div>';
         } else {

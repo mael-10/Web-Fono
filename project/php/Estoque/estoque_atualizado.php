@@ -38,6 +38,20 @@
             fetchPacientes();
         };
     </script>
+    <style>
+      .botao{
+          background-color: #118E7F;
+          color: #fff;
+          width: 15%;
+          padding: 3px 8px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 30px;
+          margin: 0 auto;
+          margin-top: 10%;
+        }
+    </style>
 </head>
 
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -48,7 +62,6 @@
     <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
   </div>
 
-<<<<<<< Updated upstream
     <ul class="h-full list-none space-y-4">
       <li class="item-menu w-full">
         <a href="../../html/agenda/pagina.php" class="flex items-center">
@@ -100,77 +113,6 @@
         </a>
       </li>
       <li class="item-menu w-full">
-=======
-  <ul class="h-full list-none space-y-4">
-    <li class="item-menu w-full">
-      <a href="../../html/agenda/pagina.php" class="flex items-center">
-        <span class="icon">
-          <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
-      </a>
-    </li>
-
-    <li class="item-menu w-full">
-      <a href="../../html/atendimento/home_atendimento.html" class="flex items-center">
-        <span class="icon">
-          <i class="fa-regular fa-address-book text-2xl text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Atendimento</span
-        >
-      </a>
-    </li>
-    <li class="item-menu ativo w-full">
-      <a href="../../html/paciente/home_paciente.html" class="flex items-center">
-        <span class="icon">
-          <i
-            class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"
-          ></i>
-        </span>
-        <span class="txt-link overflow-hidden text-white">Paciente</span>
-      </a>
-    </li>
-    <li class="item-menu w-full">
-      <a href="../estoque/listar_estoque.php" class="flex items-center">
-        <span class="icon">
-          <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Estoque</span>
-      </a>
-    </li>
-    <li class="item-menu w-full">
-      <a href="../../html/Estoque/cadastrar_estoque.html" class="flex items-center">
-        <span class="icon">
-          <i class="fa-solid fa-box-archive text-2xl text-white"></i>
-        </span>
-        <span class="txt-link ml-5 overflow-hidden text-white">Cadastrar Produto</span>
-      </a>
-    </li>
-    <li class="item-menu w-full">
-      <a
-        href="#"
-        class="flex cursor-pointer items-center"
-        id="dark-mode-toggle"
-      >
-        <span class="icon">
-          <i
-            class="fa-solid fa-moon text-2xl text-white"
-            id="icon-moon"
-          ></i>
-          <i
-            class="fa-solid fa-sun hidden text-2xl text-white"
-            id="icon-sun"
-          ></i>
-        </span>
-        <span
-          class="txt-link ml-5 overflow-hidden text-white"
-          id="dark-mode-text"
-          >Escuro</span
-        >
-      </a>
-    </li>
-    <li class="item-menu w-full">
->>>>>>> Stashed changes
       <a href="../login/logout.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-right-from-bracket text-white"></i>
@@ -212,7 +154,7 @@ if ($consulta) {
   echo '    <div class="mb-32">';
         echo '      <h1 class="text-5xl text-greenF">ATUALIZADO COM SUCESSO!</h1>';
         echo '      <div class="mt-20 text-center">';
-        echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+        echo '        <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
         echo '      </div>';
         echo '    </div>';
 } else {

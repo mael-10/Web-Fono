@@ -42,6 +42,18 @@
         button{
           width: 40%;
         }
+        .botao{
+          background-color: #118E7F;
+          color: #fff;
+          width: 15%;
+          padding: 3px 8px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 30px;
+          margin: 0 auto;
+          margin-top: 10%;
+        }
       </style>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -121,15 +133,18 @@
         $tipo = $_POST['tipo'];
 
         // Buscando o preço do produto
-        $sql_preco = "SELECT * FROM Produto WHERE nome_produto = '$produto'";
+        $sql_preco = "SELECT id_produto,preco FROM produto WHERE id_produto = '$produto' LIMIT 1";
         $resultado_preco = mysqli_query($conexao, $sql_preco);
-        $total_venda = 0; // Inicializar $total_venda
 
-        if ($resultado_preco->num_rows > 0) {
-            $row_preco = $resultado_preco->fetch_assoc();
-            $total_venda = $row_preco['preco'];
+        if (mysqli_num_rows($resultado_preco) > 0) {
+            while ($row = mysqli_fetch_assoc($resultado_preco)) {
+                            
+              $total_venda  = $row['preco'];
+
+            }
         }
 
+        date_default_timezone_set('America/Sao_Paulo');
         // Captura a data atual para data_inicio e data de venda
         $data_fim = date('Y-m-d');
         $data_venda = date('Y-m-d H:i:s');
@@ -173,7 +188,7 @@
                         echo '    <div class="mb-32">';
                         echo '      <h1 class="text-5xl text-greenF">PRODUTO COMPRADO COM SUCESSO!</h1>';
                         echo '      <div class="mt-20 text-center">';
-                        echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover" onclick="window.location.href=\'menu.html\'">Voltar ao Início</button>';
+                        echo '       <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
                         echo '      </div>';
 
                         // Aqui está a parte para exibir a nota fiscal
@@ -195,7 +210,7 @@
                                 pa.bairro,
                                 pa.cidade,
                                 pa.cep
-                            FROM 
+                            FROM  
                                 Venda v
                             JOIN 
                                 Produto p ON v.id_produto = p.id_produto
@@ -210,17 +225,17 @@
 
                         if ($result && mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
-                            echo "<form action='notafiscal.php' method='post'>";
+                            echo "<form action='TCPDF/gerarpdf.php' method='post'>";
                             foreach ($row as $key => $value) {
                                 echo "<input type='hidden' name='$key' value='$value'>";
                             }
-                            echo "<button type='submit' style='color: #38a9ff;'> Gerar nota fiscal </button>";
+                            echo "<button type='submit' style='color: #FFFFFF;'> Gerar nota fiscal </button>";
                             echo "</form>";
                         } else {
                             echo "Erro ao recuperar informações da venda.";
                         }
                     } else {
-                        echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
+                        echo "Erro ao inserir o registro na tabela Venda." . mysqli_error($conexao);
                     }
                 } elseif ($tipo == "devolvido") {
                     $query_estoque = "UPDATE Produto SET quantidade = quantidade + 1 WHERE id_produto = '$produto'";
@@ -230,7 +245,7 @@
                         echo '    <div class="mb-32">';
                         echo '      <h1 class="text-5xl text-greenF">PRODUTO DEVOLVIDO COM SUCESSO!</h1>';
                         echo '      <div class="mt-20 text-center">';
-                        echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover" onclick="window.location.href=\'menu.html\'">Voltar ao Início</button>';
+                        echo '        <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
                         echo '      </div>';
                         echo '    </div>';
                     } else {
