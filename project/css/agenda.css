@@ -14,7 +14,7 @@ body {
     font-weight: bold;
 }
 .task-item {
-    background-color: #0c5f55;
+    /* background-color: #0c5f55; */
     margin-bottom: 10px;
     padding-left: 10px;
 }
