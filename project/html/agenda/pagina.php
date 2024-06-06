@@ -267,6 +267,15 @@ mysqli_close($conexao);
       </li>
 
       <li class="item-menu w-full">
+    <a href="../../php/vendas/relatorioVendas.php" class="flex items-center">
+      <span class="icon">
+        <i class="fa-solid fa-dollar-sign  text-2xl text-white"></i>
+      </span>
+      <span class="txt-link overflow-hidden text-white">Vendas</span>
+    </a>
+  </li>
+
+      <li class="item-menu w-full">
         <a href="../../php/login/logout.php" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-right-from-bracket text-white"></i>
@@ -286,33 +295,8 @@ mysqli_close($conexao);
     </ul>
   </nav>
 
-  <li class="item-menu w-full">
-    <a href="../../php/vendas/relatorioVendas.php" class="flex items-center">
-      <span class="icon">
-        <i class="fa-solid fa-dollar-sign  text-2xl text-white"></i>
-      </span>
-      <span class="txt-link overflow-hidden text-white">Vendas</span>
-    </a>
-  </li>
 
 
-  <li class="item-menu w-full">
-    <a href="#" class="flex cursor-pointer items-center" id="dark-mode-toggle">
-      <span class="icon">
-        <i class="fa-solid fa-moon text-2xl text-white" id="icon-moon"></i>
-        <i class="fa-solid fa-sun hidden text-2xl text-white" id="icon-sun"></i>
-      </span>
-      <span class="txt-link ml-5 overflow-hidden text-white" id="dark-mode-text">Escuro</span>
-    </a>
-  </li>
-  <li class="item-menu w-full">
-    <a href="../../php/login/logout.php" class="flex items-center">
-      <span class="icon">
-        <i class="fa-solid fa-right-from-bracket text-white"></i>
-      </span>
-      <span class="txt-link ml-5 overflow-hidden text-white">Sair</span>
-    </a>
-  </li>
   </ul>
   </nav>
 
