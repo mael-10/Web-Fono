@@ -110,7 +110,7 @@
                     <?php
                         include_once('../conexao.php');
                         
-                        $sql = "SELECT atendimento.data, atendimento.descricao, atendimento.hora, paciente.nome_paciente FROM atendimento INNER JOIN paciente ON atendimento.id_paciente = paciente.id_paciente";
+                        $sql = "SELECT atendimento.data, atendimento.descricao, atendimento.hora, paciente.nome_paciente, atendimento.id_atendimento FROM atendimento INNER JOIN paciente ON atendimento.id_paciente = paciente.id_paciente";
 
                         $resultado = mysqli_query($conexao, $sql);
                         
@@ -129,6 +129,16 @@
                                 echo "<td>". $row['data'] ."</td>";
                                 echo "<td>". $row['hora'] ."</td>";
                                 echo "<td>". $row['descricao'] ."</td>";
+                                
+                                echo "<form action='atualizar_atendimento.php' method='post'>";
+                                echo "<input type='hidden' name='id' value='" . $row['id_atendimento'] . "'>";
+                                echo "<td> <button type='submit' class='fa-regular fa-pen-to-square' style='color: #38a9ff;'</button> </td>";
+                                echo "</form>";
+
+                                echo "<form action='excluir_atendimento.php' method='post'>";
+                                echo "<input type='hidden' name='id' value='" . $row['id_atendimento'] . "'>";
+                                echo "<td> <button type='submit' class='fa-solid fa-trash'  style='color: #d33131';</button> </td>";
+                                echo "</form>";
                                 echo "</tr>";
                             }
                         } else {
