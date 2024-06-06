@@ -123,11 +123,15 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
             display: flex;
             justify-content: center;
             margin-bottom: 50px;
+            background-color: #ccc;
+            color: #ccc;
         }
 
         .task-list {
             width: 80%; /* Defina a largura desejada */
             max-width: 600px; /* Defina a largura máxima */
+            background-color: #ccc;
+            color: #ccc;
         }
 
     </style>
@@ -159,87 +163,97 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
         <!-- Navbar -->
         
-    <nav class="fixed left-0 top-0 h-full w-16 bg-fundo p-4 duration-300 dark:bg-gray-800 dark:text-white" id="nav-lte">
-        <div class="mb-5 w-full cursor-pointer pl-2.5">
-            <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
-        </div>
-        <ul class="h-full list-none space-y-4">
-            <li class="item-menu ativo w-full">
-                <a href="pagina.php" class="flex items-center">
-                    <span class="icon">
-                        <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
-                    </span>
-                    <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
-                </a>
-            </li>
-            <li class="item-menu  w-full">
-                <a href="../atendimento/home_atendimento.html" class="flex items-center">
-                    <span class="icon">
-                        <i class="fa-regular fa-address-book text-2xl text-white"></i>
-                    </span>
-                    <span class="txt-link ml-5 overflow-hidden text-white">Atendimento</span>
-                </a>
-            </li>
+        <nav class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 duration-300 dark:bg-gray-800  dark:text-white"id="nav-lte">
+    <div class="mb-5 w-full cursor-pointer pl-2.5">
+      <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
+</div>
 
-            <li class="item-menu w-full">
-                <a href="../Paciente/home_paciente.html" class="flex items-center">
-                    <span class="icon">
-                        <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
-                    </span>
-                    <span class="txt-link overflow-hidden text-white">Paciente</span>
-                </a>
-            </li>
+<ul class="h-full list-none space-y-4">
+  <li class="item-menu w-full">
+    <a href="../agenda/pagina.php" class="flex items-center">
+      <span class="icon">
+        <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
+      </span>
+      <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
+    </a>
+  </li>
+  <li class="item-menu ativo w-full">
+    <a href="../atendimento/home_atendimento.html" class="flex items-center">
+      <span class="icon">
+        <i class="fa-regular fa-address-book text-2xl text-white"></i>
+      </span>
+      <span class="txt-link ml-5 overflow-hidden text-white">Atendimento</span>
+    </a>
+  </li>
 
-            <li class="item-menu w-full">
-                <a href="../../php/estoque/listar_estoque.php" class="flex items-center">
-                    <span class="icon">
-                        <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
-                    </span>
-                    <span class="txt-link ml-5 overflow-hidden text-white">Estoque</span>
-                </a>
-            </li>
-            <li class="item-menu w-full">
-                <a href="../estoque/cadastrar_estoque.html" class="flex items-center">
-                    <span class="icon">
-                        <i class="fa-solid fa-box-archive text-2xl text-white"></i>
-                    </span>
-                    <span class="txt-link ml-5 overflow-hidden text-white">Cadastrar Produto</span>
-                </a>
-            </li>
-            <li class="item-menu w-full">
-                <a href="#" class="flex cursor-pointer items-center" id="dark-mode-toggle">
-                    <span class="icon">
-                        <i class="fa-solid fa-moon text-2xl text-white" id="icon-moon"></i>
-                        <i class="fa-solid fa-sun hidden text-2xl text-white" id="icon-sun"></i>
-                    </span>
-                    <span class="txt-link ml-5 overflow-hidden text-white" id="dark-mode-text">Escuro</span>
-                </a>
-            </li>
-            <li class="item-menu w-full">
-                <a href="#" class="flex items-center">
-                    <span class="icon">
-                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
-                    </span>
-                    <span class="txt-link ml-5 overflow-hidden text-white"> <?php echo $_SESSION['usuario']; ?>.</span>
-                </a>
-            </li>
-            <li class="item-menu w-full">
-                <a href="#" class="flex items-center">
-                    <span class="icon">
-                        <i class="fa-solid fa-right-from-bracket text-white"></i>
-                    </span>
-                    <span class="txt-link ml-5 overflow-hidden text-white">Sair</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+  <li class="item-menu w-full">
+    <a href="../Paciente/home_paciente.html" class="flex items-center">
+      <span class="icon">
+        <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
+      </span>
+      <span class="txt-link overflow-hidden text-white">Paciente</span>
+    </a>
+  </li>
+
+  <li class="item-menu w-full">
+    <a href="../../php/estoque/listar_estoque.php" class="flex items-center">
+      <span class="icon">
+        <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
+      </span>
+      <span class="txt-link ml-5 overflow-hidden text-white">Estoque</span>
+    </a>
+  </li>
+
+  <li class="item-menu w-full">
+    <a href="../estoque/cadastrar_estoque.html" class="flex items-center">
+      <span class="icon">
+        <i class="fa-solid fa-box-archive text-2xl text-white"></i>
+      </span>
+      <span class="txt-link ml-5 overflow-hidden text-white">Cadastrar Produto</span>
+    </a>
+  </li>
+
+  
+  <li class="item-menu w-full">
+    <a
+      href="#"
+      class="flex cursor-pointer items-center"
+      id="dark-mode-toggle"
+    >
+      <span class="icon">
+        <i
+          class="fa-solid fa-moon text-2xl text-white"
+          id="icon-moon"
+        ></i>
+        <i
+          class="fa-solid fa-sun hidden text-2xl text-white"
+          id="icon-sun"
+        ></i>
+      </span>
+      <span
+        class="txt-link ml-5 overflow-hidden text-white"
+        id="dark-mode-text"
+        >Escuro</span
+      >
+    </a>
+  </li>
+  <li class="item-menu w-full">
+    <a href="../../php/login/logout.php" class="flex items-center">
+      <span class="icon">
+        <i class="fa-solid fa-right-from-bracket text-white"></i>
+      </span>
+      <span class="txt-link ml-5 overflow-hidden text-white">Sair</span>
+    </a>
+  </li>
+</ul>
+</nav>
     <main class="content flex-1" id="cd-paciente">
         <div class="container mx-auto mt-6">
             <!-- Quadrados de contagem -->
             <div class="count-box-container">
                 <div class="count-box">
-                    <p class="font-semibold mb-2">Produtos Devolvidos no Mês:</p>
-                    <p class="count-number"><?php echo $total_devolucoes; ?></p>
+                    <p class="font-semibold mb-2" id='let'>Produtos Devolvidos no Mês:</p>
+                    <p class="count-number" id='let'><?php echo $total_devolucoes; ?></p>
                 </div>
                 <div class="count-box">
                     <p class="font-semibold mb-2">Itens Vendidos no Mês:</p>
@@ -256,14 +270,14 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
     <!-- Tarefas do dia -->
     <div class="w-full md:w-1/2 p-2 center-content">
         <div class="bg-white shadow-lg pb-2 rounded-lg">
-            <div class="bg-green-400 text-white p-4 rounded-md">
+            <div class="bg-blue-600 text-white p-4 rounded-md" id='cor'>
                 <h2 class="text-lg font-bold"><?php echo date('d F, Y'); ?></h2>
             </div>
             <div class="card-body-scrollable p-4">
                 <p class="font-semibold mb-4">Consultas do dia</p>
                 <?php if (!empty($tasks)): ?>
                     <?php foreach ($tasks as $task): ?>
-                        <div class="task-item mb-4 pl-4 border-l-4 border-green-400">
+                        <div class="task-item mb-4 pl-4 border-l-4 border-blue-600">
                             <p class="font-bold"><?php echo date('h:i A', strtotime($task['hora'])); ?></p>
                             <p class="font-bold"><?php echo htmlspecialchars($task['nome_paciente']); ?></p>
                             <p><?php echo htmlspecialchars($task['descricao']); ?></p>
@@ -274,7 +288,7 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
                 <?php endif; ?>
             </div>
             <div class="flex justify-center">
-                <button class="w-[90%] bg-green-400 text-white py-1 mt-4 rounded-none">CARREGUE MAIS</button>
+                <button class="w-[90%] bg-blue-600 text-white py-1 mt-4 rounded-none" id='cor'>CARREGUE MAIS</button>
             </div>
         </div>
     </div>

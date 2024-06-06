@@ -1,6 +1,12 @@
 body {
     background-color: #f4f4f9;
 }
+#cor{
+    background-color: #0c5f55;
+}
+#let{
+    color: #e9ecef;
+}
 .container {
     margin-top: 20px;
 }
