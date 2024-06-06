@@ -131,7 +131,7 @@ main{
   input {
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 80px;
   }
   
   .button-container {

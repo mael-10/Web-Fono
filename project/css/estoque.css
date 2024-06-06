@@ -1,66 +1,183 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-  }
-  
-  /* Estilização da página home pacientes */
-  main {
-    padding-top: 40px;
-    padding-bottom: 1100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding-left: 13%;
-    gap: 15px;
-  }
-  
-  .options {
-    background-color: #ccc;
-    color: rgb(19, 19, 19);
-    border-radius: 8px;
-    padding: 20px;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .options:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
-    cursor: pointer;
-  }
-  .titulo{
-    text-align: center;
-    color: #0c5f55;
-    font-size: 45px;
-    padding: 0px 20px 30px;
-  }
-  
-  .titulo-options {
-    color: #118E7F;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 24px;
-    margin-top: 20px;
-  }
-  
-  .content-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; /* ajuste conforme necessário */
-    width: 100%;
-  }
-  
-  .content-image img {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-    width: auto;
-  }
+main{
+  display: flex;
+  justify-content: center;
+}
+/* preview image */
+#picture__input {
+  display: none;
+}
 
+.picture {
+  width: 400px;
+  aspect-ratio: 16/9;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  border: 2px dashed currentcolor;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  outline: none;
+  overflow: hidden;
+}
+
+.picture:hover {
+  color: #777;
+  background: #ccc;
+}
+
+.picture:active {
+  border-color: #0c5f55;
+  color: #0c5f55;
+  background: #eee;
+}
+
+.picture:focus {
+  color: #777;
+  background: #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.picture__img {
+  max-width: 100%;
+}
+
+
+
+.options {
+  background-color: #ccc;
+  color: rgb(19, 19, 19);
+  height: 600px;
+  width: 500px;
+  border-radius: 8px;
+  padding: 30px 30px 30px;
+  margin: 25px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.options:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
+  cursor: pointer;
+}
+.content-image{
+  width: 440px;
+  height: 250px;
+  margin-bottom: 55px;
+}
+.content-image img{
+  width: 540px;
+  height: 350px;
+}
+.titulo-options{
+  color: #118E7F;
+  font-family:Arial, Helvetica, sans-serif;
+  font-style:bold;
+  font-size: 60px;
+}
+
+/* estilização padrão chat GPT FORMULARIO */
+#cd-paciente{
+  background-color: #0c5f55;
+}
+.container {
+  justify-content: center;
+  max-width: 80%;
+  height: 88%;
+  margin-top: 100px;
+  padding: 90px 200px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #D9D9D9;
+}
+.titulo{
+  text-align: center;
+  color: #0c5f55;
+  font-size: 45px;
+  padding: 0px 0px 0px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1 1 calc(33.333% - 20px); /* Ajuste conforme necessário */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 80px;
+}
+#search {
+  display: inline-block; /* Mantém o campo de pesquisa em linha */
+  margin-right: 10px; /* Adiciona um espaço entre o campo de pesquisa e o botão */
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 70px;
+}
+
+#searchButton {
   
-  
+  display: inline-block; /* Mantém o botão de pesquisa em linha */
+  padding: 10px 20px;
+  background-color: #0c5f55;
+  color: #fff;
+  border: none;
+  border-radius: 70px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.button-container {
+  display: flex;
+  justify-content: center; /* Centraliza o botão */
+  width: 100%; /* Garante que o contêiner ocupe toda a largura do formulário */
+}
+.btn{
+  margin: 15px auto ;
+  justify-content: center;
+  text-align: center;
+}
+button {
+  background-color: #118E7F;
+  color: #fff;
+  width: 15%;
+  padding: 3px 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 30px;
+  margin: 0 auto; /* Centraliza o botão */
+  margin-top: 10%;
+}
+button h1 {
+  font-size: 25px;  
+}
+
+button:hover {
+  background-color: #0c5f55;
+}
