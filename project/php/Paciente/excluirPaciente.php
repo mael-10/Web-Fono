@@ -143,6 +143,9 @@
   </ul>
 </nav>
 
+<main class="flex justify-center items-center h-full w-full" id="cd-paciente">
+<div class="container flex items-center flex-col">
+
 <?php
                 
     include_once("../conexao.php");
@@ -152,7 +155,22 @@
     $exclui = mysqli_query($conexao, "DELETE FROM paciente WHERE id_paciente = '$id_paciente'");
     echo "Paciente excluído com sucesso do Sistema!";
 
+
+    if ($exclui) {
+      echo '    <div class="mb-32">';
+            echo '      <h1 class="text-5xl text-greenF">EXCLUIDO COM SUCESSO!</h1>';
+            echo '      <div class="mt-20 text-center">';
+            echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+            echo '      </div>';
+            echo '    </div>';
+  } else {
+      echo "<div class='retornos'>";
+      echo "<h2> Ocorreu um erro ao inserir os dados. Por favor, tente novamente. </h2>";
+      echo "</div>";
+  }
                 
     mysqli_close($conexao);
-
 ?>
+
+</div>
+</main>
