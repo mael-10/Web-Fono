@@ -125,10 +125,13 @@
     height: 400px !important;
     width: 300px;
 }
+    #bk{
+      background-color:#0c5f55;
+    }
     </style>
 </head>
 
-<body class="flex h-screen bg-white text-black dark:bg-fundo">
+<body class="flex h-screen bg-white text-black dark:bg-fundo" id='bk'>
 <nav
   class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 duration-300 dark:bg-gray-800 dark:text-white"
   id="nav-lte">
