@@ -13,35 +13,14 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="../../../src/output.css" />
-
+  <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
   <title>Listar Paciente</title>
 
-  <script>
-    function fetchPacientes() {
-      const query = document.getElementById('search').value;
 
-      fetch('caminho_para_o_seu_php.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'query=' + encodeURIComponent(query)
-      })
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('result').innerHTML = data;
-        });
-    }
-
-        // Função para carregar todos os pacientes ao carregar a página
-        window.onload = function() {
-            fetchPacientes();
-        };
-    </script>
     <style>
 
-        main{
+main{
   display: flex;
   justify-content: center;
   background-color: #0c5f55;
@@ -52,7 +31,7 @@
   padding: 0px 20px 0px;
 }
 }
-    </style>
+</style>
 
 </head>
 
@@ -66,7 +45,7 @@
 
   <ul class="h-full list-none space-y-4">
     <li class="item-menu w-full">
-      <a href="menu.html" class="flex items-center">
+      <a href="../../html/agenda/pagina.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
         </span>
@@ -133,7 +112,7 @@
       </a>
     </li>
     <li class="item-menu w-full">
-      <a href="#" class="flex items-center">
+      <a href="../login/logout.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-right-from-bracket text-white"></i>
         </span>
@@ -229,6 +208,7 @@
     </div>
     </div>
   </main>
+  <script src="../../javascript/menu.js"></script>
 </body>
 
 </html>

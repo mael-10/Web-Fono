@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../src/output.css" />
 
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-  <title>Listar Paciente</title>
+  <title>Atualizar Paciente</title>
 
   <script>
     function fetchPacientes() {
@@ -66,7 +66,7 @@
 
   <ul class="h-full list-none space-y-4">
     <li class="item-menu w-full">
-      <a href="menu.html" class="flex items-center">
+      <a href="../../html/agenda/pagina.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
         </span>
@@ -133,7 +133,7 @@
       </a>
     </li>
     <li class="item-menu w-full">
-      <a href="#" class="flex items-center">
+      <a href="../login/logout.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-right-from-bracket text-white"></i>
         </span>

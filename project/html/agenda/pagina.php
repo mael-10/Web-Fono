@@ -164,22 +164,23 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
             <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
         </div>
         <ul class="h-full list-none space-y-4">
-            <li class="item-menu w-full">
-                <a href="menu.html" class="flex items-center">
+            <li class="item-menu ativo w-full">
+                <a href="pagina.php" class="flex items-center">
                     <span class="icon">
                         <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
                     </span>
                     <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
                 </a>
             </li>
-            <li class="item-menu ativo w-full">
-                <a href="../atendimento/atendimento.html" class="flex items-center">
+            <li class="item-menu  w-full">
+                <a href="../atendimento/home_atendimento.html" class="flex items-center">
                     <span class="icon">
                         <i class="fa-regular fa-address-book text-2xl text-white"></i>
                     </span>
                     <span class="txt-link ml-5 overflow-hidden text-white">Atendimento</span>
                 </a>
             </li>
+
             <li class="item-menu w-full">
                 <a href="../Paciente/home_paciente.html" class="flex items-center">
                     <span class="icon">
@@ -188,8 +189,9 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
                     <span class="txt-link overflow-hidden text-white">Paciente</span>
                 </a>
             </li>
+
             <li class="item-menu w-full">
-                <a href="../estoque/estoque.html" class="flex items-center">
+                <a href="../../php/estoque/listar_estoque.php" class="flex items-center">
                     <span class="icon">
                         <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
                     </span>

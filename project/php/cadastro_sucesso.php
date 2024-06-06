@@ -29,7 +29,7 @@
             <?php
                 echo '<h1 class="text-5xl text-greenF">CADASTRO REALIZADO COM SUCESSO!</h1>';
                 echo '<div class="mt-20 text-center">';
-                echo  '<button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                echo  '<a href="../../html/paciente/home_paciente.html"><button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button></a>';
                 echo '</div>'; 
             ?>
         </div>
