@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../../src/output.css" />
 
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-  <title>Excluir Paciente</title>
+  <title>Excluir Estoque</title>
 
   <script>
     function fetchPacientes() {
@@ -50,8 +50,20 @@
   color: #0c5f55;
   font-size: 45px;
   padding: 0px 20px 0px;
+  }
 }
-}
+.botao{
+          background-color: #118E7F;
+          color: #fff;
+          width: 15%;
+          padding: 3px 8px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 30px;
+          margin: 0 auto;
+          margin-top: 10%;
+        }
     </style>
 
 </head>
@@ -153,13 +165,13 @@
     $id_produto = mysqli_real_escape_string($conexao, $_POST['id']);
                 
     $exclui = mysqli_query($conexao, "DELETE FROM produto WHERE id_produto = '$id_produto'");
-    echo "Produto excluído com sucesso do Sistema!";
+    
 
     if ($exclui) {
       echo '    <div class="mb-32">';
             echo '      <h1 class="text-5xl text-greenF">EXCLUIDO COM SUCESSO!</h1>';
             echo '      <div class="mt-20 text-center">';
-            echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+            echo '        <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
             echo '      </div>';
             echo '    </div>';
   } else {
