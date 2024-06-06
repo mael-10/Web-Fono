@@ -14,8 +14,8 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
 
-  <link rel="stylesheet" href="../../css/atualizacao_paciente.css"/>
-  <title>Atualizar Paciente</title>
+  <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
+  <title>Atualizar Produto</title>
 
   <script>
     function fetchPacientes() {
@@ -144,17 +144,17 @@
 </nav>
 <main class="content flex-1 conteudo">
     <div class="container">
-      <h1 class='card-title'>EDITAR PACIENTE</h1>
+      <h1 class='card-title'>Editar Produto</h1>
 
 <?php
 
 include_once ("../conexao.php");  
 
-$id_paciente = $_POST['id'];
+$id_produto = $_POST['id'];
 
 $sql = "SELECT *
-        FROM Paciente
-        WHERE id_paciente = '$id_paciente'";
+        FROM produto
+        WHERE id_produto = '$id_produto'";
 
 $resultado = mysqli_query($conexao, $sql);
 echo "<div class='paciente-detalhes'>";
@@ -163,64 +163,29 @@ if (mysqli_num_rows($resultado) > 0) {
     while ($row = mysqli_fetch_assoc($resultado)) {
         
         echo "<table>";
-        echo"<form action='pacienteAtualizado.php' method='post' class='form-atualizar'>";
+        echo"<form action='estoque_atualizado.php' method='post' class='form-atualizar'>";
 
         echo"<div class='edit-form'>";
         echo "<label> ID: </label>";
-        echo "<input name='id_paciente' type='text' class='form-control form-atualizar' id='id_paciente'  autocomplete='off' value='" . htmlspecialchars($row['id_paciente']) . "'>";
+        echo "<input name='id_produto' type='text' class='form-control form-atualizar' id='id_produto'  autocomplete='off' value='" . htmlspecialchars($row['id_produto']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
-        echo "<label> Nome Paciente: </label>";
-        echo "<input name='nome_paciente' type='text' class='form-control form-atualizar' id='nome_paciente'  autocomplete='off' value='" . htmlspecialchars($row['nome_paciente']) . "'>";
+        echo "<label> Nome Produto: </label>";
+        echo "<input name='nome_produto' type='text' class='form-control form-atualizar' id='nome_produto'  autocomplete='off' value='" . htmlspecialchars($row['nome_produto']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
-        echo "<label> CPF: </label>";
-        echo "<input name='cpf' type='text' class='form-control form-atualizar' id='cpf'  autocomplete='off' value='" . htmlspecialchars($row['cpf']) . "'>";
+        echo "<label> Preço: </label>";
+        echo "<input name='preco' type='text' class='form-control form-atualizar' id='preco'  autocomplete='off' value='" . htmlspecialchars($row['preco']) . "'>";
         echo"</div>";
 
         echo"<div class='edit-form'>";
-        echo "<label> RG: </label>";
-        echo "<input name='RG' type='text' class='form-control form-atualizar' id='RG'  autocomplete='off' value='" . htmlspecialchars($row['RG']) . "'>";
+        echo "<label> Quantidade: </label>";
+        echo "<input name='quantidade' type='text' class='form-control form-atualizar' id='quantidade'  autocomplete='off' value='" . htmlspecialchars($row['quantidade']) . "'>";
         echo"</div>";
 
-        echo"<div class='edit-form'>";
-        echo "<label> Email: </label>";
-        echo "<input name='email' type='email' class='form-control form-atualizar' id='email'  autocomplete='off' value='" . htmlspecialchars($row['email']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Nascimento: </label>";
-        echo "<input name='nascimento' type='text' class='form-control form-atualizar' id='nascimento'  autocomplete='off' value='" . htmlspecialchars($row['nascimento']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Telefone: </label>";
-        echo "<input name='telefone' type='tel' class='form-control form-atualizar' id='telefone'  autocomplete='off' value='" . htmlspecialchars($row['telefone']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Endereco: </label>";
-        echo "<input name='endereco' type='text' class='form-control form-atualizar' id='endereco'  autocomplete='off' value='" . htmlspecialchars($row['endereco']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Bairro: </label>";
-        echo "<input name='bairro' type='text' class='form-control form-atualizar' id='bairro'  autocomplete='off' value='" . htmlspecialchars($row['bairro']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> Cidade: </label>";
-        echo "<input name='cidade' type='text' class='form-control form-atualizar' id='cidade'  autocomplete='off' value='" . htmlspecialchars($row['cidade']) . "'>";
-        echo"</div>";
-
-        echo"<div class='edit-form'>";
-        echo "<label> CEP: </label>";
-        echo "<input name='cep' type='text' class='form-control form-atualizar' id='cep'  autocomplete='off' value='" . htmlspecialchars($row['cep']) . "'>";
-        echo"</div>";
-
-        echo "<input type='submit' value='Salvar ' class='botões'>";
+        echo "<input type='submit' value='Salvar alteração' class='botões'>";
         echo "</form>";
 
         echo "</div>"; // Fecha a div paciente-detalhes
@@ -232,5 +197,3 @@ if (mysqli_num_rows($resultado) > 0) {
 // Fecha a conexão
 mysqli_close($conexao);
 ?>
-
-<script src="../../javascript/menu.js"></script>

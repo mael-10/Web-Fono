@@ -215,6 +215,16 @@
                 echo "    <h1 class='titulo-options'>Nome: " . $row['nome_produto'] . "</h1>";
                 echo "    <p>Preço: R$" . $row['preco'] . "</p>";
                 echo "    <p>Quantidade: " . $row['quantidade'] . "</p>";
+
+                echo "<form action='atualizar_estoque.php' method='post'>";
+                echo "<input type='hidden' name='id' value='" . $row['id_produto'] . "'>";
+                echo "<button type='submit' class='fa-regular fa-pen-to-square' style='color: #38a9ff;'</button> </td>";
+                echo "</form>";
+                
+                echo "<form action='excluir_estoque.php' method='post'>";
+                echo "<input type='hidden' name='id' value='" . $row['id_produto'] . "'>";
+                echo "<button type='submit' class='fa-solid fa-trash'  style='color: #d33131';</button> </td>";
+                echo "</form>";
                 echo "</div>";
             }
         } else {
