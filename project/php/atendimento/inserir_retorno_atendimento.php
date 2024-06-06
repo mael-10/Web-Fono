@@ -179,50 +179,44 @@
 
             if ($result_produto_paciente && mysqli_affected_rows($conexao) > 0) {
 
-                // Atualizando a quantidade em estoque
-                if ($tipo == "compra") {
-                    $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
-                    $result_estoque = mysqli_query($conexao, $query_estoque);
-
-                    if ($result_estoque && mysqli_affected_rows($conexao) > 0) {
-                        // Inserção na tabela Venda
-                        $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
-                        $result_venda = mysqli_query($conexao, $query_venda);
-
-                        if ($result_venda && mysqli_affected_rows($conexao) > 0) {
-                        echo '    <div class="mb-32">';
-                        echo '      <h1 class="text-5xl text-greenF">PRODUTO COMPRADO COM SUCESSO!</h1>';
-                        echo '      <div class="mt-20 text-center">';
-                        echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
-                        echo '      </div>';
-                        echo '    </div>';
-                        } else {
-                            echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
-                        }
-                    } else {
-                        echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
-                    }
-                } elseif ($tipo == "devolvido") {
-                    $query_estoque = "UPDATE produto SET quantidade = quantidade + 1 WHERE id_produto = '$produto'";
-                    $result_estoque = mysqli_query($conexao, $query_estoque);
-
-                    if ($result_estoque && mysqli_affected_rows($conexao) > 0) {
-                    echo '    <div class="mb-32">';
-                    echo '      <h1 class="text-5xl text-greenF">PRODUTO DEVOLVIDO COM SUCESSO!</h1>';
-                    echo '      <div class="mt-20 text-center">';
-                    echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
-                    echo '      </div>';
-                    echo '    </div>';
-                    } else {
-                        echo "Erro ao devolver " . mysqli_error($conexao);
-                    }
-                }
-            } else {
-                echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
-            }
-        } else {
-            echo "Paciente não encontrado.";
-        }
+              // Atualizando a quantidade em estoque
+              if ($tipo == "compra") {
+          
+                  $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
+                  $result_venda = mysqli_query($conexao, $query_venda);
+          
+                  if ($result_venda && mysqli_affected_rows($conexao) > 0) {
+                      echo '    <div class="mb-32">';
+                      echo '      <h1 class="text-5xl text-greenF">PRODUTO COMPRADO COM SUCESSO!</h1>';
+                      echo '      <div class="mt-20 text-center">';
+                      echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                      echo '      </div>';
+                      echo '    </div>';
+                  } else {
+                      echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
+                  }
+              } elseif ($tipo == "devolvido") {
+                  $query_estoque = "UPDATE produto SET quantidade = quantidade + 1 WHERE id_produto = '$produto'";
+                  $result_estoque = mysqli_query($conexao, $query_estoque);
+          
+                  if ($result_estoque && mysqli_affected_rows($conexao) > 0) {
+                      echo '    <div class="mb-32">';
+                      echo '      <h1 class="text-5xl text-greenF">PRODUTO DEVOLVIDO COM SUCESSO!</h1>';
+                      echo '      <div class="mt-20 text-center">';
+                      echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                      echo '      </div>';
+                      echo '    </div>';
+                  } else {
+                      echo "Erro ao devolver " . mysqli_error($conexao);
+                  }
+              } else {
+                  echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
+              }
+          
+          } else {
+              echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
+          }
+        }          
 
         // Fechando a conexão
         mysqli_close($conexao);

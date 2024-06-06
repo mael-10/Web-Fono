@@ -160,14 +160,8 @@ $data_inicio = date('Y-m-d');
 $data_retorno = date('Y-m-d', strtotime($data_inicio . ' +2 days'));
 $data_venda = date('Y-m-d H:i:s');
 
-// Verificando se o id_paciente existe na tabela Paciente (opcional, dependendo de como você está lidando com isso)
 
   $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio')";
-  
-  // Executando a query
-  $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
-
-  $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_inicio')";
   
   // Executando a query
   $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
