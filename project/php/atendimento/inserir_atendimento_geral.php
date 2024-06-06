@@ -177,20 +177,11 @@ $data_venda = date('Y-m-d H:i:s');
 
 // Verificando se o id_paciente existe na tabela Paciente (opcional, dependendo de como você está lidando com isso)
 
-if ($tipo == "teste") {
-  // Construindo a query de inserção para a tabela ProdutoPaciente
-  $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_retorno')";
-  
-  // Executando a query
-  $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
-
-}else{
-  // Construindo a query de inserção para a tabela ProdutoPaciente
   $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_inicio')";
   
   // Executando a query
   $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
-}
+
 
 if ($result_produto_paciente) {
     if (mysqli_affected_rows($conexao) > 0) {

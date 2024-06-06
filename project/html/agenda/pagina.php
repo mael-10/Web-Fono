@@ -112,7 +112,7 @@
             <li class="item-menu w-full">
                 <a href="#" class="flex items-center">
                     <span class="icon">
-                        <i class="fa-solid fa-right-from-bracket text-white"></i>
+                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
                     </span>
                     <span class="txt-link ml-5 overflow-hidden text-white"> <?php echo $_SESSION['usuario']; ?>.</span>
                 </a>
