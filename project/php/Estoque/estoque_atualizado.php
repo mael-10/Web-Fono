@@ -58,7 +58,7 @@
         </a>
       </li>
       <li class="item-menu ativo w-full">
-        <a href="atendimento.html" class="flex items-center">
+        <a href="../../html/atendimento.html" class="flex items-center">
           <span class="icon">
             <i class="fa-regular fa-address-book text-2xl text-white"></i>
           </span>
@@ -66,7 +66,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="../Paciente/home_paciente.html" class="flex items-center">
+        <a href="../../html/Paciente/home_paciente.html" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
           </span>
@@ -128,9 +128,7 @@ if (!empty($nome_produto) && !empty($preco) && !empty($quantidade)) {
     WHERE id_produto = '$id_produto'");
                 
     if ($consulta) {
-        echo "<div class='retornos'> ";
-        echo "<p>Atualização feita com sucesso!!!</p>";
-        echo "</div>";
+
     } else {
         echo "Erro ao atualizar os dados: " . mysqli_error($conexao);
     }
@@ -140,7 +138,7 @@ if (!empty($nome_produto) && !empty($preco) && !empty($quantidade)) {
 
 if ($consulta) {
   echo '    <div class="mb-32">';
-        echo '      <h1 class="text-5xl text-greenF">STUALIZADO COM SUCESSO!</h1>';
+        echo '      <h1 class="text-5xl text-greenF">ATUALIZADO COM SUCESSO!</h1>';
         echo '      <div class="mt-20 text-center">';
         echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
         echo '      </div>';

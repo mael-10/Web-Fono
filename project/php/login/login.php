@@ -29,10 +29,10 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 header("Location: ../../html/agenda/pagina.php");
                 exit;
             } else {
-                echo "Falha!! E-mail ou senha incorretos";
+                header("Location: ../../html/index.html");
             }
         } else {
-            echo "Falha!! E-mail ou senha incorretos";
+            header("Location: ../../html/index.html");
         }
     }
 }

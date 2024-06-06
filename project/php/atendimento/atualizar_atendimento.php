@@ -152,7 +152,7 @@ include_once ("../conexao.php");
 
 $id_atendimento = $_POST['id'];
 
-$sql = "SELECT atendimento.id_atendimento, atendimento.data, atendimento.descricao, atendimento.hora, paciente.nome_paciente FROM atendimento INNER JOIN paciente ON atendimento.id_paciente = paciente.id_paciente";
+$sql = "SELECT atendimento.id_atendimento, atendimento.data, atendimento.descricao, atendimento.hora, paciente.nome_paciente FROM atendimento INNER JOIN paciente ON atendimento.id_paciente = paciente.id_paciente WHERE id_atendimento = '$id_atendimento'";
 
 
 $resultado = mysqli_query($conexao, $sql);

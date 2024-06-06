@@ -145,7 +145,7 @@ if (!empty($nome_paciente) && !empty($cpf) && !empty($RG) && !empty($email) && !
                 
     if ($consulta) {
         echo "<div class='retornos'> ";
-        echo "<p>Atualização feita com sucesso!!!</p>";
+        echo "<p></p>";
         echo "</div>";
     } else {
         echo "Erro ao atualizar os dados: " . mysqli_error($conexao);

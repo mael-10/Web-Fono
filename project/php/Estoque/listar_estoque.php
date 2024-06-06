@@ -110,13 +110,21 @@
         padding: 20px;
       }
 
-      #search {
-        width: 80%;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-      }
+      .options {
+    background-color: #ccc;
+    color: rgb(19, 19, 19);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 10px; /* Margem adicionada */
+    width: calc(33.333% - 20px); /* Largura fixa para cada opção */
+    float: left; /* Colocar cada opção lado a lado */
+    box-sizing: border-box;
+    height: 400px !important;
+    width: 300px;
+}
     </style>
 </head>
 
@@ -195,10 +203,8 @@
 </nav>
 
 <main class="content">
-    <div class="form-row full-width">
-      <input type="text" id="search" placeholder="Pesquisar...">
-    </div>
-    <div id="results" class="flex flex-wrap justify-center">
+
+
         <!-- Conteúdo principal dos produtos -->
         <?php
         include_once('../conexao.php');
@@ -231,30 +237,12 @@
             echo "<p>Nenhum produto encontrado.</p>";
         }
         ?>
-    </div>
+
 </main>
 
 <script src="../../javascript/menu.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#search").on("input", function(){
-            var searchTerm = $(this).val();
-            if (searchTerm !== "") {
-                $.ajax({
-                    url: "search.php",
-                    method: "POST",
-                    data: {query: searchTerm},
-                    success: function(data){
-                        $("#results").html(data);
-                    }
-                });
-            } else {
-                $("#results").html("");
-            }
-        });
-    });
-</script>
+
 </body>
 
 </html>

@@ -288,7 +288,7 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
                 <?php endif; ?>
             </div>
             <div class="flex justify-center">
-                <button class="w-[90%] bg-blue-600 text-white py-1 mt-4 rounded-none" id='cor'>CARREGUE MAIS</button>
+                <button class="w-[100%] bg-blue-600 text-white py-1 mt-4 rounded-none" id='cor'>CARREGUE MAIS</button>
             </div>
         </div>
     </div>

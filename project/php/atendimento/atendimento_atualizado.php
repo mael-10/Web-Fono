@@ -128,7 +128,7 @@ if (!empty($data) && !empty($hora) && !empty($descricao)) {
     WHERE id_atendimento = '$id_atendimento'");
                 
     if ($consulta) {
-        echo "Atualização feita com sucesso!!!";
+
     } else {
         echo "Erro ao atualizar os dados: " . mysqli_error($conexao);
     }
