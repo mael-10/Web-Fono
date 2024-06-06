@@ -166,6 +166,7 @@ if (mysqli_num_rows($resultado) > 0) {
     }
 }
 
+date_default_timezone_set('America/Sao_Paulo');
 // Captura a data atual para data_inicio e data de venda
 $data_inicio = date('Y-m-d');
 $data_retorno = date('Y-m-d', strtotime($data_inicio . '+2 days'));
