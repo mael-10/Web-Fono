@@ -1,7 +1,9 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -37,8 +39,10 @@
         .hidden {
           display: none;
         }
+        button{
+          width: 40%;
+        }
       </style>
-  </head>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
     <nav
@@ -131,34 +135,39 @@
         </li>
       </ul>
     </nav>
-    <main class="content flex-1" id="cd-paciente">
-        <div class="container">
-            <?php
+    <main class="flex justify-center items-center h-full w-full" id="cd-paciente">
+      <div class="container flex items-center flex-col">
 
-              include_once('../conexao.php');
+        <?php
+          include_once('../conexao.php');
 
-              $produto = $_POST['nome'];
-              $descricao = $_POST['descricao'];
-              $quantidade = $_POST['quantidade'];
-              $preco = $_POST['preco'];
+          $produto = $_POST['nome'];
+          $descricao = $_POST['descricao'];
+          $quantidade = $_POST['quantidade'];
+          $preco = $_POST['preco'];
 
-              //imagem do produto
-              $foto_produto = $_FILES['foto_produto']['tmp_name'];
-              $foto_produto_destino = '../imagensDinamicas/' . $_FILES['foto_produto']['name'];
+          $foto_produto = $_FILES['foto_produto']['tmp_name'];
+          $foto_produto_destino = '../imagensDinamicas/' . $_FILES['foto_produto']['name'];
 
-              move_uploaded_file($foto_produto, $foto_produto_destino);
+          move_uploaded_file($foto_produto, $foto_produto_destino);
 
-              $insere_produto = mysqli_query($conexao, "INSERT INTO produto (nome_produto, descricao, quantidade, preco,  foto_produto) VALUES ('$produto', '$descricao', $quantidade, $preco,  '$foto_produto_destino')");
+          $insere_produto = mysqli_query($conexao, "INSERT INTO produto (nome_produto, descricao, quantidade, preco,  foto_produto) 
+          VALUES ('$produto', '$descricao', $quantidade, $preco,  '$foto_produto_destino')");
 
-
-              if($insere_produto){
-                echo "Produto inserido com sucesso! ";
-              }else{
-                echo "Não foi possivel cadastrar este produto no banco! ";
-              }
-
-            ?>
-        </div>    
+        if($insere_produto) {
+          echo '    <div class="mb-32">';
+          echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
+          echo '      <div class="mt-20 text-center">';
+          echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+          echo '      </div>';
+          echo '    </div>';
+        } else {
+            echo "<div class='retornos'>";
+            echo "<h2> Ocorreu um erro ao inserir os dados. Por favor, tente novamente. </h2>";
+            echo "</div>";
+        }
+        ?>
+      </div>    
     </main>
     <script src="../../javascript/menu.js"></script>
 </body>

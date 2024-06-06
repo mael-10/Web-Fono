@@ -23,24 +23,26 @@
     <title>Atendimento</title>
     <style>
         .content {
-            margin-left: 65px;
-            transition: margin-left 0.2s;
+          margin-left: 65px;
+          transition: margin-left 0.2s;
         }
-
         nav.expandir + .content {
-            margin-left: 300px;
+          margin-left: 300px;
         }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+        .icon img {
+          max-width: 32px;
+          height: auto;
         }
-
-
-
-    </style>
+        nav:not(.expandir) .icon img {
+          width: 32px;
+        }
+        .hidden {
+          display: none;
+        }
+        button{
+          width: 40%;
+        }
+      </style>
 </head>
 <body
         class="flex h-screen bg-white text-black dark:bg-fundo"
@@ -146,9 +148,8 @@ id="nav-lte"
   </li>
 </ul>
 </nav>
-<main class="content flex-1">
-    <div class="container">
-
+<main class="flex justify-center items-center h-full w-full" id="cd-paciente">
+<div class="container flex items-center flex-col">
     <?php
 include_once('../conexao.php');
 
@@ -185,7 +186,6 @@ $data_venda = date('Y-m-d H:i:s');
 
 if ($result_produto_paciente) {
     if (mysqli_affected_rows($conexao) > 0) {
-        echo "Registro inserido com sucesso na tabela ProdutoPaciente!<br>";
 
         // Atualizando a quantidade em estoque
         $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
@@ -193,7 +193,6 @@ if ($result_produto_paciente) {
 
         if ($result_estoque) {
             if (mysqli_affected_rows($conexao) > 0) {
-                echo "Estoque atualizado com sucesso!<br>";
 
                 // Se o tipo for "compra", insira também na tabela Venda
                 if ($tipo == "compra") {
@@ -205,8 +204,12 @@ if ($result_produto_paciente) {
 
                     if ($result_venda) {
                         if (mysqli_affected_rows($conexao) > 0) {
-                            echo "Registro inserido com sucesso na tabela Venda!";
-                        } else {
+                          echo '    <div class="mb-32">';
+                          echo '      <h1 class="text-5xl text-greenF">REGISTRO INSERIDO COM SUCESSO!</h1>';
+                          echo '      <div class="mt-20 text-center">';
+                          echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                          echo '      </div>';
+                          echo '    </div>';                        } else {
                             echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
                         }
                     } else {
@@ -224,7 +227,12 @@ if ($result_produto_paciente) {
                   $result_test = mysqli_query($conexao, $query_teste);
                   if ($result_test) {
                     if (mysqli_affected_rows($conexao) > 0) {
-                        echo "Registro inserido com sucesso na tabela Teste!";
+                      echo '    <div class="mb-32">';
+                      echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
+                      echo '      <div class="mt-20 text-center">';
+                      echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                      echo '      </div>';
+                      echo '    </div>';
                     } else {
                         echo "Erro ao inserir o registro na tabela Atendimento: " . mysqli_error($conexao);
                     }

@@ -142,13 +142,16 @@ if (!empty($nome_paciente) && !empty($cpf) && !empty($RG) && !empty($email) && !
     WHERE id_paciente = '$id_paciente'");
                 
     if ($consulta) {
-        echo "Atualização feita com sucesso!!!";
+        echo "<div class='retornos'> ";
+        echo "<p>Atualização feita com sucesso!!!</p>";
+        echo "</div>";
     } else {
         echo "Erro ao atualizar os dados: " . mysqli_error($conexao);
     }
 } else {
     echo "Todos os campos são obrigatórios.";
 }
+
 
 mysqli_close($conexao);
 ?>
