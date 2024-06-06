@@ -141,7 +141,18 @@ include_once('../conexao.php');
 $paciente = $_POST['nome'];
 $produto = $_POST['produto'];
 $tipo = $_POST['tipo'];
-$total_venda = isset($_POST['total_venda']) ? $_POST['total_venda'] : 0; // Caso não exista, define como 0
+
+
+$sql_preco = "SELECT preco FROM produto WHERE nome_produto = '$produto'";
+$resultado_preco = mysqli_query($conexao, $sql_preco);
+
+if (mysqli_num_rows($resultado_preco) > 0) {
+    while ($row = mysqli_fetch_assoc($resultado_preco)) {
+                    
+      $total_venda  = $row['preco'];
+
+    }
+}
 
 
 $sql = "SELECT id_paciente FROM paciente WHERE nome_paciente = '$paciente'";
@@ -157,7 +168,7 @@ if (mysqli_num_rows($resultado) > 0) {
 
 // Captura a data atual para data_inicio e data de venda
 $data_inicio = date('Y-m-d');
-$data_retorno = date('Y-m-d', strtotime($data_inicio . ' +2 days'));
+$data_retorno = date('Y-m-d', strtotime($data_inicio . '+2 days'));
 $data_venda = date('Y-m-d H:i:s');
 
 
