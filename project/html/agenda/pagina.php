@@ -1,5 +1,72 @@
 <?php
+
     include('../../php/login/protect.php');
+    include_once('../../php/conexao.php');
+
+    // Fetch today's date
+    $today = date('Y-m-d');
+
+    // Query to fetch today's appointments
+    $sql = "SELECT Atendimento.descricao, Atendimento.hora, Paciente.nome_paciente 
+            FROM Atendimento 
+            JOIN Paciente ON Atendimento.id_paciente = Paciente.id_paciente 
+            WHERE Atendimento.data = '$today'";
+
+    $result = mysqli_query($conexao, $sql);
+
+    $tasks = [];
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $tasks[] = $row;
+        }
+    }
+
+    // Query to fetch top sold products
+    $sql_vendas = "SELECT Produto.nome_produto, COUNT(*) as total_vendas 
+    FROM Venda 
+    JOIN Produto ON Venda.id_produto = Produto.id_produto 
+    GROUP BY Produto.nome_produto 
+    ORDER BY total_vendas DESC 
+    LIMIT 5";
+
+    $result_vendas = mysqli_query($conexao, $sql_vendas);
+
+    $product_sales = [];
+    if (mysqli_num_rows($result_vendas) > 0) {
+        while ($row = mysqli_fetch_assoc($result_vendas)) {
+            $product_sales[] = $row;
+        }
+    }
+
+    $mes_atual = date('Y-m');
+    $sql_devolucoes = "SELECT COUNT(*) AS total_devolucoes FROM ProdutoPaciente WHERE status = 'Devolvido' AND MONTH(data_fim) = MONTH(NOW())";
+    $result_devolucoes = mysqli_query($conexao, $sql_devolucoes);
+    $total_devolucoes = 0;
+    if ($result_devolucoes && mysqli_num_rows($result_devolucoes) > 0) {
+        $row = mysqli_fetch_assoc($result_devolucoes);
+        $total_devolucoes = $row['total_devolucoes'];
+    }
+
+
+// Calcular a quantidade de consultas marcadas no mês atual
+$sql_consultas_mes = "SELECT COUNT(*) AS total_consultas FROM Atendimento WHERE MONTH(data) = MONTH(NOW())";
+$result_consultas_mes = mysqli_query($conexao, $sql_consultas_mes);
+$total_consultas_mes = 0;
+if ($result_consultas_mes && mysqli_num_rows($result_consultas_mes) > 0) {
+    $row = mysqli_fetch_assoc($result_consultas_mes);
+    $total_consultas_mes = $row['total_consultas'];
+}
+
+// Calcular a quantidade de itens vendidos no mês atual
+$sql_vendas_mes = "SELECT COUNT(*) AS total_vendas FROM Venda WHERE MONTH(data) = MONTH(NOW())";
+$result_vendas_mes = mysqli_query($conexao, $sql_vendas_mes);
+$total_vendas_mes = 0;
+if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
+    $row = mysqli_fetch_assoc($result_vendas_mes);
+    $total_vendas_mes = $row['total_vendas'];
+}
+    // Close the connection
+    mysqli_close($conexao);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +91,45 @@
         nav.expandir + .content {
             margin-left: 300px;
         }
+
+        .count-box-container {
+            display: flex;
+            justify-content: center; /* Centralizar os quadrados horizontalmente */
+            align-items: center; /* Centralizar os quadrados verticalmente */
+            margin-bottom: 50px; /* Espaçamento inferior */
+        }
+
+        .count-box {
+            background-color: #0c5f55;
+            color: #ffffff;
+            padding: 20px; /* Espaçamento interno maior */
+            height: 180px; /* Altura dos quadrados */
+            width: 180px; /* Largura dos quadrados */
+            border-radius: 10px;
+            margin-right: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Os números serão centralizados verticalmente */
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .count-number {
+            font-size: 36px; /* Tamanho da fonte dos números */
+            font-weight: bold;
+            margin-top: 10px; /* Espaçamento superior */
+        }
+        .tasks-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .task-list {
+            width: 80%; /* Defina a largura desejada */
+            max-width: 600px; /* Defina a largura máxima */
+        }
+
     </style>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -32,18 +138,16 @@
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-
         var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
+            ['Produto', 'Total de Vendas'],
+            <?php foreach ($product_sales as $sale): ?>
+                ['<?php echo $sale['nome_produto']; ?>', <?php echo $sale['total_vendas']; ?>],
+            <?php endforeach; ?>
         ]);
 
         var options = {
-        title: 'My Daily Activities'
+            title: 'Produtos Mais Vendidos',
+            pieHole: 0.4
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -131,85 +235,56 @@
     </nav>
     <main class="content flex-1" id="cd-paciente">
         <div class="container mx-auto mt-6">
-            <div class="flex flex-wrap">
-                <!-- Task Section -->
-                <div class="w-full md:w-1/2 p-2">
-                    <div class="bg-white shadow-lg pb-2 rounded-lg">
-                        <div class="bg-blue-600 text-white p-4 rounded-md">
-                            <h2 class="text-lg font-bold">26 April, 2018</h2>
-                        </div>
-                        <div class="card-body-scrollable p-4">
-                            <p class="font-semibold mb-4">Tasks for John Doe</p>
-                            <div class="task-item mb-4 pl-4 border-l-4 border-blue-600">
-                                <p>Meeting about plan for Admin Template 2018</p>
-                                <p class="font-bold">10:00 AM</p>
-                            </div>
-                            <div class="task-item mb-4 pl-4 border-l-4 border-orange-500">
-                                <p>Create new task for Dashboard</p>
-                                <p class="font-bold">11:00 AM</p>
-                            </div>
-                            <div class="task-item mb-4 pl-4 border-l-4 border-blue-500">
-                                <p>Meeting about plan for Admin Template 2018</p>
-                                <p class="font-bold">02:00 PM</p>
-                            </div>
-                            <div class="task-item mb-4 pl-4 border-l-4 border-green-500">
-                                <p>Create new task for Dashboard</p>
-                                <p class="font-bold">03:30 PM</p>
-                            </div>
-                            <div class="task-item mb-4 pl-4 border-l-4 border-green-500">
-                                <p>Create new task for Dashboard</p>
-                                <p class="font-bold">03:30 PM</p>
-                            </div>
-                            <div class="task-item mb-4 pl-4 border-l-4 border-green-500">
-                                <p>Create new task for Dashboard</p>
-                                <p class="font-bold">03:30 PM</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
-                            <button class="w-[90%] bg-blue-600 text-white py-1 mt-4 rounded-none">LOAD MORE</button>
-                        </div>
-                    </div>
+            <!-- Quadrados de contagem -->
+            <div class="count-box-container">
+                <div class="count-box">
+                    <p class="font-semibold mb-2">Produtos Devolvidos no Mês:</p>
+                    <p class="count-number"><?php echo $total_devolucoes; ?></p>
                 </div>
-
-                <!-- Message Section -->
-                <div class="md:w-1/2 p-2">
-                    <div class="bg-white shadow-lg rounded-lg pb-2">
-                        <div class="bg-blue-600 text-white p-4 rounded-md">
-                            <h2 class="text-lg font-bold">New Messages</h2>
-                        </div>
-                        <div class="card-body-scrollable p-4">
-                            <p class="font-semibold mb-4">You have 2 new messages</p>
-                            <div class="message-item mb-4 pb-4 border-b border-gray-300">
-                                <p><strong>John Smith</strong> <span class="text-gray-500 text-sm">12 Min ago</span></p>
-                                <p>Have sent a photo</p>
-                            </div>
-                            <div class="message-item mb-4 pb-4 border-b border-gray-300">
-                                <p><strong>Nicholas Martinez</strong> <span class="text-gray-500 text-sm">11:00 PM</span></p>
-                                <p>You are now connected on message</p>
-                            </div>
-                            <div class="message-item mb-4 pb-4 border-b border-gray-300">
-                                <p><strong>Michelle Sims</strong> <span class="text-gray-500 text-sm">Yesterday</span></p>
-                                <p>Lorem ipsum dolor sit amet</p>
-                            </div>
-                            <div class="message-item mb-4 pb-4 border-b border-gray-300">
-                                <p><strong>Michelle Sims</strong></p>
-                                <p>Lorem ipsum dolor sit amet</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
-                            <button class="w-[90%] bg-blue-600 text-white py-1 mt-4 rounded-none">LOAD MORE</button>
-                        </div>
-                    </div>
+                <div class="count-box">
+                    <p class="font-semibold mb-2">Itens Vendidos no Mês:</p>
+                    <p class="count-number"><?php echo $total_vendas_mes; ?></p>
+                </div>
+                <div class="count-box">
+                    <p class="font-semibold mb-2">Consultas Marcadas no Mês:</p>
+                    <p class="count-number"><?php echo $total_consultas_mes; ?></p>
                 </div>
             </div>
+            <!-- Restante do conteúdo -->
         </div>
-
-        <!-- Linha de codigo do gráfico -->
-        <div class="text-center">
-            <div id="piechart" class="mx-auto" style="width: 1000px; height: 750px;"></div>
+        <div class="flex flex-wrap justify-center">
+    <!-- Tarefas do dia -->
+    <div class="w-full md:w-1/2 p-2 center-content">
+        <div class="bg-white shadow-lg pb-2 rounded-lg">
+            <div class="bg-blue-600 text-white p-4 rounded-md">
+                <h2 class="text-lg font-bold"><?php echo date('d F, Y'); ?></h2>
+            </div>
+            <div class="card-body-scrollable p-4">
+                <p class="font-semibold mb-4">Consultas do dia</p>
+                <?php if (!empty($tasks)): ?>
+                    <?php foreach ($tasks as $task): ?>
+                        <div class="task-item mb-4 pl-4 border-l-4 border-blue-600">
+                            <p class="font-bold"><?php echo date('h:i A', strtotime($task['hora'])); ?></p>
+                            <p class="font-bold"><?php echo htmlspecialchars($task['nome_paciente']); ?></p>
+                            <p><?php echo htmlspecialchars($task['descricao']); ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Sem compromissos para hoje.</p>
+                <?php endif; ?>
+            </div>
+            <div class="flex justify-center">
+                <button class="w-[90%] bg-blue-600 text-white py-1 mt-4 rounded-none">CARREGUE MAIS</button>
+            </div>
         </div>
-    </main>
-
+    </div>
+    <!-- Gráfico -->
+    <div class="w-full md:w-1/2 p-2 center-content">
+        <div class="bg-white shadow-lg pb-2 rounded-lg">
+            <div id="piechart" class="mx-auto" style="width: 100%; height: 409px;"></div>
+        </div>
+    </div>
+</div>
     <script src="../../javascript/menu.js"></script> 
 </body>
 </html>
