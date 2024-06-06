@@ -133,7 +133,20 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
             background-color: #ccc;
             color: #ccc;
         }
-
+        .header {
+          width: 100%;
+          height: 90px;
+          padding: 10px 0px 0px;
+          background-color: #f0f0f0; /* Cor de fundo do cabeçalho, ajuste conforme necessário */
+          text-align: center;
+          border-bottom: 1px solid #ccc; /* Adiciona uma borda inferior */
+        }
+        .header h1 {
+          margin: 0;
+          font-size: 50px; /* Tamanho da fonte do título */
+          font-weight: 700;
+          color: #0c5f55; /* Cor do texto, ajuste conforme necessário */
+        }
     </style>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -159,10 +172,14 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
         chart.draw(data, options);
     }
 </script>
+<style>
+      body{
+      background-color: #ccc;
+    }
+</style>
 </head>
-<body class="flex h-screen bg-white text-black dark:bg-fundo">
-        <!-- Navbar -->
-        
+<body class="flex h-screen bg-grey text-black dark:bg-fundo">
+        <!-- Navbar --> 
         <nav class="fixed left-0 top-0 h-full w-[65px] bg-fundo p-4 duration-300 dark:bg-gray-800  dark:text-white"id="nav-lte">
     <div class="mb-5 w-full cursor-pointer pl-2.5">
       <i class="fa-solid fa-list text-2xl text-white" id="btn-exp"></i>
@@ -247,7 +264,11 @@ if ($result_vendas_mes && mysqli_num_rows($result_vendas_mes) > 0) {
   </li>
 </ul>
 </nav>
+
     <main class="content flex-1" id="cd-paciente">
+    <header class="header">
+        <h1>Home</h1>
+</header>
         <div class="container mx-auto mt-6">
             <!-- Quadrados de contagem -->
             <div class="count-box-container">

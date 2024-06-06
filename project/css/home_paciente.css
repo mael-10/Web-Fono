@@ -33,6 +33,9 @@ main{
   justify-content: center;
   background-color: #ccc;
 }
+#back{
+  background-color: #ccc;
+}
 .options {
   display: inline;
   background-color: #0c5f55;
