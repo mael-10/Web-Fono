@@ -15,7 +15,11 @@
   <link rel="stylesheet" href="../../../src/output.css" />
 
   <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
+<<<<<<< Updated upstream
   <title>Atualizar Paciente</title>
+=======
+  <title>Editar Paciente</title>
+>>>>>>> Stashed changes
 
   <script>
     function fetchPacientes() {
