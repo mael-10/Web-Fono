@@ -42,6 +42,18 @@
         button{
           width: 40%;
         }
+        .botao{
+          background-color: #118E7F;
+          color: #fff;
+          width: 15%;
+          padding: 3px 8px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 30px;
+          margin: 0 auto;
+          margin-top: 10%;
+        }
       </style>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">
@@ -174,7 +186,7 @@
                         echo '    <div class="mb-32">';
                         echo '      <h1 class="text-5xl text-greenF">PRODUTO COMPRADO COM SUCESSO!</h1>';
                         echo '      <div class="mt-20 text-center">';
-                        echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover" onclick="window.location.href=\'menu.html\'">Voltar ao Início</button>';
+                        echo '       <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
                         echo '      </div>';
 
                         // Aqui está a parte para exibir a nota fiscal
@@ -215,7 +227,7 @@
                             foreach ($row as $key => $value) {
                                 echo "<input type='hidden' name='$key' value='$value'>";
                             }
-                            echo "<button type='submit' style='color: #38a9ff;'> Gerar nota fiscal </button>";
+                            echo "<button type='submit' style='color: #FFFFFF;'> Gerar nota fiscal </button>";
                             echo "</form>";
                         } else {
                             echo "Erro ao recuperar informações da venda.";
@@ -231,7 +243,7 @@
                         echo '    <div class="mb-32">';
                         echo '      <h1 class="text-5xl text-greenF">PRODUTO DEVOLVIDO COM SUCESSO!</h1>';
                         echo '      <div class="mt-20 text-center">';
-                        echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover" onclick="window.location.href=\'menu.html\'">Voltar ao Início</button>';
+                        echo '        <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
                         echo '      </div>';
                         echo '    </div>';
                     } else {
