@@ -1,0 +1,206 @@
+.edit-form {
+  display: inline-block;
+  width: 48%; /* Para deixar espaço para margens e espaçamento entre os inputs */
+  margin-right: 2%; /* Margem direita para espaçamento entre os inputs */
+}
+
+.edit-form:last-child {
+  margin-right: 0; /* Remover margem direita do último elemento para evitar quebra de layout */
+}
+
+.edit-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="email"],
+.edit-form input[type="tel"],
+.edit-form input[type="date"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 80px;
+  box-sizing: border-box;
+}
+
+/* Estilo para quando o input estiver em foco */
+.edit-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+
+
+.content {
+  margin-left: 65px;
+  transition: margin-left 0.2s;
+}
+nav {
+  /* Estilo existente do nav */
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 65px;
+  background-color: #333; /* Exemplo de cor */
+  z-index: 1000; /* Para garantir que o nav fique sobre outros elementos */
+}
+
+nav.expandir {
+  width: 300px;
+}
+nav.expandir + .content {
+  margin-left: 300px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+header{
+padding: 0px;
+}
+  /* estilização pagina home pacientes  */
+main{
+display: flex;
+justify-content: center;
+}
+.options {
+background-color: #ccc;
+color: rgb(19, 19, 19);
+height: 600px;
+width: 500px;
+border-radius: 8px;
+padding: 30px 30px 30px;
+margin: 25px;
+transition: transform 0.5s ease, box-shadow 0.5s ease;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.options:hover {
+transform: translateY(-10px); 
+box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
+cursor: pointer;
+}
+.content-image{
+
+width: 440px;
+height: 250px;
+margin-bottom: 55px;
+}
+.content-image img{
+width: 540px;
+height: 350px;
+}
+.titulo{
+text-align: center;
+color: #0c5f55;
+font-size: 45px;
+padding: 0px 20px 30px;
+}
+.titulo-options{
+color: #118E7F;
+font-family:Arial, Helvetica, sans-serif;
+font-style:bold;
+font-size: 60px;
+}
+
+/* estilização padrão chat GPT FORMULARIO */
+#cd-paciente{
+background-color: #0c5f55;
+}
+.container {
+justify-content: center;
+max-width: 80%;
+height: 80%;
+margin-top: 100px;
+padding: 90px 200px 20px;
+border: 1px solid #ccc;
+border-radius: 8px;
+background-color: #D9D9D9;
+}
+
+form {
+display: flex;
+flex-direction: column;
+}
+
+.full-width {
+width: 100%;
+margin-bottom: 20px;
+}
+
+.form-row {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+}
+
+.form-group {
+flex: 1 1 calc(33.333% - 20px); /* Ajuste conforme necessário */
+display: flex;
+flex-direction: column;
+margin-bottom: 20px;
+}
+
+label {
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+input {
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 100px;
+}
+
+.button-container {
+display: flex;
+justify-content: center; /* Centraliza o botão */
+width: 100%; /* Garante que o contêiner ocupe toda a largura do formulário */
+}
+
+button {
+background-color: #118E7F;
+color: #fff;
+width: 15%;
+padding: 3px 8px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 30px;
+margin: 0 auto; /* Centraliza o botão */
+margin-top: 5%;
+}
+button h1 {
+font-size: 25px;  
+}
+
+button:hover {
+background-color: #0c5f55;
+}
+
+  .card-title{
+    text-align: center;
+    color: #0c5f55;
+    font-size: 45px;
+    padding: 0px 20px 30px;
+  }
+
+  .botões{
+    background-color: #118E7F;
+    color: #fff;
+    width: 15%;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 30px;
+    margin: 0 auto;
+    margin-top: 5%;
+  }

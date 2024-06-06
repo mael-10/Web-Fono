@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
 
-  <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
+  <link rel="stylesheet" href="../../css/atualizar_atendimento.css"/>
   <title>Editar Atendimento</title>
 
   <script>
@@ -184,7 +184,7 @@ if (mysqli_num_rows($resultado) > 0) {
         echo "<input name='descricao' type='text' class='form-control form-atualizar' id='descricao'  autocomplete='off' value='" . htmlspecialchars($row['descricao']) . "'>";
         echo"</div>";
 
-        echo "<input type='submit' value='Salvar alteração' class='botões'>";
+        echo "<input type='submit' value='Salvar ' class='botões'>";
         echo "</form>";
 
         echo "</div>"; // Fecha a div paciente-detalhes
@@ -205,5 +205,5 @@ mysqli_close($conexao);
     </div>
   </main>
 </body>
-
+<script src="../../javascript/menu.js"></script>
 </html>

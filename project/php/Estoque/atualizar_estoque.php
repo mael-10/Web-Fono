@@ -14,8 +14,8 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
 
-  <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
-  <title>Atualizar Produto</title>
+  <link rel="stylesheet" href="../../css/atualizar_estoque.css"/>
+  <title>Atualizar Estoque</title>
 
   <script>
     function fetchPacientes() {
@@ -185,7 +185,7 @@ if (mysqli_num_rows($resultado) > 0) {
         echo "<input name='quantidade' type='text' class='form-control form-atualizar' id='quantidade'  autocomplete='off' value='" . htmlspecialchars($row['quantidade']) . "'>";
         echo"</div>";
 
-        echo "<input type='submit' value='Salvar alteração' class='botões'>";
+        echo "<input type='submit' value='Salvar' class='botões'>";
         echo "</form>";
 
         echo "</div>"; // Fecha a div paciente-detalhes
@@ -197,3 +197,5 @@ if (mysqli_num_rows($resultado) > 0) {
 // Fecha a conexão
 mysqli_close($conexao);
 ?>
+
+<script src="../../javascript/menu.js"></script>
