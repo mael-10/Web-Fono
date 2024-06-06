@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../../src/output.css" />
 
-  <link rel="stylesheet" href="../../css/listagemPaciente.css"/>
+  <link rel="stylesheet" href="../../css/atualizacao_paciente.css"/>
   <title>Atualizar Paciente</title>
 
   <script>
@@ -144,7 +144,7 @@
 </nav>
 <main class="content flex-1 conteudo">
     <div class="container">
-      <h1 class='card-title'>Editar Paciente</h1>
+      <h1 class='card-title'>EDITAR PACIENTE</h1>
 
 <?php
 
@@ -220,7 +220,7 @@ if (mysqli_num_rows($resultado) > 0) {
         echo "<input name='cep' type='text' class='form-control form-atualizar' id='cep'  autocomplete='off' value='" . htmlspecialchars($row['cep']) . "'>";
         echo"</div>";
 
-        echo "<input type='submit' value='Salvar alteração' class='botões'>";
+        echo "<input type='submit' value='Salvar ' class='botões'>";
         echo "</form>";
 
         echo "</div>"; // Fecha a div paciente-detalhes
@@ -232,3 +232,5 @@ if (mysqli_num_rows($resultado) > 0) {
 // Fecha a conexão
 mysqli_close($conexao);
 ?>
+
+<script src="../../javascript/menu.js"></script>
