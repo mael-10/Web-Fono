@@ -150,110 +150,90 @@ id="nav-lte"
     <div class="container">
 
     <?php
-include_once('../conexao.php');
+        include_once('../conexao.php');
 
-// Capturando dados do formulário
-$paciente = $_POST['nome'];  
-$produto = $_POST['produto'];
-$tipo = $_POST['tipo'];
-$total_venda = isset($_POST['total_venda']) ? $_POST['total_venda'] : 0; // Caso não exista, define como 0
+        // Capturando dados do formulário
+        $paciente = $_POST['nome'];  
+        $produto = $_POST['produto'];
+        $tipo = $_POST['tipo'];
+        $total_venda = isset($_POST['total_venda']) ? $_POST['total_venda'] : 0;
 
+        // Captura a data atual para data_inicio e data de venda
+        $data_fim = date('Y-m-d');
+        $data_venda = date('Y-m-d H:i:s');
 
-$sql = "SELECT id_paciente FROM paciente WHERE nome_paciente = '$paciente'";
-$resultado = mysqli_query($conexao, $sql);
+        // Verificando se o id_paciente existe na tabela Paciente
+        $sql = "SELECT id_paciente FROM paciente WHERE nome_paciente = '$paciente'";
+        $resultado = mysqli_query($conexao, $sql);
 
-if (mysqli_num_rows($resultado) > 0) {
-    while ($row = mysqli_fetch_assoc($resultado)) {
-        $id_paciente = $row['id_paciente'];
-    }
-}
+        if (mysqli_num_rows($resultado) > 0) {
+            $row = mysqli_fetch_assoc($resultado);
+            $id_paciente = $row['id_paciente'];
 
+            // Verificar se produtoestoque tabela existe
+            $sql = "SHOW TABLES LIKE 'produtopaciente'";
+            $table_exists = mysqli_query($conexao, $sql);
 
-$sql = "SELECT paciente.id_paciente, produtoestoque.data_inicio FROM produtoestoque inner join paciente ON paciente.id_paciente = produtoestoque.id_paciente WHERE id_paciente = '$id_paciente'";
-$resultado = mysqli_query($conexao, $sql);
+            if (mysqli_num_rows($table_exists) > 0) {
+                $sql = "SELECT data_inicio FROM produtopaciente WHERE id_paciente = '$id_paciente'";
+                $resultado = mysqli_query($conexao, $sql);
 
-if (mysqli_num_rows($resultado) > 0) {
-    while ($row = mysqli_fetch_assoc($resultado)) {
-        $data_inicio = $row['data_inicio'];
-    }
-}
+                if (mysqli_num_rows($resultado) > 0) {
+                    $row = mysqli_fetch_assoc($resultado);
+                    $data_inicio = $row['data_inicio'];
+                }
+            } else {
+                echo "Tabela produtoestoque não existe.";
+                exit;
+            }
 
+            // Inserção na tabela ProdutoPaciente
+            $query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio, data_fim) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_fim')";
+            $result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
 
-// Captura a data atual para data_inicio e data de venda
-$data_fim = date('Y-m-d');
-$data_venda = date('Y-m-d H:i:s');
+            if ($result_produto_paciente && mysqli_affected_rows($conexao) > 0) {
+                echo "Registro inserido com sucesso na tabela ProdutoPaciente!<br>";
 
-// Verificando se o id_paciente existe na tabela Paciente (opcional, dependendo de como você está lidando com isso)
+                // Atualizando a quantidade em estoque
+                if ($tipo == "compra") {
+                    $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
+                    $result_estoque = mysqli_query($conexao, $query_estoque);
 
-// Construindo a query de inserção para a tabela ProdutoPaciente
-$query_produto_paciente = "INSERT INTO ProdutoPaciente (id_produto, id_paciente, status, data_inicio) VALUES ('$produto', '$id_paciente', '$tipo', '$data_inicio', '$data_fim')";
+                    if ($result_estoque && mysqli_affected_rows($conexao) > 0) {
+                        echo "Estoque atualizado com sucesso!<br>";
 
-// Executando a query
-$result_produto_paciente = mysqli_query($conexao, $query_produto_paciente);
+                        // Inserção na tabela Venda
+                        $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
+                        $result_venda = mysqli_query($conexao, $query_venda);
 
-if ($result_produto_paciente) {
-    if (mysqli_affected_rows($conexao) > 0) {
-        echo "Registro inserido com sucesso na tabela ProdutoPaciente!<br>";
-
-        // Se o tipo for "compra", atualize a quantidade em estoque
-        if ($tipo == "compra") {
-            // Atualizando a quantidade em estoque
-            $query_estoque = "UPDATE produto SET quantidade = quantidade - 1 WHERE id_produto = '$produto'";
-            $result_estoque = mysqli_query($conexao, $query_estoque);
-
-            if ($result_estoque) {
-                if (mysqli_affected_rows($conexao) > 0) {
-                    echo "Estoque atualizado com sucesso!<br>";
-
-                    // Insira também na tabela Venda
-                    // Construindo a query de inserção para a tabela Venda
-                    $query_venda = "INSERT INTO Venda (data, total_venda, id_produto, id_paciente) VALUES ('$data_venda', '$total_venda', '$produto', '$id_paciente')";
-
-                    // Executando a query
-                    $result_venda = mysqli_query($conexao, $query_venda);
-
-                    if ($result_venda) {
-                        if (mysqli_affected_rows($conexao) > 0) {
+                        if ($result_venda && mysqli_affected_rows($conexao) > 0) {
                             echo "Registro inserido com sucesso na tabela Venda!";
                         } else {
                             echo "Erro ao inserir o registro na tabela Venda: " . mysqli_error($conexao);
                         }
                     } else {
-                        echo "Erro ao executar a query para a tabela Venda: " . mysqli_error($conexao);
+                        echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
                     }
-                } else {
-                    echo "Erro ao atualizar o estoque: " . mysqli_error($conexao);
+                } elseif ($tipo == "devolvido") {
+                    $query_estoque = "UPDATE produto SET quantidade = quantidade + 1 WHERE id_produto = '$produto'";
+                    $result_estoque = mysqli_query($conexao, $query_estoque);
+
+                    if ($result_estoque && mysqli_affected_rows($conexao) > 0) {
+                        echo "Devolvido com sucesso";
+                    } else {
+                        echo "Erro ao devolver " . mysqli_error($conexao);
+                    }
                 }
             } else {
-                echo "Erro ao executar a query para a tabela Estoque: " . mysqli_error($conexao);
+                echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
             }
+        } else {
+            echo "Paciente não encontrado.";
         }
-        elseif ($tipo == "devolvido"){
-            $query_estoque = "UPDATE produto SET quantidade = quantidade + 1 WHERE id_produto = '$produto'";
-            $result_estoque = mysqli_query($conexao, $query_estoque);
 
-            if ($result_estoque) {
-                if (mysqli_affected_rows($conexao) > 0) {
-                    echo "Devolvido com sucesso";
-                } else {
-                    echo "Erro ao devolver " . mysqli_error($conexao);
-                }
-            } else {
-                echo "Erro ao executar a query para a tabela Atendimento: " . mysqli_error($conexao);
-            }
-        }
-    } else {
-        echo "Erro ao inserir o registro na tabela ProdutoPaciente: " . mysqli_error($conexao);
-    }
-} else {
-    echo "Erro ao executar a query para a tabela ProdutoPaciente: " . mysqli_error($conexao);
-}
-
-// Fechando a conexão
-mysqli_close($conexao);
-?>
-
-
+        // Fechando a conexão
+        mysqli_close($conexao);
+        ?>
     </div>
 </main>
 <script src="../../javascript/menu.js"></script>
