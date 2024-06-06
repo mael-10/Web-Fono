@@ -2,6 +2,20 @@
     margin-left: 65px;
     transition: margin-left 0.2s;
   }
+  nav {
+    /* Estilo existente do nav */
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 65px;
+    background-color: #333; /* Exemplo de cor */
+    z-index: 1000; /* Para garantir que o nav fique sobre outros elementos */
+  }
+  
+  nav.expandir {
+    width: 300px;
+  }
   nav.expandir + .content {
     margin-left: 300px;
   }
@@ -11,33 +25,19 @@ body {
     padding: 0;
     background-color: #f0f0f0;
 }
-.header {
-  width: 100%;
-  height: 140px;
-  padding: 10px 0px 0px;
-  background-color: #f0f0f0; /* Cor de fundo do cabeçalho, ajuste conforme necessário */
-  text-align: center;
-  border-bottom: 1px solid #ccc; /* Adiciona uma borda inferior */
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 50px; /* Tamanho da fonte do título */
-  font-weight: 700;
-  color: #0c5f55; /* Cor do texto, ajuste conforme necessário */
+header{
+  padding: 0px;
 }
     /* estilização pagina home pacientes  */
 main{
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  background-color: #ccc;
 }
 .options {
-  display: inline;
-  background-color: #0c5f55;
-  height: 240px;
-  width: 90%;
+  background-color: #ccc;
+  color: rgb(19, 19, 19);
+  height: 600px;
+  width: 500px;
   border-radius: 8px;
   padding: 30px 30px 30px;
   margin: 25px;
@@ -45,42 +45,46 @@ main{
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
 }
 
-
 .options:hover {
-  transform: translate(20px); 
+  transform: translateY(-10px); 
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); 
   cursor: pointer;
- }
-
- /*  
+}
 .content-image{
+  
   width: 440px;
   height: 250px;
-  margin-bottom: 55px; 
-} 
-*/
-.content-image {
-  width: 200px;
-  height: 200px;
+  margin-bottom: 55px;
 }
-.option-content {
-  display: flex;
-  align-items: center;
+.content-image img{
+  width: 540px;
+  height: 350px;
+}
+.titulo{
+  text-align: center;
+  color: #0c5f55;
+  font-size: 45px;
+  padding: 0px 20px 30px;
 }
 .titulo-options{
-  left: auto;
-  color: #D9D9D9;
+  color: #118E7F;
   font-family:Arial, Helvetica, sans-serif;
   font-style:bold;
-  font-size: 30px;
-
+  font-size: 60px;
 }
 
 /* estilização padrão chat GPT FORMULARIO */
 #cd-paciente{
   background-color: #0c5f55;
 }
+.retorno{
+  text-align: center;
+  justify-items: center;
+  font-size: 80px;
+  color: #0c5f55;
+}
 .container {
+  text-align: center;
   justify-content: center;
   max-width: 80%;
   height: 80%;
@@ -132,16 +136,19 @@ input {
 }
 
 button {
-  margin-top: 30px;
   background-color: #118E7F;
   color: #fff;
-  width: 40%;
-  padding: 30px 20px;
+  width: 15%;
+  padding: 3px 8px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 30px;
   margin: 0 auto; /* Centraliza o botão */
+  margin-top: 5%;
+}
+button h1 {
+  font-size: 25px;  
 }
 
 button:hover {

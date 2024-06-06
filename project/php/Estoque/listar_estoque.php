@@ -122,7 +122,7 @@
       </a>
     </li>
     <li class="item-menu w-full">
-      <a href="#" class="flex items-center">
+      <a href="../login/logout.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-right-from-bracket text-white"></i>
         </span>
