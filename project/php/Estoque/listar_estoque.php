@@ -146,7 +146,7 @@
         <span class="txt-link ml-5 overflow-hidden text-white">Atendimento</span>
       </a>
     </li>
-    <li class="item-menu ativo w-full">
+    <li class="item-menu w-full">
       <a href="../../html/paciente/home_paciente.html" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
@@ -154,7 +154,7 @@
         <span class="txt-link overflow-hidden text-white">Paciente</span>
       </a>
     </li>
-    <li class="item-menu w-full">
+    <li class="item-menu ativo w-full">
       <a href="../estoque/listar_estoque.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
