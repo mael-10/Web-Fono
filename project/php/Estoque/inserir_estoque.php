@@ -82,7 +82,7 @@
           </a>
         </li>
         <li class="item-menu ativo w-full">
-          <a href="../estoque/estoque.html" class="flex items-center">
+          <a href="listar_estoque.php" class="flex items-center">
             <span class="icon">
               <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
             </span>
