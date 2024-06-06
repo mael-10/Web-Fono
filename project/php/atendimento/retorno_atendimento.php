@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
     <link rel="stylesheet" href="../../../src/output.css" />
     <link rel="stylesheet" href="../../css/atendimento_geral.css">
-    <title>Atendimento</title>
+    <title>Retorno Atendimento</title>
     <style>
         .content {
             margin-left: 65px;

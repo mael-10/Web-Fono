@@ -20,8 +20,7 @@
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
     <link rel="stylesheet" href="../../../src/output.css" />
     <link rel="stylesheet" href="../../css/estoque.css"/>
-
-    <title>Estoque</title>
+    <title>Listar Estoque</title>
     <style>
       main{
         background-color: #118E7F;
@@ -55,7 +54,7 @@
 
   <ul class="h-full list-none space-y-4">
     <li class="item-menu w-full">
-      <a href="menu.html" class="flex items-center">
+      <a href="../../html/agenda/pagina.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
         </span>
