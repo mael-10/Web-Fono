@@ -14,7 +14,7 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="../../../src/output.css" />
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
-    <link rel="stylesheet" href="../../css/listagemPaciente.css" />
+    <link rel="stylesheet" href="../../css/relatorio_vendas.css" />
     <title>Home Paciente</title>
 
     </style>
@@ -94,7 +94,7 @@
 
     <main class="content flex-1 conteudo">
         <div class="container">
-            <h2>Relatório de Produtos Comprados</h2><br>
+            <h1 class='card-title'>Relatório de Produtos Comprados</h1><br>
 
             <!-- Adicione o campo de entrada de data de início -->
             <form method="GET">
