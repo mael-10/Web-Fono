@@ -56,7 +56,7 @@ id="nav-lte"
 
 <ul class="h-full list-none space-y-4">
   <li class="item-menu w-full">
-    <a href="menu.html" class="flex items-center">
+    <a href="../../html/agenda/pagina.php" class="flex items-center">
       <span class="icon">
         <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
       </span>
