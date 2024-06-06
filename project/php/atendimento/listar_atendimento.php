@@ -104,7 +104,7 @@
             <div class="form-row full-width">
                 <div>
                     <input type="text" id="search" onkeyup="fetchAtendimentos()" placeholder="Pesquisar...">
-                    <button type="submit" id="searchButton">Pesquisar</button>
+                    <button type='submit' id='btnBusca'><i class='fa-solid fa-magnifying-glass'></i></button>
                 </div>
                 <div id="results">
                     <?php
