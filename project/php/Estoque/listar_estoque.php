@@ -1,3 +1,7 @@
+<?php
+   include('../login/protect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -211,7 +215,6 @@
         <!-- Conteúdo principal dos produtos -->
         <?php
         include_once('../conexao.php');
-
         $sql = "SELECT * FROM produto";
         $resultado = mysqli_query($conexao, $sql);
 

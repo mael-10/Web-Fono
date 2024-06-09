@@ -1,3 +1,7 @@
+<?php
+   include('../login/protect.php');
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -114,6 +118,7 @@
                 </tr>
 
                 <?php
+
                 include_once ('../conexao.php');
 
                 // Defina a query para selecionar todas as vendas

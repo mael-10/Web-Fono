@@ -1,3 +1,7 @@
+<?php
+   include('../login/protect.php');
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -159,7 +163,8 @@
 <?php
                 
     include_once("../conexao.php");
-                
+
+    
     $id_atendimento = mysqli_real_escape_string($conexao, $_POST['id']);
                 
     $exclui = mysqli_query($conexao, "DELETE FROM atendimento WHERE id_atendimento = '$id_atendimento'");

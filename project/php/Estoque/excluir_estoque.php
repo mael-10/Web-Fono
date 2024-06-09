@@ -1,3 +1,7 @@
+<?php
+   include('../login/protect.php');
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -159,7 +163,7 @@
 <div class="container flex items-center flex-col">
 
 <?php
-                
+  
     include_once("../conexao.php");
                 
     $id_produto = mysqli_real_escape_string($conexao, $_POST['id']);

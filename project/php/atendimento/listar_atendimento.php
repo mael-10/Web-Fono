@@ -1,3 +1,7 @@
+<?php
+   include('../login/protect.php');
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -109,7 +113,7 @@
                 <div id="results">
                     <?php
                         include_once('../conexao.php');
-                        
+        
                         $sql = "SELECT atendimento.data, atendimento.descricao, atendimento.hora, paciente.nome_paciente, atendimento.id_atendimento FROM atendimento INNER JOIN paciente ON atendimento.id_paciente = paciente.id_paciente";
 
                         $resultado = mysqli_query($conexao, $sql);

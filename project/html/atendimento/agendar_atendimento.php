@@ -1,3 +1,7 @@
+<?php
+  include ('../../php/login/protect.php');
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>

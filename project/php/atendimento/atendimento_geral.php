@@ -1,3 +1,7 @@
+<?php
+   include('../login/protect.php');
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -160,6 +164,7 @@
                 
               <?php
                 // Conexão com o banco de dados
+                
                 include_once("../conexao.php");
 
                 // Consulta SQL para buscar os produtos
