@@ -76,7 +76,7 @@
         </a>
       </li>
       <li class="item-menu ativo w-full">
-        <a href="atendimento.html" class="flex items-center">
+        <a href="atendimento.php" class="flex items-center">
           <span class="icon">
             <i class="fa-regular fa-address-book text-2xl text-white"></i>
           </span>
@@ -84,7 +84,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="../Paciente/home_paciente.html" class="flex items-center">
+        <a href="../Paciente/home_paciente.php" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"></i>
           </span>
@@ -92,7 +92,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="#" class="flex items-center">
+        <a href="../estoque/listar_estoque.php" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-cart-shopping text-2xl text-white"></i>
           </span>
@@ -100,7 +100,7 @@
         </a>
       </li>
       <li class="item-menu w-full">
-        <a href="#" class="flex items-center">
+        <a href="../../html/estoque/cadastrar_estoque.php" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-box-archive text-2xl text-white"></i>
           </span>

@@ -58,7 +58,7 @@ main{
     </li>
 
     <li class="item-menu w-full">
-      <a href="../../html/atendimento/home_atendimento.html" class="flex items-center">
+      <a href="../../html/atendimento/home_atendimento.php" class="flex items-center">
         <span class="icon">
           <i class="fa-regular fa-address-book text-2xl text-white"></i>
         </span>
@@ -67,7 +67,7 @@ main{
       </a>
     </li>
     <li class="item-menu ativo w-full">
-      <a href="../../html/paciente/home_paciente.html" class="flex items-center">
+      <a href="../../html/paciente/home_paciente.php" class="flex items-center">
         <span class="icon">
           <i
             class="fa-solid fa-person ml-1 mr-1 text-2xl leading-5 text-white"
@@ -85,7 +85,7 @@ main{
       </a>
     </li>
     <li class="item-menu w-full">
-      <a href="../../html/Estoque/cadastrar_estoque.html" class="flex items-center">
+      <a href="../../html/Estoque/cadastrar_estoque.php" class="flex items-center">
         <span class="icon">
           <i class="fa-solid fa-box-archive text-2xl text-white"></i>
         </span>
