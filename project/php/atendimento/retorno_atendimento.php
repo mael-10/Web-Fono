@@ -100,6 +100,14 @@
         <span class="txt-link overflow-hidden text-white">Paciente</span>
       </a>
     </li>
+      <li class="item-menu w-full">
+        <a href="../vendas/relatorioVendas.php" class="flex items-center">
+          <span class="icon">
+            <i class="fa-solid fa-dollar-sign  text-2xl text-white"></i>
+          </span>
+          <span class="txt-link overflow-hidden text-white">Vendas</span>
+        </a>
+      </li>
     <li class="item-menu w-full">
       <a href="../estoque/listar_estoque.php" class="flex items-center">
         <span class="icon">
