@@ -58,6 +58,36 @@
           margin: 0 auto;
           margin-top: 10%;
         }
+
+        .container {
+    max-width: 67%;
+    height: 80%;
+    margin: 100px 20px 100px auto; /* Margem à direita menor e margem à esquerda maior */
+    padding: 90px 200px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.container {
+    max-width: 75%;
+    height: 80%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto; /* Centraliza horizontalmente */
+    margin-right: 100px; /* Margem à direita */
+    padding: 90px 200px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
       </style>
 </head>
 <body class="flex h-screen bg-white text-black dark:bg-fundo">

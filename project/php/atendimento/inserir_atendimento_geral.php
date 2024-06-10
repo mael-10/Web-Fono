@@ -17,10 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="css/paciente.css">
-    <link
-            href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-            rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="../../images/icon-logo.ico">
     <link rel="stylesheet" href="../../../src/output.css" />
     <link rel="stylesheet" href="../../css/atendimento.css">
@@ -58,6 +55,36 @@
           margin: 0 auto;
           margin-top: 10%;
         }
+
+        .container {
+    max-width: 67%;
+    height: 80%;
+    margin: 100px 20px 100px auto; /* Margem à direita menor e margem à esquerda maior */
+    padding: 90px 200px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.container {
+    max-width: 75%;
+    height: 80%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: auto; /* Centraliza horizontalmente */
+    margin-right: 100px; /* Margem à direita */
+    padding: 90px 200px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
       </style>
 </head>
 <body
@@ -80,7 +107,7 @@
       </a>
     </li>
 
-    <li class="item-menu w-full">
+    <li class="item-menu ativo w-full">
       <a href="../../html/atendimento/home_atendimento.php" class="flex items-center">
         <span class="icon">
           <i class="fa-regular fa-address-book text-2xl text-white"></i>
@@ -89,7 +116,7 @@
         >
       </a>
     </li>
-    <li class="item-menu ativo w-full">
+    <li class="item-menu w-full">
       <a href="../../html/paciente/home_paciente.php" class="flex items-center">
         <span class="icon">
           <i
@@ -196,7 +223,7 @@ if ($tipo == "teste") {
                     echo '    <div class="mb-32">';
                     echo '      <h1 class="text-5xl text-greenF">INSERIDO COM SUCESSO!</h1>';
                     echo '      <div class="mt-20 text-center">';
-                    echo '        <button class="text-white bg-buttonGreen hover:bg-buttonHover">Voltar ao Início</button>';
+                    echo '       <a href="../../html/agenda/pagina.php"<button class="botao">Voltar ao Início</button></a>';    /* o css do botao está no css interno */
                     echo '      </div>';
                     echo '    </div>';
                 } else {

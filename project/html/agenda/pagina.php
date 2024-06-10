@@ -202,7 +202,7 @@ mysqli_close($conexao);
     </div>
 
     <ul class="h-full list-none space-y-4">
-      <li class="item-menu w-full">
+      <li class="item-menu ativo w-full">
         <a href="../agenda/pagina.php" class="flex items-center">
           <span class="icon">
             <i class="fa-solid fa-house text-2xl leading-5 text-white"></i>
@@ -210,7 +210,7 @@ mysqli_close($conexao);
           <span class="txt-link ml-5 overflow-hidden text-white">Home</span>
         </a>
       </li>
-      <li class="item-menu ativo w-full">
+      <li class="item-menu  w-full">
         <a href="../atendimento/home_atendimento.php" class="flex items-center">
           <span class="icon">
             <i class="fa-regular fa-address-book text-2xl text-white"></i>
