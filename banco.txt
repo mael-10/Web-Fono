@@ -67,3 +67,10 @@ ALTER TABLE Venda ADD FOREIGN KEY(id_produto) REFERENCES Produto (id_produto) ON
 ALTER TABLE Venda ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente) ON DELETE CASCADE;
 ALTER TABLE Atendimento ADD FOREIGN KEY(id_paciente) REFERENCES Paciente (id_paciente) ON DELETE CASCADE
 
+INSERT INTO Paciente (nome_paciente, cpf, RG, email, nascimento, telefone, endereco, bairro, cidade, cep) VALUES
+('Maria Silva', '123.456.789-00', 'MG-12.345.678', 'maria.silva@example.com', '1985-04-23', '(31) 98765-4321', 'Rua das Flores, 123', 'Centro', 'Belo Horizonte', '30123-456'),
+('João Souza', '987.654.321-00', 'SP-98.765.432', 'joao.souza@example.com', '1990-07-15', '(11) 91234-5678', 'Av. Paulista, 456', 'Jardins', 'São Paulo', '01311-000'),
+('Ana Oliveira', '456.789.123-00', 'RJ-45.678.912', 'ana.oliveira@example.com', '1980-12-01', '(21) 99876-5432', 'Rua do Ouvidor, 789', 'Centro', 'Rio de Janeiro', '20040-030'),
+('Carlos Pereira', '321.654.987-00', 'PR-32.165.498', 'carlos.pereira@example.com', '1975-03-10', '(41) 98765-1234', 'Rua XV de Novembro, 123', 'Centro', 'Curitiba', '80020-310'),
+('Luciana Lima', '654.321.987-00', 'BA-65.432.198', 'luciana.lima@example.com', '1995-06-25', '(71) 91234-9876', 'Av. Sete de Setembro, 456', 'Campo Grande', 'Salvador', '40080-001'),
+('Fernando Almeida', '789.123.456-00', 'RS-78.912.345', 'fernando.almeida@example.com', '1988-09-30', '(51) 99876-1122', 'Rua dos Andradas, 789', 'Centro', 'Porto Alegre', '90020-005');
